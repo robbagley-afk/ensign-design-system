@@ -9,7 +9,7 @@ import { chromium } from 'playwright';
 import { readFileSync, writeFileSync } from 'node:fs';
 const AGENT='https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15';
 const [cmd,a1,a2]=process.argv.slice(2);
-const b=await chromium.connectOverCDP('http://127.0.0.1:9226'); const ctx=b.contexts()[0];
+const b=await chromium.connectOverCDP('http://127.0.0.1:'+(process.env.CDP_PORT||9226)); const ctx=b.contexts()[0];
 const out=o=>{console.log(JSON.stringify(o,null,1));process.exit(0)};
 async function findAsync(id){ if(!id.startsWith('text:')) return ctx.pages().find(p=>p.url().includes(id));
   const m=id.slice(5); for(const p of ctx.pages()){ if(!p.url().includes('m365')) continue; if(await p.evaluate(m=>document.body.innerText.includes(m),m)) return p; } }

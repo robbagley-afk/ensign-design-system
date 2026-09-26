@@ -13,7 +13,10 @@ if (!pages.length) {
   console.log(JSON.stringify({ port, before: 0, closed: 0, opened: 1 })); process.exit(0);
 }
 const score = t => t.url.includes(keep) ? (t.url.includes('/conversation/') ? 2 : 3) : (t.url.startsWith('edge://') || t.url.includes('ntp.msn') ? 1 : 0);
-const keeper = [...pages].sort((a, z) => score(z) - score(a))[0];
+let keeper = [...pages].sort((a, z) => score(z) - score(a))[0];
+// No helper tab (Edge restored or synced unrelated tabs, e.g. a Church login page on 2026-09-26): open the agent first,
+// then close everything else, so a lane never keeps a non-helper site open.
+if (score(keeper) < 2) keeper = await (await fetch(base + '/json/new?' + encodeURIComponent(AGENT), { method: 'PUT' })).json();
 let closed = 0;
 for (const t of pages) if (t.id !== keeper.id) { const r = await fetch(base + '/json/close/' + t.id); if (r.ok) closed++; }
 console.log(JSON.stringify({ port, before: pages.length, closed, kept: keeper.url.slice(0, 90) }));

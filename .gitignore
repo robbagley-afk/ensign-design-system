@@ -1,2 +1,4 @@
 node_modules/
 .DS_Store
+scripts/helper/.p_*
+scripts/helper/.r_*
