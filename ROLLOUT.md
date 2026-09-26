@@ -6,6 +6,7 @@ Family = apps sharing a layout, so the first app in a family sets the pattern an
 
 | App repo | Family | Owner | Branch | Status | Helper conversation | PR | Notes |
 |---|---|---|---|---|---|---|---|
+| major-career-explorer-coach-ai (exemplar commit) | A | | ecc/exemplar | todo | | | FIRST: commit the Claude Design redesign (project 91725828, "Mentor explorer redesign request") to this repo so every agent can read the reference implementation. Needs the Claude Design files: import blocked 2026-09-25 (no design-login in Cowork) |
 | ensign-career-fair-coach | A (messages/composer) | | ecc/ensign-career-fair-coach | todo | | | pilot app. public/ + static/ |
 | gemini-coaching-agent-starter | A | | | todo | | | public/ + static/ |
 | major-career-explorer-coach-ai | A | | | todo | | | public/ + static/. Has dark tokens in styles.css |

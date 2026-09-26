@@ -68,12 +68,13 @@ body.ecc {
 .ecc-msg-name { font-size: var(--text-caption); font-weight: 700; color: var(--brand); margin: 0 0 var(--space-2); }
 .ecc-msg-user {
   align-self: flex-end;
-  max-width: 80%;
-  background: var(--brand-tint);
-  border: 1.5px solid var(--brand);
+  max-width: 78%;
+  background: var(--brand);
+  color: #ffffff;
   border-radius: 14px 14px 4px 14px; /* one-off "who said this" cue from the design system */
   padding: var(--space-4) var(--space-5);
 }
+.ecc-msg-user .ecc-msg-name { color: #d1e7dd; }
 
 /* ---------- Composer ---------- */
 .ecc-composer {
@@ -130,16 +131,30 @@ input.ecc-field { border-radius: var(--radius-md); resize: none; } /* single-lin
 .ecc-toast { position: fixed; right: var(--space-6); bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0px)); background: var(--surface); border: 1.5px solid var(--success-border); color: var(--success-text); border-radius: var(--radius-lg); box-shadow: var(--shadow-toast); padding: var(--space-3) var(--space-5); font-size: var(--text-control); font-weight: 600; }
 
 /* ---------- Breakpoints ---------- */
-@media (max-width: 900px) {
+@media (max-width: 899.98px) {
   .ecc-shell { grid-template-columns: minmax(0, 1fr); }
-  .ecc-sidebar { border-right: 0; border-bottom: 1.5px solid var(--border); }
+  .ecc-sidebar {
+    position: fixed; inset: 0 auto 0 0; z-index: 40;
+    width: min(88vw, 320px);
+    padding-top: calc(var(--space-5) + env(safe-area-inset-top, 0px));
+    transform: translateX(-100%);
+    transition: transform 200ms ease;
+    box-shadow: var(--shadow-toast);
+    overflow-y: auto;
+  }
+  .ecc-sidebar.is-open { transform: none; }
+  .ecc-scrim { position: fixed; inset: 0; z-index: 30; background: var(--overlay); }
+  .ecc-scrim[hidden] { display: none; }
 }
-@media (max-width: 640px) {
+@media (min-width: 900px) { .ecc-menu-button, .ecc-scrim { display: none; } }
+@media (max-width: 639.98px) {
+  :root { --gutter: 16px; }
   .ecc-composer textarea, .ecc-composer .ecc-field { flex-basis: 100%; }
   .ecc-composer .ecc-btn { flex: 1 1 100%; }
-  .ecc-msg-assistant { padding: var(--space-4); }
+  .ecc-msg-assistant { padding: 14px 16px; }
 }
 @media (max-width: 375px) {
+  :root { --gutter: 12px; }
   .ecc-msg-user { max-width: 90%; }
 }
 

@@ -20,7 +20,7 @@ Every Ensign student- and mentor-facing app should read and behave like one prod
 
 `tokens/tokens.json` in the repo is a byte-exact copy of the artifact's `project/tokens.json`. Never hand-edit it. Local deviations live in `tokens/overrides.json`, each with a reason and a status.
 
-**Precedence:** Rob's words in the current request, then the design system (tokens.json, its README, its component notes), then `overrides.json`, then the gates in this skill, then general craft defaults. If two of these conflict and the answer changes what ships, say so in the PR and let Rob decide.
+**Precedence:** Rob's words in the current request, then the design system (tokens.json, its README, its component notes), then `overrides.json`, then the Career Explorer Coach exemplar patterns (`references/exemplar-patterns.md`), then the gates in this skill, then general craft defaults. If two of these conflict and the answer changes what ships, say so in the PR and let Rob decide.
 
 **Scope:** Ensign College and Career Services apps. Personal or non-Ensign apps do not get the Ensign brand. Use general design craft there instead.
 
@@ -29,7 +29,7 @@ Every Ensign student- and mentor-facing app should read and behave like one prod
 Read `README.md` and `docs/components.md` in the repo before a first migration. The rules that most often get broken:
 
 1. **Audience first.** Mentors and students, often over 60, often on shared 1080p desktops, reading paragraphs of advice. Body text is **19px**, line-height 1.6. **Nothing renders below 17px**, including captions, chips, timestamps, disclaimers and feedback controls.
-2. **Fill the width.** The chat feed and composer fill the available width up to the `--gutter` (16px on phones, 24 to 48px on desktop). No 65ch or 1180px cap on the chat canvas.
+2. **Fill the width.** The chat feed and composer fill the available width up to the `--gutter`: `clamp(24px, 3vw, 56px)` from 640px up, 16px under 640px, 12px at 375px and below. The header, step header, feed and composer share it so their edges line up. No 65ch or 1180px cap on the chat canvas.
 3. **One theme, light.** Page `surface-sunken` #f8fafc, cards and panels `surface` #ffffff. No dark mode.
 4. **Ensign green `--brand` #006645 means "do this".** Primary buttons, links, the active step, focus rings. Nothing decorative.
 5. **Gold `--accent-gold` #FDB515 is an identity mark only.** It never marks a button, link, badge, border or highlight.
@@ -37,8 +37,9 @@ Read `README.md` and `docs/components.md` in the repo before a first migration. 
 7. **Radius carries meaning.** `radius-md` 10px = clickable control. `radius-lg` 14px = content container (cards, bubbles, composer). `radius-pill` = chip or status. User chat bubble alone uses `14px 14px 4px 14px`.
 8. **Two text colors.** `ink` #0f172a and `ink-muted` #475569. Borders `border` #cbd5e1 for structure, `border-strong` for controls.
 9. **Cards are rare.** Border plus `shadow-card` only on distinct objects (assistant message, video frame, dropzone). A card never sits on a card.
-10. **State is never color alone.** Status pill = tinted fill plus label. Active step = tint plus border plus numbered badge.
-11. **Voice.** Buttons are verbs in sentence case ("Copy prompt", "Book a mentor appt"). Confirmations state the outcome ("Thank you. Your feedback was saved.").
+10. **User bubble:** solid `--brand` with white text, max 78% (90% at 375px and below), radius `14px 14px 4px 14px`, a "You" label. Assistant message: full-width card with a 17px green speaker label.
+11. **State is never color alone.** Status pill = tinted fill plus label. Active step = tint plus border plus numbered badge.
+12. **Voice.** Buttons are verbs in sentence case ("Copy prompt", "Book a mentor appt"). Confirmations state the outcome ("Thank you. Your feedback was saved.").
 
 ## Text fields (Rob's standing requirement)
 
@@ -60,12 +61,13 @@ Use the `.ecc-field` class or the `.ecc-composer textarea` pattern from `css/ecc
 - **Touch targets** 44x44 minimum, including icon buttons and chip scroll buttons.
 - **Contrast:** 4.5:1 for text, 3:1 for control boundaries and focus rings. Check any new tint pair before shipping.
 - **Flex overflow:** `min-width: 0` on every flex or grid child in the chat layout (shell, main, feed, message, bubble, composer row). This, not `overflow: hidden`, is the fix for clipped text.
-- **Breakpoints:** at least 900px (sidebar stacks), 640px (composer wraps, padding tightens), 375px (user bubble up to 90%). No horizontal page scroll at 320, 375, 768, 1440 or 1920px.
+- **Breakpoints:** 1280px (status pill appears), 1200px (organization suffix), under 900px (drawer plus 4-column step bar), under 640px (icon-only header buttons with aria-label, gutter 16px, composer wraps), 375px and below (gutter 12px, user bubble up to 90%). No horizontal page scroll at 320, 375, 768, 1440 or 1920px.
 - **Motion:** honor `prefers-reduced-motion` in CSS and in JS scrolling (`behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'`).
 - **Windows High Contrast:** `@media (forced-colors: active)` keeps borders as `ButtonText` and focus as `Highlight`. Never blanket `border: ... !important` on every control, since it blocks field styling.
 - **Semantics:** every field has a `<label for>` or `aria-label`. Errors use `aria-invalid` plus `aria-describedby`. Async results announce through `role="status"`.
 - **No emoji as section markers or icons.** Use inline SVG with `aria-hidden="true"` plus a visible text label.
-- **Layout:** fixed left sidebar `--sidebar-width` 272px for steps, filters and resources (NavItem). The chat canvas takes `minmax(0, 1fr)`.
+- **Layout:** fixed left sidebar `--sidebar-width` 232px (never over 280px, never flexing) for steps, videos, resources and the handoff card. Under 900px it becomes an off-canvas drawer (`.ecc-sidebar.is-open` over `.ecc-scrim`) opened by a 44px hamburger with `aria-expanded`. The chat canvas takes `minmax(0, 1fr)`.
+- **Screen patterns:** header, step header, sidebar sections, assistant and user messages, worded feedback, thinking state, collapsing suggested-question rail, composer dock, upload dropzone, inline video, toast and drawer are specified in `references/exemplar-patterns.md`. Read it before building or migrating a chat screen.
 
 ## How to migrate an app
 
@@ -103,6 +105,10 @@ Handoff prompts for each lane are in `references/handoffs.md`. Every handoff nam
 1. `Artifact` read `https://claude.ai/artifact/2Nz7EPn8vjHGM5cwrXpy4v` path `project/tokens.json` and `project/README.md`.
 2. If the sha256 differs from `tokens/tokens.json`, replace the file byte for byte, run `python3 scripts/build_tokens.py`, update `docs/design-system-README.md`, add a CHANGELOG entry, and open a PR.
 3. Re-vendor into apps through the normal rollout. Apps fail `ds-stale` in the static audit until they do.
+
+## Version history
+
+v2.0.0 (2026-09-25) supersedes v1.3.0 and earlier. It makes the Claude Design system and the ensign-design-system repo the source of truth, adds the audits, the rollout board and the agent roles, and moves the v1.3.0 exemplar screen patterns to `references/exemplar-patterns.md`. Retired: 16px body and 14px secondary text, the 1180px cap, gold on badges and callouts, Heritage Navy as a UI color, Libre Baskerville in app UI (it stays for formal print and editorial documents only). Earlier versions are backed up under `~/Local-Infra/_retired/` on the Mac Studio.
 
 ## Boundary
 

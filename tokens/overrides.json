@@ -15,15 +15,15 @@
     },
     {
       "name": "gutter",
-      "value": "clamp(16px, 3vw, 48px)",
-      "reason": "Design system says chat text and composer fill the width up to generous gutters (space-6 24px minimum on desktop, space-8 48px ceiling). 16px floor keeps phones usable.",
-      "status": "derived"
+      "value": "clamp(24px, 3vw, 56px)",
+      "reason": "Career Explorer Coach exemplar (v1.3.0): shared side padding for header, step header, feed and composer. ecc-app.css drops it to 16px under 640px and 12px at 375px and below.",
+      "status": "exemplar"
     },
     {
       "name": "sidebar-width",
-      "value": "272px",
-      "reason": "Fixed left rail for steps and resources (NavItem). Within the 260-280px range used by the ENS 101 exemplar.",
-      "status": "derived"
+      "value": "232px",
+      "reason": "Career Explorer Coach exemplar (v1.3.0): fixed column, never over 280px, drawer under 900px.",
+      "status": "exemplar"
     }
   ]
 }
