@@ -17,7 +17,7 @@
 //   editing the same file at the same moment. A lock whose pid is dead is reclaimed. Wait limit 10 min, then the job FAILs.
 // Lanes: lanes.json. Claim = mkdir <locks>/<lane> (atomic). A lock whose pid is dead is reclaimed.
 // Tiny or partial reply: one "Please continue" in the same chat. Service error: OK + continue, 3 times max.
-// Throttle text: halve concurrency, wait 60 s, retry the job. Four throttles: stop, exit 4 (use --lane edge1).
+// Throttle text: halve concurrency, wait 60 s, retry the job. Four throttles: stop, exit 4 (wait: edge1 and edge2 share one account's quota).
 // Output: one line per job, then one DISPATCH line. Files: <outRoot>/<jobs name>/<id>.{prompt,raw,reply}.txt
 // Exit: 0 all OK, 1 some jobs failed, 2 lane busy/down, 3 login wall or connect card (Rob acts), 4 throttled.
 import { chromium } from 'playwright';
@@ -74,7 +74,9 @@ async function jobPage() { // own minimized window, so the lane's main window ke
   const { windowId } = await BS.send('Browser.getWindowForTarget', { targetId });
   await BS.send('Browser.setWindowBounds', { windowId, bounds: { windowState: 'minimized' } }).catch(() => {});
   for (let k = 0; k < 40; k++) {
-    for (const p of ctx.pages()) { const c = await ctx.newCDPSession(p); const { targetInfo } = await c.send('Target.getTargetInfo'); await c.detach(); if (targetInfo.targetId === targetId) return p; }
+    for (const p of ctx.pages()) { // a tab tidy.mjs just closed can still be listed: skip it instead of failing the job
+      try { const c = await ctx.newCDPSession(p); const { targetInfo } = await c.send('Target.getTargetInfo'); await c.detach().catch(() => {}); if (targetInfo.targetId === targetId) return p; } catch {}
+    }
     await sleep(500);
   }
   throw new Error('job window not found');
@@ -212,7 +214,7 @@ async function worker() {
       if (r.stalled) r.error = 'stalled twice';
       if (r.throttled) {
         msgs += r.msgs;
-        if (++throttles > 3) { gates[i].forEach(g => g.done()); halt(new Stop(4, `THROTTLED ${throttles}x on ${lane.name}: wait, or rerun unfinished jobs with --lane edge1`)); }
+        if (++throttles > 3) { gates[i].forEach(g => g.done()); halt(new Stop(4, `THROTTLED ${throttles}x on ${lane.name}: wait 15 min, then rerun unfinished jobs (both lanes share the ecenter24 quota)`)); }
         else { MAX = Math.max(1, Math.floor(MAX / 2)); console.log(`THROTTLED ${jobs[i].id}: concurrency now ${MAX}, retry in 60 s`); await sleep(60000); queue.unshift(i); }
       } else { await applyJob(i, r); report(r); }
     } catch (e) {

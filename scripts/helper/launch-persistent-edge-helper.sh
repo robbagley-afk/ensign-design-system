@@ -12,11 +12,12 @@
 #   Browser.close, records exit_type Normal). SIGTERM with windows open records SessionEnded and Edge then shows
 #   "Restore pages" on the next launch. Never kill -9, never delete Singleton* files while a process holds the profile.
 # Launch flags: no AutomationControlled flag. Background-throttling flags keep occluded lanes generating.
-# Sign-in: Edge profile icon > Sign in > Work or school account (ecenter24@ensign.net or robbagley@ensign.edu).
+# Sign-in: Edge profile icon > Sign in > Work or school account > ecenter24@ensign.net (every lane).
 #   Choose "No, sign in to this app only". Then Sync is on > turn off Open tabs and History.
 # Tabs: tidy.mjs trims the lane to one tab after launch. Dispatcher runs it on claim and after each job.
 # Verify after first run: lane_stop.mjs, then Default/Preferences exit_type Normal (Edge writes no exited_cleanly key),
-#   and a relaunch shows no restore prompt or unsupported-flag banner.
+#   and a relaunch shows no restore prompt or unsupported-flag banner. Signing out and back in moves the profile from
+#   Default to Profile 1 (edge1 on 2026-09-26): read Local State profile.last_used before checking Preferences.
 
 N="$1"
 case "$N" in [1-9]) ;; *) echo "usage: $0 <1-9>" >&2; exit 2;; esac
