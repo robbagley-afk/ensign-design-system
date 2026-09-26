@@ -1,0 +1,15 @@
+{
+  "name": "ensign-design-system",
+  "private": true,
+  "type": "module",
+  "description": "Ensign Career Coach design system mirror, audits and agent skill",
+  "scripts": {
+    "tokens": "python3 scripts/build_tokens.py",
+    "tokens:check": "python3 scripts/build_tokens.py --check",
+    "audit:static": "python3 scripts/ecc_audit_static.py",
+    "audit:runtime": "node scripts/ecc_audit_runtime.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

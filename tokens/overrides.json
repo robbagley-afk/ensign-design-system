@@ -1,0 +1,29 @@
+{
+  "_about": "Local additions and deviations layered on top of tokens.json. tokens.json is a byte-exact mirror of the Claude Design system and is never hand-edited. Every entry here needs a reason and a status. 'pending-upstream' means it should be proposed as a change to the Claude Design system; once it lands there, delete it here.",
+  "tokens": [
+    {
+      "name": "input-border",
+      "value": "#64748b",
+      "reason": "border-strong (#94a3b8) is 2.6:1 on white, below the WCAG 2.2 SC 1.4.11 3:1 floor for control boundaries. #64748b is 4.75:1.",
+      "status": "pending-upstream"
+    },
+    {
+      "name": "input-fill",
+      "value": "#f1f5f9",
+      "reason": "Rob asked for text boxes with a consistent background shade that makes them easy to find (2026-09-25). Reuses the surface-hover value; fields turn surface (#ffffff) on focus.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "gutter",
+      "value": "clamp(16px, 3vw, 48px)",
+      "reason": "Design system says chat text and composer fill the width up to generous gutters (space-6 24px minimum on desktop, space-8 48px ceiling). 16px floor keeps phones usable.",
+      "status": "derived"
+    },
+    {
+      "name": "sidebar-width",
+      "value": "272px",
+      "reason": "Fixed left rail for steps and resources (NavItem). Within the 260-280px range used by the ENS 101 exemplar.",
+      "status": "derived"
+    }
+  ]
+}
