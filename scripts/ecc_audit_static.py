@@ -49,6 +49,12 @@ def audit(repo):
     add = lambda sev, code, where, msg: findings.append({"severity": sev, "code": code, "where": where, "message": msg})
     files = [p for p in tracked(repo) if p.suffix in (".css", ".html") and not SKIP.search(str(p))]
 
+    # custom properties declared anywhere, so var(--x) page backgrounds resolve
+    props = {}
+    for p in files:
+        for name, val in re.findall(r"(--[\w-]+)\s*:\s*(#[0-9a-fA-F]{3,6})\b", css_of(p)[0]):
+            props.setdefault(name, val)
+
     for p in files:
         rel = str(p.relative_to(repo))
         css, html = css_of(p)
@@ -66,7 +72,9 @@ def audit(repo):
             if re.search(r"color-scheme\s*:\s*dark", body):
                 add("FAIL", "dark-theme", f"{rel} :: {sel[:80]}", "design system is light-only")
             if re.search(r"^(html|body|:root)\b", sel):
-                for hv in re.findall(r"background(?:-color)?\s*:\s*(#[0-9a-fA-F]{3,6})\b", body):
+                bgs = re.findall(r"background(?:-color)?\s*:\s*(#[0-9a-fA-F]{3,6})\b", body)
+                bgs += [props[v] for v in re.findall(r"background(?:-color)?\s*:\s*var\((--[\w-]+)", body) if v in props]
+                for hv in bgs:
                     if lum(hv) < 0.2:
                         add("FAIL", "dark-theme", f"{rel} :: {sel[:80]}", f"page background {hv} is dark")
             if GOLD.search(body) and re.search(r"btn|button|a\b|link|pill|badge|chip|border", sel, re.I):

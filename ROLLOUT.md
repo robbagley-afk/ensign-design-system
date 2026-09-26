@@ -25,4 +25,19 @@ Branch `ui-ux-alignment-2026-09-25` exists locally (never pushed) in 10 clones u
 
 ## Latest audit
 
-(Antigravity or Claude pastes the `ecc_audit_static.py` summary here with the date.)
+2026-09-25 baseline, before any migration (`audits/static-2026-09-25-baseline.json`):
+
+```
+ensign-career-fair-coach: 128 FAIL  8 WARN  2 INFO
+gemini-coaching-agent-starter: 74 FAIL  10 WARN  2 INFO
+major-career-explorer-coach-ai: 126 FAIL  16 WARN  2 INFO
+internship-expert-coach-ai: 60 FAIL  3 WARN  0 INFO
+brewcoach-for-linkedin: 79 FAIL  17 WARN  0 INFO
+resume-coach-ai: 218 FAIL  24 WARN  0 INFO
+resume-coach-llm: 43 FAIL  9 WARN  0 INFO
+ensign-connect-navigator: 54 FAIL  6 WARN  0 INFO
+ensign-student-readiness-hub: 49 FAIL  3 WARN  0 INFO
+career-services-tools: 48 FAIL  7 WARN  0 INFO
+```
+
+Most FAILs are text under 17px. Every app also fails `ds-missing` and `tokens-not-linked` until vendored.

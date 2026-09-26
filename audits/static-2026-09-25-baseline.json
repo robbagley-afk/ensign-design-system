@@ -1,0 +1,5950 @@
+{
+ "ensign-career-fair-coach": [
+  {
+   "severity": "FAIL",
+   "code": "dark-theme",
+   "where": "public/admin.css :: body.admin-body",
+   "message": "page background #071510 is dark"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .nav-link",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .admin-header p",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .admin-state",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .admin-login p, .section-heading p",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .admin-login label, .review-form label",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .admin-login input, .review-form input, .review-form select, .review-form textar",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .primary-admin-btn, .secondary-admin-btn, .danger-admin-btn",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .admin-toolbar > p",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .score-card span",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .admin-live-status",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .empty-review",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .review-kicker",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .review-meta",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .review-status-badge",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .review-fields dt",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .review-fields dd",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .review-copy",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "public/admin.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/admin.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "public/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "public/index.html",
+   "message": "2 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "dark-theme",
+   "where": "public/styles.css :: html, body",
+   "message": "page background #004937 is dark"
+  },
+  {
+   "severity": "INFO",
+   "code": "width-cap",
+   "where": "public/styles.css :: .app-container",
+   "message": "design system fills the width to the gutter; review this cap"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .brand-sub",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .quiet-button",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-num",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-text",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .handshake-text",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .handshake-btn",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .coach-name",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .mode-label",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .status",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .message",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .message small",
+   "message": "font-size 10.5px = 10.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions button",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .voice-badge",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .voice-hint",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .mic-indicator",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .voice-timer",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .btn-voice",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .voice-step-num",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .voice-status-text",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .chat-here-title",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .chat-here-hint",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: textarea#message-input",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/styles.css :: textarea#message-input:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer button",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .portfolio-btn",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .footer-privacy",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-num",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-text",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .hero-copy p",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-prompt",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-button",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-form label",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-form textarea",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/styles.css :: .feedback-form textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-warning",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-status",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .mentor-callout-text",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .mentor-callout-btn",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .admin-fab",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "dark-theme",
+   "where": "static/admin.css :: body.admin-body",
+   "message": "page background #071510 is dark"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .nav-link",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .admin-header p",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .admin-state",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .admin-login p, .section-heading p",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .admin-login label, .review-form label",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .admin-login input, .review-form input, .review-form select, .review-form textar",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .primary-admin-btn, .secondary-admin-btn, .danger-admin-btn",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .admin-toolbar > p",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .score-card span",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .admin-live-status",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .empty-review",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .review-kicker",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .review-meta",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .review-status-badge",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .review-fields dt",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .review-fields dd",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/admin.css :: .review-copy",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "static/admin.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "static/admin.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "static/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "static/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "static/index.html",
+   "message": "2 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "dark-theme",
+   "where": "static/styles.css :: html, body",
+   "message": "page background #004937 is dark"
+  },
+  {
+   "severity": "INFO",
+   "code": "width-cap",
+   "where": "static/styles.css :: .app-container",
+   "message": "design system fills the width to the gutter; review this cap"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .brand-sub",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .quiet-button",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-num",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-text",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .handshake-text",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .handshake-btn",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .coach-name",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .mode-label",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .status",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .message",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .message small",
+   "message": "font-size 10.5px = 10.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions button",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .voice-badge",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .voice-hint",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .mic-indicator",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .voice-timer",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .btn-voice",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .voice-step-num",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .voice-status-text",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .chat-here-title",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .chat-here-hint",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: textarea#message-input",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "static/styles.css :: textarea#message-input:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer button",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .portfolio-btn",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .footer-privacy",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-num",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-text",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .hero-copy p",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-prompt",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-button",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-form label",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-form textarea",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "static/styles.css :: .feedback-form textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-warning",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-status",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .mentor-callout-text",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .mentor-callout-btn",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .admin-fab",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ],
+ "gemini-coaching-agent-starter": [
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "public/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "public/index.html",
+   "message": "3 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "dark-theme",
+   "where": "public/styles.css :: html, body",
+   "message": "page background #0f172a is dark"
+  },
+  {
+   "severity": "INFO",
+   "code": "width-cap",
+   "where": "public/styles.css :: .app-container",
+   "message": "design system fills the width to the gutter; review this cap"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .brand-sub",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .quiet-button",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-num",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-text",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: .step-btn.active",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: .step-btn.active .step-num",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .coach-name",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .mode-label",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .status",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .message",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .message small",
+   "message": "font-size 10.5px = 10.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions-header",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions-header .suggestions-icon",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions button",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer-label",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer-label-icon",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: textarea#message-input",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: textarea#message-input::placeholder",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer button",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .footer-privacy",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-num",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-text",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-prompt",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-button",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-form label",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-form textarea",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/styles.css :: .feedback-form textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-warning",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-status",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-num",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .message",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions button",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer textarea#message-input",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "static/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "static/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "static/index.html",
+   "message": "3 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "dark-theme",
+   "where": "static/styles.css :: html, body",
+   "message": "page background #0f172a is dark"
+  },
+  {
+   "severity": "INFO",
+   "code": "width-cap",
+   "where": "static/styles.css :: .app-container",
+   "message": "design system fills the width to the gutter; review this cap"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .brand-sub",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .quiet-button",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-num",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-text",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: .step-btn.active",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: .step-btn.active .step-num",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .coach-name",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .mode-label",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .status",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .message",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .message small",
+   "message": "font-size 10.5px = 10.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions-header",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions-header .suggestions-icon",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions button",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer-label",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer-label-icon",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: textarea#message-input",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: textarea#message-input::placeholder",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer button",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .footer-privacy",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-num",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-text",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-prompt",
+   "message": "font-size 11.5px = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-button",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-form label",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-form textarea",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "static/styles.css :: .feedback-form textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-warning",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-status",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-num",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .message",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions button",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer textarea#message-input",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ],
+ "major-career-explorer-coach-ai": [
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "public/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "public/index.html",
+   "message": "4 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "INFO",
+   "code": "width-cap",
+   "where": "public/styles.css :: .app-container",
+   "message": "design system fills the width to the gutter; review this cap"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .dashboard-link",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .dashboard-link .dashboard-arrow",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/styles.css :: .dashboard-link:hover, .dashboard-link:focus-visible",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .brand-badge",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: .brand-badge",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .brand",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .brand-sub",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .zoom-btn",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: .zoom-btn",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: .zoom-btn:hover",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .quiet-button",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .quick-strip",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-btn",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-btn .step-num",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: .step-btn.active .step-num",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .ai-bridge-badge",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .ai-bridge-title",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .bridge-action-btn",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .copy-prompt-toast",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .copy-prompt-toast .toast-title",
+   "message": "font-size 0.86rem = 13.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .copy-prompt-toast .toast-close",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .copy-prompt-toast .toast-body p.toast-subtext",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .copy-prompt-toast .toast-btn",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .copy-prompt-toast .toast-or",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .drop-text",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .drop-text span",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .upload-status",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .coach-name",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .mode-label",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .status",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .analyzing-pill",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .message",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .message small",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .message-text .message-heading, .message-text h2, .message-text h3, .message-tex",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-prompt",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-button",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-form textarea",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-warning",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .feedback-status",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions-header",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions-header .suggestions-icon",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions button",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer-label-title",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer-hint",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer textarea",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer textarea::placeholder",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer button",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: .composer button svg",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .footer-privacy",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .video-action-btn",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .single-video-btn",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .video-caption",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .brand",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .quick-strip",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-btn .step-num",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .single-video-btn",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .status",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .message",
+   "message": "font-size 0.86rem = 13.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions-header",
+   "message": "font-size 0.66rem = 10.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .suggestions button",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer-label-title",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer textarea",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .composer button",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "static/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "static/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "static/index.html",
+   "message": "4 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "INFO",
+   "code": "width-cap",
+   "where": "static/styles.css :: .app-container",
+   "message": "design system fills the width to the gutter; review this cap"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .dashboard-link",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .dashboard-link .dashboard-arrow",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "static/styles.css :: .dashboard-link:hover, .dashboard-link:focus-visible",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .brand-badge",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: .brand-badge",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .brand",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .brand-sub",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .zoom-btn",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: .zoom-btn",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: .zoom-btn:hover",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .quiet-button",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .quick-strip",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-btn",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-btn .step-num",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: .step-btn.active .step-num",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .ai-bridge-badge",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .ai-bridge-title",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .bridge-action-btn",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .copy-prompt-toast",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .copy-prompt-toast .toast-title",
+   "message": "font-size 0.86rem = 13.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .copy-prompt-toast .toast-close",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .copy-prompt-toast .toast-body p.toast-subtext",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .copy-prompt-toast .toast-btn",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .copy-prompt-toast .toast-or",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .drop-text",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .drop-text span",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .upload-status",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .coach-name",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .mode-label",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .status",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .analyzing-pill",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .message",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .message small",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .message-text .message-heading, .message-text h2, .message-text h3, .message-tex",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-prompt",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-button",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-form textarea",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-warning",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .feedback-status",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions-header",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions-header .suggestions-icon",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions button",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer-label-title",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer-hint",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer textarea",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer textarea::placeholder",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer button",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: .composer button svg",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .footer-privacy",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .video-action-btn",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .single-video-btn",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .video-caption",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .brand",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .quick-strip",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-btn .step-num",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .single-video-btn",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .status",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .message",
+   "message": "font-size 0.86rem = 13.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions-header",
+   "message": "font-size 0.66rem = 10.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .suggestions button",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer-label-title",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer textarea",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .composer button",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ],
+ "internship-expert-coach-ai": [
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "public/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "public/index.html",
+   "message": "6 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/style.css :: import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .dashboard-link",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .title-group > p",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .engine-badge strong",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .engine-badge small",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .source-toggle-button",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .toggle-arrow",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .application-process-link",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .source-panel > div > p, .chat-heading-row p",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .source-list li::before",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .source-list a",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .boundary-note strong",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .boundary-note p",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .reference-only a",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/style.css :: .reference-only a:hover, .reference-only a:focus-visible",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .reference-only small",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .staff-admin-link",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .track-label",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .track-text strong",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .track-text small",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .starter-questions button",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .message-content",
+   "message": "font-size 0.96rem = 15.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .user-message .message-content",
+   "message": "font-size 0.94rem = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .assistant-message h1, .assistant-message h2, .assistant-message h3, .assistant-",
+   "message": "font-size 1.06rem = 17.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/style.css :: .assistant-message a:hover, .assistant-message a:focus-visible",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-prompt",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-button",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-form label",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-form input, .feedback-form textarea",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-warning",
+   "message": "font-size 0.68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-status",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .processing",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .composer-label",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: textarea#chat-input",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .send-button",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .privacy-note",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .footer-links",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .dashboard-link",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .title-group > p",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .chat-heading-row p",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .track-text strong",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .track-text small",
+   "message": "font-size 0.66rem = 10.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .starter-questions button",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .message-content",
+   "message": "font-size 0.93rem = 14.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .assistant-message h1, .assistant-message h2, .assistant-message h3, .assistant-",
+   "message": "font-size 0.98rem = 15.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .composer-label",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: textarea#chat-input",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .send-button",
+   "message": "font-size 0.86rem = 13.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .privacy-note",
+   "message": "font-size 0.65rem = 10.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .footer-links",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .ai-bridge-badge",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .bridge-tag",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .ai-bridge-desc",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .bridge-action-btn",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .copy-prompt-toast",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .ces-version-tag",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ],
+ "brewcoach-for-linkedin": [
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .login-error",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .metric-label",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .metric-sub",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .nav-tab",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .tab-subtitle",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .review-badge",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/admin.css :: .review-badge.pending",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .source-link",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .btn-approve",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .btn-reject",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .faq-question",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .faq-answer",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .faq-source",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .faq-actions",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/admin.css :: .data-table",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "public/admin.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/admin.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "public/admin.html",
+   "message": "13 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/admin.html #currentPw",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/admin.html #newPw",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/admin.html #confirmPw",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: body",
+   "message": "font-size 16px = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .brand-subtitle",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .status-badge",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .mode-btn",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .btn-icon",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .application-process-link",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .source-panel h2",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .source-panel p",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .source-list li::before",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .source-list a",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .boundary-note strong",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .boundary-note p",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .portfolio-return-link",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .staff-admin-link",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/app.css :: .staff-admin-link:hover",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .reference-only a",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .reference-only small",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .prompt-chip",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .msg-avatar",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .msg-bubble",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .msg-footer",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .copy-btn",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .chat-input",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .input-disclaimer",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .drawer-title",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .form-label",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .form-input, .form-textarea, .form-select",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .btn-primary",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .btn-secondary",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .trace-card",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .trace-time",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .feedback-prompt",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .feedback-button",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .feedback-form label",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .feedback-form textarea",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/app.css :: .feedback-form textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .feedback-warning",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .feedback-submit",
+   "message": "font-size 0.84rem = 13.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .feedback-status",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .header-value-prop",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .value-prop-badge",
+   "message": "font-size 0.65rem = 10.4px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/app.css :: .value-prop-badge",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .modal-subtitle",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .step-heading",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .choice-badge",
+   "message": "font-size 0.65rem = 10.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .choice-title",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .choice-desc",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .goal-option strong",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .goal-option small",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .ingest-tab",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .guide-header",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .guide-step",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .step-num",
+   "message": "font-size 0.65rem = 10.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .drop-text",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .drop-sub",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .ai-bridge-badge",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .bridge-tag",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .ai-bridge-desc",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .bridge-action-btn",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .copy-prompt-toast",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/app.css :: .ces-version-tag",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/app.css :: button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "public/index.html",
+   "message": "44 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #chatInput",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #profUserId",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #profTargetRole",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #profTargetIndustry",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #profHeadline",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #profAbout",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #profTopicDNA",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ],
+ "resume-coach-ai": [
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "public/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "public/index.html",
+   "message": "28 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #student-lookup-input",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #text-resume-doc",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #text-job-doc",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "public/index.html #chat-input",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/style.css :: import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "dark-theme",
+   "where": "public/style.css :: body",
+   "message": "page background #0a1826 is dark"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .tip-text",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .dashboard-link",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/style.css :: .dashboard-link:hover",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/style.css :: .dashboard-link:focus-visible",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .status-badge",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .selection-badge",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .selection-subtitle",
+   "message": "font-size 1.02rem = 16.3px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .mode-card-tag",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .mode-card-desc",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .mode-card-action",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .selection-footer-privacy",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .chat-header-info p",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .doc-badge",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn-chat-back",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .active-mode-indicator",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn-switch-mode",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .message-content",
+   "message": "font-size 0.98rem = 15.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .processing-indicator",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .quick-prompts-label",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .quick-chip",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn-upload",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: textarea",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/style.css :: textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .send-arrow",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .privacy-notice",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-prompt",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-button",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/style.css :: .feedback-button:hover:not(:disabled)",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-form label",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-form textarea",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/style.css :: .feedback-form textarea:focus-visible",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-warning",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-status",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn-subview-back",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .intake-panel-sub",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .intake-upload-btn",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .file-status-chip",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn-clear-file",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .intake-textarea",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/style.css :: .intake-textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn-large",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .intake-error-message",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .mentor-badge",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .lookup-input-group input",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .lookup-item-name",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .lookup-item-email",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .lookup-item-score",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .student-name",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .student-email",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .score-max",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .score-zone-label",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .score-subdate",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .session-tab",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .session-tab-close",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn-tab-add",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn-danger-soft",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .toolbar-label",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .btn-mentor-action",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .toast-message",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .form-group label",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .form-group input, .form-group textarea",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .print-subtitle",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .print-meta-grid",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .print-section-title",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .print-box",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .print-score-callout",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .print-link",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .print-footer",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-controls h2",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .feedback-controls p",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .scope-button",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: #section-selector, .section-scope-control",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .section-choice",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .mentor-auth-subtitle",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/style.css :: .mentor-auth-notice",
+   "message": "font-size 0.875rem = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: html",
+   "message": "font-size 16px = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .skip-link",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .header-title",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .header-app-name",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .header-version",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .stepper-step",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .stepper-step .step-num",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .form-group small",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .optional",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: input[type=\"text\"], textarea, select",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "public/tutor.css :: input[type=\"text\"]:focus, textarea:focus, select:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .btn",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .btn-small",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .glossary-toggle",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .example-label",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .example-block pre",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .upload-filename",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .template-section textarea",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .copy-btn",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .power-step .hint",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .chip",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .subtle",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .encouragement-banner strong",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .encouragement-banner p",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .encouragement-badge",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .encouragement-card p",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .vmock-launch-info strong",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .tutor-footer",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/tutor.css :: .stepper-step",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "public/tutor.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/tutor.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "public/tutor.html",
+   "message": "2 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "static/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "static/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "static/index.html",
+   "message": "28 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "static/index.html #student-lookup-input",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "static/index.html #text-resume-doc",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "static/index.html #text-job-doc",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "static/index.html #chat-input",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/style.css :: import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "dark-theme",
+   "where": "static/style.css :: body",
+   "message": "page background #0a1826 is dark"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .tip-text",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .dashboard-link",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/style.css :: .dashboard-link:hover",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/style.css :: .dashboard-link:focus-visible",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .status-badge",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .selection-badge",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .selection-subtitle",
+   "message": "font-size 1.02rem = 16.3px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .mode-card-tag",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .mode-card-desc",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .mode-card-action",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .selection-footer-privacy",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .chat-header-info p",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .doc-badge",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn-chat-back",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .active-mode-indicator",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn-switch-mode",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .message-content",
+   "message": "font-size 0.98rem = 15.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .processing-indicator",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .quick-prompts-label",
+   "message": "font-size 0.74rem = 11.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .quick-chip",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn-upload",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: textarea",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "static/style.css :: textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .send-arrow",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .privacy-notice",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .feedback-prompt",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .feedback-button",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/style.css :: .feedback-button:hover:not(:disabled)",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .feedback-form label",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .feedback-form textarea",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "static/style.css :: .feedback-form textarea:focus-visible",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .feedback-warning",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .feedback-status",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn-subview-back",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .intake-panel-sub",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .intake-upload-btn",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .file-status-chip",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn-clear-file",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .intake-textarea",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "static/style.css :: .intake-textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn-large",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .intake-error-message",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .mentor-badge",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .lookup-input-group input",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .lookup-item-name",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .lookup-item-email",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .lookup-item-score",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .student-name",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .student-email",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .score-max",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .score-zone-label",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .score-subdate",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .session-tab",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .session-tab-close",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn-tab-add",
+   "message": "font-size 0.78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn-danger-soft",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .toolbar-label",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .btn-mentor-action",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .toast-message",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .form-group label",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .form-group input, .form-group textarea",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .print-subtitle",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .print-meta-grid",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .print-section-title",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .print-box",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .print-score-callout",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .print-link",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .print-footer",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .feedback-controls h2",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .feedback-controls p",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .scope-button",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: #section-selector, .section-scope-control",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .section-choice",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .mentor-auth-subtitle",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/style.css :: .mentor-auth-notice",
+   "message": "font-size 0.875rem = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: html",
+   "message": "font-size 16px = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .skip-link",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .header-title",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .header-app-name",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .header-version",
+   "message": "font-size 0.7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .stepper-step",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .stepper-step .step-num",
+   "message": "font-size 0.75rem = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .form-group small",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .optional",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: input[type=\"text\"], textarea, select",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "static/tutor.css :: input[type=\"text\"]:focus, textarea:focus, select:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .btn",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .btn-small",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .glossary-toggle",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .example-label",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .example-block pre",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .upload-filename",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .template-section textarea",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .copy-btn",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .power-step .hint",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .chip",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .subtle",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .encouragement-banner strong",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .encouragement-banner p",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .encouragement-badge",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .encouragement-card p",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .vmock-launch-info strong",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .tutor-footer",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/tutor.css :: .stepper-step",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "static/tutor.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "static/tutor.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "static/tutor.html",
+   "message": "2 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ],
+ "resume-coach-llm": [
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "index.html",
+   "message": "23 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "index.html #text-resume-input",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "index.html #text-job-input",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "field-unlabeled",
+   "where": "index.html #chat-input",
+   "message": "text field has no <label for> or aria-label"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "style.css :: import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "dark-theme",
+   "where": "style.css :: body",
+   "message": "page background #060e0a is dark"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .tip-text",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .dashboard-link",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "style.css :: .dashboard-link:hover, .dashboard-link:focus-visible",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "style.css :: .dashboard-link:hover, .dashboard-link:focus-visible",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .status-badge",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .selection-badge",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .selection-subtitle",
+   "message": "font-size 1.02rem = 16.3px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .mode-card-tag",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .mode-card-desc",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .mode-card-action",
+   "message": "font-size 0.95rem = 15.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .selection-footer-privacy",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .btn-chat-back",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .active-mode-indicator",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .btn-switch-mode",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .message-content",
+   "message": "font-size 0.98rem = 15.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .processing-indicator",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .btn-upload",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "style.css :: .btn-upload:hover:not(:disabled)",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: textarea",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "style.css :: textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .btn",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .send-arrow",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .privacy-notice",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .feedback-prompt",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .feedback-button",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "style.css :: .feedback-button:hover:not(:disabled)",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .feedback-form label",
+   "message": "font-size 0.76rem = 12.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .feedback-form textarea",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "style.css :: .feedback-form textarea:focus-visible",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .feedback-warning",
+   "message": "font-size 0.72rem = 11.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .feedback-status",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .btn-subview-back",
+   "message": "font-size 0.85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .intake-panel-sub",
+   "message": "font-size 0.8rem = 12.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .intake-upload-btn",
+   "message": "font-size 0.88rem = 14.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .file-status-chip",
+   "message": "font-size 0.82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .btn-clear-file",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .intake-textarea",
+   "message": "font-size 0.92rem = 14.7px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "style.css :: .intake-textarea:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .btn-large",
+   "message": "font-size 1.05rem = 16.8px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "style.css :: .intake-error-message",
+   "message": "font-size 0.9rem = 14.4px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "./ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "./ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "./ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "./ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ],
+ "ensign-connect-navigator": [
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "public/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "public/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "public/index.html",
+   "message": "26 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .brand-badge",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .header-subtitle",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .nav-step-btn",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-num",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-kicker",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .step-description",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .callout",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .btn",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .btn-sm",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .check-item-title",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .check-item-desc",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .search-input",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .group-dept",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .group-name",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .form-label",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .form-control",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .outreach-output",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .toast",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .sidebar-step-group-header",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .sidebar-step-badge",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .sidebar-checklist .check-item-title",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "public/styles.css :: .sidebar-checklist .check-item-desc",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "public/styles.css :: button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "static/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "static/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "static/index.html",
+   "message": "26 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .brand-badge",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .header-subtitle",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .nav-step-btn",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-num",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-kicker",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .step-description",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .callout",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .btn",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .btn-sm",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .check-item-title",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .check-item-desc",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .search-input",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .group-dept",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .group-name",
+   "message": "font-size 14.5px = 14.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .form-label",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .form-control",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .outreach-output",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .toast",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .sidebar-step-group-header",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .sidebar-step-badge",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .sidebar-checklist .check-item-title",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .sidebar-checklist .check-item-desc",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "gold-as-ui",
+   "where": "static/styles.css :: button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib",
+   "message": "gold is an identity mark only; UI actions use brand"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "public/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ],
+ "ensign-student-readiness-hub": [
+  {
+   "severity": "WARN",
+   "code": "off-family",
+   "where": "static/index.html :: html",
+   "message": "Montserrat is the only family"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "static/index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "static/index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "static/index.html",
+   "message": "4 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: html",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .brand-name",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .brand-sub",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .nav-link",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .nav-link .nav-icon",
+   "message": "font-size 16px = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .sidebar-badge",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .sidebar-note strong",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .sidebar-note span",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .topbar-title span",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .staff-pill",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .section-heading p",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .form-lead-icon",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .form-lead-text strong",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .form-lead-text small",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .field-label",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .field-label .badge-req",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .field-subtext",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: input[type=\"text\"], input[type=\"email\"]",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "focus-removed",
+   "where": "static/styles.css :: input[type=\"text\"]:focus, input[type=\"email\"]:focus",
+   "message": "outline removed on focus; keep a 2px brand outline"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .input-prominent",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .button",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .form-status",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .results-header p",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: #result-checked-at",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .notice",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .student-summary strong",
+   "message": "font-size 16px = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .student-summary small",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .student-summary span",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .result-source strong",
+   "message": "font-size 15px = 15.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .result-source span",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .result-column-label",
+   "message": "font-size 11px = 11.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .state-icon",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .result-state strong",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .data-freshness",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .data-refresh-button",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .result-detail strong",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .result-detail span",
+   "message": "font-size 13px = 13.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .privacy-line",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .status-pill",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .source-details dt",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .source-details dd",
+   "message": "font-size 14px = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: .source-note",
+   "message": "font-size 12.5px = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: table",
+   "message": "font-size 13.5px = 13.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "static/styles.css :: th",
+   "message": "font-size 12px = 12.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "static/ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ],
+ "career-services-tools": [
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .nav-btn",
+   "message": "font-size .85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .section-head h2",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .section-head .count",
+   "message": "font-size .78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .card h3",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .badge",
+   "message": "font-size .7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .version-tag",
+   "message": "font-size .68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .card p",
+   "message": "font-size .875rem = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .btn",
+   "message": "font-size .82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .platform-details h3",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .platform-details p",
+   "message": "font-size .82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: .mentor-note",
+   "message": "font-size .875rem = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "beginner.html :: footer",
+   "message": "font-size .82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "beginner.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "beginner.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "beginner.html",
+   "message": "4 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .nav-btn",
+   "message": "font-size .85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .section-head h2",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .section-head .count",
+   "message": "font-size .78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .card h3",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .badge",
+   "message": "font-size .7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .version-tag",
+   "message": "font-size .68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .card p",
+   "message": "font-size .875rem = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .btn",
+   "message": "font-size .82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .platform-details h3",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .platform-details p",
+   "message": "font-size .82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: .mentor-note",
+   "message": "font-size .875rem = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "index.html :: footer",
+   "message": "font-size .82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "index.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "index.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "index.html",
+   "message": "4 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "projects.html :: article.entry .meta",
+   "message": "font-size .85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "projects.html :: article.entry a.demo-link",
+   "message": "font-size .85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "projects.html :: .agent-grid article.entry h3",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "projects.html :: footer",
+   "message": "font-size .85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "projects.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "projects.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .nav-btn",
+   "message": "font-size .85rem = 13.6px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .section-head h2",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .section-head .count",
+   "message": "font-size .78rem = 12.5px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .card h3",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .badge",
+   "message": "font-size .7rem = 11.2px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .version-tag",
+   "message": "font-size .68rem = 10.9px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .card p",
+   "message": "font-size .875rem = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .btn",
+   "message": "font-size .82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .platform-details h3",
+   "message": "font-size 1rem = 16.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .platform-details p",
+   "message": "font-size .82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: .welcome-note",
+   "message": "font-size .875rem = 14.0px, floor is 17px"
+  },
+  {
+   "severity": "FAIL",
+   "code": "text-below-floor",
+   "where": "student.html :: footer",
+   "message": "font-size .82rem = 13.1px, floor is 17px"
+  },
+  {
+   "severity": "WARN",
+   "code": "font-not-loaded",
+   "where": "student.html",
+   "message": "Montserrat is not linked from Google Fonts"
+  },
+  {
+   "severity": "FAIL",
+   "code": "tokens-not-linked",
+   "where": "student.html",
+   "message": "ecc-tokens.css is not linked"
+  },
+  {
+   "severity": "WARN",
+   "code": "emoji-markers",
+   "where": "student.html",
+   "message": "3 emoji in markup; use aria-hidden SVG icons or plain labels"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "./ecc-tokens.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "./ecc-ces-compat.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "./ecc-components.base.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  },
+  {
+   "severity": "FAIL",
+   "code": "ds-missing",
+   "where": "./ecc-app.css",
+   "message": "vendored design-system file missing; run scripts/vendor_into_app.sh"
+  }
+ ]
+}
