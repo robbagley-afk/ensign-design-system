@@ -28,7 +28,7 @@ python3 scripts/ecc_audit_static.py ~/Local-Infra/ui-audit/<app> # 0 FAIL requir
 node scripts/ecc_audit_runtime.mjs http://127.0.0.1:<port>/     # 0 FAIL at 320/375/768/1440/1920 required
 ```
 
-The runtime audit needs `npm i` in this repo (installs `playwright`) and uses the installed Google Chrome, so no browser download is needed.
+The runtime audit needs `npm i --include=dev` in this repo (installs `playwright`; the flag matters because this Mac has npm `omit=dev` set globally) and uses the installed Google Chrome, so no browser download is needed.
 
 Load order in each page's `<head>`: Montserrat from Google Fonts, `ces-tokens.css` (while the app still has it), `ecc-tokens.css`, `ecc-ces-compat.css`, `ecc-components.base.css`, `ecc-app.css`, then the app's own CSS.
 
