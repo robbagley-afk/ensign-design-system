@@ -14,7 +14,7 @@ Family = apps sharing a layout, so the first app in a family sets the pattern an
 | brewcoach-for-linkedin | C (messages-feed + input-box-wrapper) | | | todo | | | index.html loads CSS from /static/ |
 | resume-coach-ai | D (dark resume coach) | | | todo | | | full dark theme to convert. public/ + static/. tutor.html too |
 | resume-coach-llm | D | | | todo | | | full dark theme to convert |
-| ensign-connect-navigator | F (forms) | | | todo | | | public/ + static/ |
+| ensign-connect-navigator | F (forms) | Claude dispatcher (iMac, gmail acct, Edge lane edge2) | ecc/ensign-connect-navigator | in progress |  |  | public/ + static/. Claimed 2026-09-26 13:05 MDT: first real run of scripts/helper/dispatch.mjs (parallel helper batches). Stops at audited branch, PR by Rob or rollout thread. |
 | ensign-student-readiness-hub | F | | | todo | | | static/ only. PeopleGrove data app: sample data only in screenshots |
 | ai-agents-local-llm | mono | | | todo | | | In scope (Rob 2026-09-26). Plan first: sync app folders from standalone repos instead of patching stale copies. Academic Advisor and Interview Coach now split out to their own repos (below); migrate there, then sync back |
 | ensign-academic-advisor | mono-split (A-like chat + admin) | | | todo | | | NEW repo 2026-09-26, subtree split of ai-agents-local-llm/Ensign Academic Advisor (10 commits). Identical to OneDrive copy. index.html + admin.html |
