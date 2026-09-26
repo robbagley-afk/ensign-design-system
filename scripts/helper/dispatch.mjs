@@ -142,7 +142,7 @@ async function run(j) {
   try {
     await p.waitForLoadState('domcontentloaded'); await sleep(10000);
     const u = p.url();
-    if (/login\.(microsoftonline|live)\.com/.test(u)) throw new Stop(3, `LOGIN WALL on ${lane.name}: Rob signs in as ${lane.account}, then reruns`);
+    if (/login\.(microsoftonline|live)\.com|id\.churchofjesuschrist\.org|okta/.test(u)) throw new Stop(3, `LOGIN WALL on ${lane.name}: Rob signs in as ${lane.account}, then reruns`);
     if (/Open connection manager|Connect to continue/i.test(await p.evaluate(() => document.body.innerText))) throw new Stop(3, 'CONNECT CARD: select Connect, choose robbagley-afk, rerun');
     if (!(await p.locator(BOX).count())) throw new Stop(3, 'no chat box at ' + u.slice(0, 70));
     const ts = Date.now(); await ask(p, text); r.msgs++;
