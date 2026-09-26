@@ -1,0 +1,16 @@
+{
+ "_doc": "Helper lane registry (iMac). dispatch.mjs claims only role primary or failover. One lane = port + profile + launcher + owner. Never point a second tool at a lane profile.",
+ "agentUrl": "https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15",
+ "locks": "~/Local-Infra/ui-audit/_helper/locks",
+ "outRoot": "~/Local-Infra/ui-audit/_helper/dispatch",
+ "lanes": [
+  {"name": "edge2", "role": "primary", "port": 9231, "browser": "edge", "account": "ecenter24@ensign.net",
+   "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge2-profile", "launchd": "com.robbagley.persistent-edge-helper2", "maxChats": 8},
+  {"name": "edge1", "role": "failover", "port": 9230, "browser": "edge", "account": "robbagley@ensign.edu (sign-in pending)",
+   "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge1-profile", "launchd": "com.robbagley.persistent-edge-helper1", "maxChats": 8},
+  {"name": "chrome9226", "role": "manual", "port": 9226, "browser": "chrome", "account": "ecenter24@ensign.net",
+   "note": "Rob's own helper chats and drive.mjs default. Dispatcher never claims it."},
+  {"name": "chrome9227", "role": "single", "port": 9227, "browser": "chrome", "account": "ecenter24@ensign.net",
+   "note": "lane_run.sh one-job lane. Dispatcher never claims it."}
+ ]
+}
