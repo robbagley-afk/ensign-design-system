@@ -40,7 +40,7 @@ The patch applied. The audits report these failures on ecc/<app-repo> after appl
 Write a follow-up unified diff against the patched files that fixes only these. Same output format.
 ```
 
-Model: the helper's default Sonnet. For the first app of each layout family (the Career Fair, Gemini and Major Explorer family, the Internship family, the BrewCoach family, and the dark Resume Coach family), start the message with "Use your Opus specialist for this task."
+Model: the helper's own Sonnet router, which is the only part of the helper with GitHub access. Never ask for the Opus specialist on a patch: the specialist cannot read GitHub (confirmed 2026-09-25 on the pilot, it asked for the files to be pasted), and a full stylesheet is larger than the roughly 15,000-character input box, so pasting is not a way around it. The specialist is useful only for a question small enough to paste, such as reviewing one excerpt or deciding a design conflict.
 
 ---
 
