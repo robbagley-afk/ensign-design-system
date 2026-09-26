@@ -16,9 +16,11 @@ Family = apps sharing a layout, so the first app in a family sets the pattern an
 | resume-coach-llm | D | | | todo | | | full dark theme to convert |
 | ensign-connect-navigator | F (forms) | | | todo | | | public/ + static/ |
 | ensign-student-readiness-hub | F | | | todo | | | static/ only. PeopleGrove data app: sample data only in screenshots |
-| ai-agents-local-llm | mono | | | todo | | | Plan first: sync app folders from standalone repos instead of patching stale copies. Ensign Academic Advisor and Interview Coach have no standalone repo |
+| ai-agents-local-llm | mono | | | todo | | | In scope (Rob 2026-09-26). Plan first: sync app folders from standalone repos instead of patching stale copies. Academic Advisor and Interview Coach now split out to their own repos (below); migrate there, then sync back |
+| ensign-academic-advisor | mono-split (A-like chat + admin) | | | todo | | | NEW repo 2026-09-26, subtree split of ai-agents-local-llm/Ensign Academic Advisor (10 commits). Identical to OneDrive copy. index.html + admin.html |
+| interview-coach-local-llm | mono-split | | | todo | | | NEW repo 2026-09-26, subtree split of ai-agents-local-llm/Interview Coach LOCAL LLM (9 commits). GitHub copy newer than OneDrive (CES files added 2026-09-24). Mac Studio live copy not checked: SSH timed out |
 | career-services-tools | pages | | | todo | | | no chat. Link pages only |
-| transcription-meeting-summary | out of scope? | | | todo | | | Tailwind dark UI, personal tool. Rob to decide |
+| transcription-meeting-summary | G (Tailwind dark) | | | todo | | | IN SCOPE (Rob 2026-09-26). Tailwind dark UI to convert |
 
 ## Superseded work
 
