@@ -106,7 +106,7 @@ Treat the reply as advisory. Verify each claimed failure against the code before
 
 ## 4. Claude: supervise one app end to end
 
-Model: Sonnet 5, high effort, thinking on. Switch to Opus only for a design-system conflict or a layout restructure.
+Model: Opus 5.5 medium. Switch to Opus 5.5 high only for a design-system conflict or a layout restructure.
 
 ```
 Invoke the ui-ux-principles and rob-coding-helper skills.
