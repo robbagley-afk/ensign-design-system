@@ -15,6 +15,11 @@ body.ecc {
   overflow-x: hidden;
 }
 
+/* ---------- Form controls ---------- */
+/* Browsers give button, input, select and textarea their own system font (Arial on most),
+   so controls ignored Montserrat in every app. Inherit it here so apps can drop local copies. */
+button, input, select, textarea { font-family: inherit; }
+
 /* ---------- Shell: fixed left rail + dominant chat canvas ---------- */
 .ecc-shell {
   display: grid;

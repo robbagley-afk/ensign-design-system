@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-29: control font reset
+
+- `ecc-app.css` sets `button, input, select, textarea { font-family: inherit; }`. The runtime audit's `control-font` WARN found controls rendering in Arial in 9 apps, each patched locally on its ecc/ branch. After this merges and apps re-vendor, those local copies can go.
+
 ## 2026-09-25: first mirror
 
 - Mirrored Claude Design artifact 2Nz7EPn8vjHGM5cwrXpy4v version 1790394927-ae41: tokens.json (sha256 41a46c1e...), README, five components (bundle.css).
