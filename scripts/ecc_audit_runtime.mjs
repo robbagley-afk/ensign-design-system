@@ -50,7 +50,10 @@ for (const w of WIDTHS) {
       .filter((el) => !(el.tagName === 'A' && getComputedStyle(el).display === 'inline'));
     if (tiny.length) add('FAIL', 'touch-target', `${tiny.length} controls under 44x44, e.g. ${tiny.slice(0, 3).map((e) => (e.id ? '#' + e.id : e.tagName.toLowerCase()) + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height)).join(' | ')}`);
     // clipped off the right edge
-    const clipped = [...document.querySelectorAll('body *')].filter(visible).filter((el) => el.getBoundingClientRect().right > innerWidth + 1 && getComputedStyle(el).position !== 'fixed');
+    // Content inside a horizontal scroller (the spec's single-row suggestion rail) is reachable by scrolling,
+    // so it is not clipped as long as the scroller itself ends inside the viewport. overflow: hidden still counts as clipped.
+    const inScroller = (el) => { for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) { if (/auto|scroll/.test(getComputedStyle(a).overflowX)) return a.getBoundingClientRect().right <= innerWidth + 1; } return false; };
+    const clipped = [...document.querySelectorAll('body *')].filter(visible).filter((el) => el.getBoundingClientRect().right > innerWidth + 1 && getComputedStyle(el).position !== 'fixed' && !inScroller(el));
     if (clipped.length) add('FAIL', 'clipped-right', `${clipped.length} elements past the right edge, e.g. ${clipped.slice(0, 3).map((e) => e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + '.' + String(e.className).split(' ')[0]).join(' | ')}`);
     // text contrast (WCAG AA). Caught white-on-transparent buttons over light panels that every other check passed.
     // Background = the ancestor background stack blended over white. Any background-image in the chain (gradient, photo)

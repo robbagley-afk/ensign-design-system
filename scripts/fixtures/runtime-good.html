@@ -9,10 +9,13 @@
   .solid { background: #006645; color: #ffffff; border: 0; }
   .hero { background: linear-gradient(#006645, #00503a); color: #fff; padding: 8px; }
   button:disabled { color: #cbd5e1; }
+  .rail { display: flex; gap: 6px; overflow-x: auto; max-width: 280px; }
+  .rail button { flex: 0 0 auto; white-space: nowrap; }
 </style></head>
 <body>
   <button class="ghost">Log out</button>
   <button class="solid">Authenticate</button>
   <div class="hero">Text on a gradient is skipped, not guessed.</div>
   <button disabled>Disabled controls are exempt from contrast</button>
+  <div class="rail" aria-label="Suggested questions"><button class="ghost">A long suggested question chip</button><button class="ghost">Another chip scrolled out of view</button><button class="ghost">A third chip</button></div>
 </body></html>
