@@ -1,7 +1,7 @@
 ---
 name: ui-ux-principles
 description: Use when designing, building, reviewing, or migrating the interface of any Ensign College / Career Services app in Rob's GitHub, or when coordinating that UI work across Claude, Codex, Antigravity and Rob's Coding Helper. Applies the org's default Claude design system (Ensign Career Coach) through the ensign-design-system repo.
-version: 2.0.2
+version: 2.0.3
 category: general
 status: published
 ---
@@ -81,6 +81,8 @@ Use the `.ecc-field` class or the `.ecc-composer textarea` pattern from `css/ecc
 7. Push the branch, open a PR with the audit output and screenshots, and log it in `ROLLOUT.md`.
 8. Review, design sign-off, and Rob merges. Never push to main.
 
+Apps not yet migrated to ECC keep their CES tokens, and status UI there uses `--ces-status-{success,warning,neutral}-{bg,text,border}` (never navy or gold).
+
 **Definition of done:** static audit 0 FAIL, runtime audit 0 FAIL at 320/375/768/1440/1920, every WARN answered in the PR, public/ and static/ byte-identical, screenshots attached, Rob's Coding Helper review addressed, Claude design sign-off.
 
 ## Who does what
@@ -107,6 +109,8 @@ Handoff prompts for each lane are in `references/handoffs.md`. Every handoff nam
 3. Re-vendor into apps through the normal rollout. Apps fail `ds-stale` in the static audit until they do.
 
 ## Version history
+
+v2.0.3 (2026-09-29) adds the rule that unmigrated apps keep their CES tokens and use `--ces-status-*` for status UI. Nothing else changed.
 
 v2.0.2 (2026-09-28) adds Sonnet 5.5 low or medium as a pilot option for the apply-and-audit steps only, per Mem 46ad2482. Nothing else changed.
 
