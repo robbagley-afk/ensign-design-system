@@ -8,6 +8,12 @@
       "status": "pending-upstream"
     },
     {
+      "name": "border-strong",
+      "value": "#64748b",
+      "reason": "Secondary buttons, chips and other controls outlined in border-strong (#94a3b8) are 2.6:1 on white, below the WCAG 2.2 SC 1.4.11 3:1 floor. #64748b is 4.75:1, the same value as input-border. Rob approved 2026-09-29.",
+      "status": "pending-upstream"
+    },
+    {
       "name": "input-fill",
       "value": "#f1f5f9",
       "reason": "Rob asked for text boxes with a consistent background shade that makes them easy to find (2026-09-25). Reuses the surface-hover value; fields turn surface (#ffffff) on focus.",
