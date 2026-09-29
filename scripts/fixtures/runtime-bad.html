@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- Fixture for ecc_audit_runtime.mjs: each block below must trip exactly the check named in its comment. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>runtime audit fixture: bad</title>
+<style>
+  body { font-family: Montserrat, sans-serif; font-size: 19px; background: #f8fafc; color: #0f172a; margin: 16px; }
+  .ghost { background: transparent; color: #ffffff; border: 1px solid #cbd5e1; min-height: 44px; min-width: 44px; font-family: inherit; font-size: 18px; }
+  .plain { min-height: 44px; min-width: 44px; font-size: 18px; }
+  .faint { color: #a78bfa; }
+</style></head>
+<body>
+  <!-- low-contrast: white text on a transparent button over a light page -->
+  <button class="ghost" id="ghost">Log out</button>
+  <!-- control-font: a button that does not inherit the body font -->
+  <button class="plain" id="plain">Authenticate</button>
+  <!-- low-contrast: light purple heading on white, about 2.7:1 -->
+  <h3 class="faint" id="faint">Pillar 4</h3>
+  <div id="overflow-bad" style="width: 2000px; font-size: 19px;">A block wider than the page with no scroller must still fail clipped-right.</div>
+</body></html>

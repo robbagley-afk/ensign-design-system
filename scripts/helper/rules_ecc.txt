@@ -1,0 +1,7 @@
+Rewrite these CSS rule blocks for the Ensign Career Coach design system (vars already defined: --brand #006645, --ink, --ink-muted, --surface, --surface-sunken, --border, --input-fill, --input-border, --text-body 19px, --radius-md, --radius-lg, --shadow-card, --shadow-focus). Rules:
+1. No font-size under 17px. Body/message text var(--text-body).
+2. Light theme only: dark backgrounds -> var(--surface-sunken) (page) or var(--surface) (panels); text var(--ink)/var(--ink-muted).
+3. Gold never on controls, borders or focus. Focus: outline 2px solid var(--brand); outline-offset 2px.
+4. Never outline:none without that replacement. Textareas/inputs: background var(--input-fill); border 2px solid var(--input-border); font-size var(--text-body); min-height 44px; box-shadow var(--shadow-card); on focus background var(--surface) and box-shadow var(--shadow-focus).
+5. Buttons min-height 44px. Remove max-width caps on the chat container.
+Change only what the fix comment requires. Keep selectors and every other declaration.
