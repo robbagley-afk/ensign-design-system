@@ -1,12 +1,12 @@
 {
- "_doc": "Helper lane registry (iMac). dispatch.mjs claims only role primary or failover. One lane = port + profile + launcher + owner. Never point a second tool at a lane profile.",
+ "_doc": "Helper lane registry (iMac). dispatch.mjs claims only role primary or failover. One lane = port + profile + launcher + owner. Never point a second tool at a lane profile. Helper quota is ecenter24@ensign.net only, so only its lanes may be primary or failover.",
  "agentUrl": "https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15",
  "locks": "~/Local-Infra/ui-audit/_helper/locks",
  "outRoot": "~/Local-Infra/ui-audit/_helper/dispatch",
  "lanes": [
   {
    "name": "edge2",
-   "role": "failover",
+   "role": "primary",
    "port": 9231,
    "browser": "edge",
    "account": "ecenter24@ensign.net",
@@ -14,18 +14,18 @@
    "launchd": "com.robbagley.persistent-edge-helper2",
    "maxChats": 8,
    "profileDirectory": "Default",
-   "note": "Copilot Studio maker lane, ecenter24@ensign.net (Default profile, pinned). Failover for dispatch."
+   "note": "Copilot Studio maker lane, ecenter24@ensign.net (Default profile, pinned). The only dispatch lane: ecenter24 holds the Copilot license, so all helper quota runs here (Rob 2026-09-29)."
   },
   {
    "name": "edge1",
-   "role": "primary",
+   "role": "manual",
    "port": 9230,
    "browser": "edge",
    "account": "robbagley@ensign.edu",
    "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge1-profile",
    "launchd": "com.robbagley.persistent-edge-helper1",
    "maxChats": 8,
-   "note": "General CIS work lane (Rob 2026-09-28). Launcher pins --profile-directory \"Profile 2\" (robbagley@ensign.edu). Profile 3 in this user-data-dir is personal gmail: never use it.",
+   "note": "General CIS work lane (Rob 2026-09-28). Launcher pins --profile-directory \"Profile 2\" (robbagley@ensign.edu). Not a dispatch lane: helper quota stays on the licensed ecenter24 account (Rob 2026-09-29). Profile 3 in this user-data-dir is personal gmail: never use it.",
    "profileDirectory": "Profile 2"
   },
   {

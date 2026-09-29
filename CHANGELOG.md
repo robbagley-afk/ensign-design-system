@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-29: border-strong darkened
+
+- Override: `border-strong` #94a3b8 to #64748b (pending upstream). Secondary buttons and chips were 2.6:1 on white, below the 3:1 control-boundary floor. Now 4.75:1, matching `input-border`. Rob approved.
+
 ## 2026-09-25: first mirror
 
 - Mirrored Claude Design artifact 2Nz7EPn8vjHGM5cwrXpy4v version 1790394927-ae41: tokens.json (sha256 41a46c1e...), README, five components (bundle.css).
