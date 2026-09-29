@@ -16,7 +16,8 @@ if (!url) { console.error('usage: ecc_audit_runtime.mjs <url> [--field <selector
 const fieldSel = opt('--field') || 'textarea, input[type="text"], input[type="email"], input[type="search"]';
 const WIDTHS = [320, 375, 768, 1440, 1920];
 
-const browser = await chromium.launch({ channel: process.env.ECC_BROWSER_CHANNEL || 'chrome' });
+// ECC_BROWSER_PATH points at a Chromium binary (cloud sessions); otherwise use installed Chrome
+const browser = await chromium.launch(process.env.ECC_BROWSER_PATH ? { executablePath: process.env.ECC_BROWSER_PATH } : { channel: process.env.ECC_BROWSER_CHANNEL || 'chrome' });
 const page = await browser.newPage();
 const results = [];
 let fail = false;
