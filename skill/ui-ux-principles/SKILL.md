@@ -1,7 +1,7 @@
 ---
 name: ui-ux-principles
 description: Use when designing, building, reviewing, or migrating the interface of any Ensign College / Career Services app in Rob's GitHub, or when coordinating that UI work across Claude, Codex, Antigravity and Rob's Coding Helper. Applies the org's default Claude design system (Ensign Career Coach) through the ensign-design-system repo.
-version: 2.0.1
+version: 2.0.2
 category: general
 status: published
 ---
@@ -89,7 +89,7 @@ Default split: **Rob's Coding Helper writes most of the code, Claude supervises.
 
 | Agent | Role | Typical work | Model and effort |
 |---|---|---|---|
-| **Claude** (Cowork on the Mac Studio) | Supervisor and design owner | Owns `ROLLOUT.md` and sequencing. Pushes the vendor branch so the helper can read it, sends the helper its patch prompt, applies the returned diff, runs both audits, sends failures back for a revision, gives design sign-off, opens the PR. Syncs `tokens.json` from the Claude Design artifact (only Claude can read it). Edits the artifact only with Rob's yes. | Opus 5.5 medium for the rollout loop. Switch to Opus 5.5 high only for design-system conflicts, sync changes, or an app whose layout needs restructuring. |
+| **Claude** (Cowork on the Mac Studio) | Supervisor and design owner | Owns `ROLLOUT.md` and sequencing. Pushes the vendor branch so the helper can read it, sends the helper its patch prompt, applies the returned diff, runs both audits, sends failures back for a revision, gives design sign-off, opens the PR. Syncs `tokens.json` from the Claude Design artifact (only Claude can read it). Edits the artifact only with Rob's yes. | Opus 5.5 medium for the rollout loop. Switch to Opus 5.5 high only for design-system conflicts, sync changes, or an app whose layout needs restructuring. Sonnet 5.5 low or medium (pilot, Mem 46ad2482) is enough for the pure apply-the-approved-diff and run-the-audit steps. |
 | **Rob's Coding Helper** (Copilot Studio) | Primary code author, then reviewer | Reads the app and `ensign-design-system` on GitHub and writes the migration as unified diffs (prompt 1 in `references/handoffs.md`). Revises from audit output. After the PR opens, a fresh conversation reviews the PR against the acceptance checklist. Never gets local-only files, credentials or student data. | Its Sonnet router, which holds the GitHub connector, writes every patch. The Opus specialist cannot read GitHub, so use it only for small pasted questions. |
 | **Codex** | Fallback implementer | Takes an app when the helper's patch fails the audit twice, or when the change needs running code to get right (JS behavior, build steps). | Least costly Codex model likely to succeed, medium effort. |
 | **Antigravity** | Bulk runner | Mechanical, fully specified sweeps: vendor CSS into many repos, run the static audit across all repos, batch screenshots. | Gemini 3.8 Flash, low effort (med for screenshots). |
@@ -107,6 +107,8 @@ Handoff prompts for each lane are in `references/handoffs.md`. Every handoff nam
 3. Re-vendor into apps through the normal rollout. Apps fail `ds-stale` in the static audit until they do.
 
 ## Version history
+
+v2.0.2 (2026-09-28) adds Sonnet 5.5 low or medium as a pilot option for the apply-and-audit steps only, per Mem 46ad2482. Nothing else changed.
 
 v2.0.1 (2026-09-28) changes only model recommendations: Claude's supervisor loop moves from Sonnet 5 high to Opus 5.5 medium (Opus 5.5 high for restructures), per the living Model & Effort Selection Guide (Mem 46ad2482), which shows Opus 5.5 beating Sonnet 5 at lower cost.
 
