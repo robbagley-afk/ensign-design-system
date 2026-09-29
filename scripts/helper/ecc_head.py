@@ -14,7 +14,7 @@ for p in sys.argv[1:]:
     locs=list(re.finditer(r'^[ \t]*<link rel="stylesheet" href="(?!https?:)[^"]*"[^>]*>\n',s,re.M))
     # ECC files go after the last ces-*.css link, otherwise before the first local stylesheet.
     # Order: ces-* -> ecc-* -> the app's own CSS (all of it), so app rules can still refine ECC.
-    ces=[m for m in locs if re.search(r'/ces-[\w-]+\.css',m.group(0))]
+    ces=[m for m in locs if re.search(r'(?:^|["/])ces-[\w-]+\.css',m.group(0))]
     at=ces[-1].end() if ces else locs[0].start()
     s=s[:at]+blk+s[at:]
     s=re.sub(r'<meta name="theme-color" content="#[0-9a-fA-F]{6}"','<meta name="theme-color" content="#006645"',s)

@@ -116,7 +116,7 @@ async function waitIdle(p, ts, stallMs = STALL_MS) {
   return { failed: 'timeout 15 min' };
 }
 const cut = t => { const i = t.search(/\/\*\s*#\d+/); if (i < 0) return ''; const e = Math.min(...['Show less', 'Message Rob'].map(m => t.indexOf(m, i)).filter(k => k > 0), t.length); return t.slice(i, e); };
-const lastReply = async p => { const t = await p.evaluate(() => { [...document.querySelectorAll('button')].filter(x => /Show more lines/i.test(x.innerText)).forEach(x => x.click()); return document.body.innerText; }); const i = t.lastIndexOf('said:'); return i < 0 ? '' : t.slice(i); }; // no reply yet = empty, never the page tail
+const lastReply = async p => { const t = await p.evaluate(() => { [...document.querySelectorAll('button')].filter(x => /Show more lines/i.test(x.innerText)).forEach(x => x.click()); return document.body.innerText; }); const me = t.lastIndexOf('You said:'), all = [...t.matchAll(/\n(?!You said:)[^\n]{1,40}\bsaid:/g)], i = all.length ? all[all.length - 1].index : -1; return i < 0 || i < me ? '' : t.slice(i); }; // assistant 'said:' after the last user bubble; else empty, never the page tail or the echoed prompt
 function buildPrompt(j, nonce) { // saved so a lost conversation reruns from the file, never from memory
   const pf = path.join(outDir, j.id + '.prompt.txt');
   if (isReview(j)) { fs.writeFileSync(pf, fs.readFileSync(rp(j.prompt), 'utf8').trimEnd() + `\n\nEnd your reply with this exact line: ${nonce}\nJOB ${nonce}\n`); return pf; }
@@ -124,7 +124,7 @@ function buildPrompt(j, nonce) { // saved so a lost conversation reruns from the
   fs.writeFileSync(pf, fs.readFileSync(pf, 'utf8').trimEnd() + `\nFirst line inside your code block must be: /* ${nonce} */\nJOB ${nonce}\n`);
   return pf;
 }
-const checkReply = (r, reply) => { r.len = reply.length; r.nonceOK = reply.includes(r.nonce); r.foreign = (reply.match(/NX-[0-9a-f]{8}/g) || []).filter(x => x !== r.nonce).length; r.markers = new Set((reply.match(/\/\*\s*#(\d+)/g) || []).map(x => x.replace(/\D/g, ''))).size; };
+const checkReply = (r, reply, j) => { r.len = reply.length; r.nonceOK = reply.includes(r.nonce); r.foreign = (reply.match(/NX-[0-9a-f]{8}/g) || []).filter(x => x !== r.nonce).length; const ids = new Set((reply.match(/\/\*\s*#(\d+)/g) || []).map(x => +x.replace(/\D/g, ''))); r.markers = isReview(j) ? ids.size : [...ids].filter(n => n >= j.from && n <= j.to).length; /* only the exact requested marker IDs count */ };
 const short = (j, r) => (isReview(j) ? r.len < (j.min || 400) : r.len < 300 || r.markers < r.want);
 // Local Qwen attempt for "engine":"qwen" block jobs. Returns a result, or null when Qwen is down, busy or wrong (helper takes it).
 async function runQwen(j) { // async so helper chats in other workers keep polling while Qwen generates
@@ -132,7 +132,7 @@ async function runQwen(j) { // async so helper chats in other workers keep polli
   const raw = path.join(outDir, j.id + '.raw.txt'), ts = Date.now();
   try { await execFileP(process.execPath, [path.join(HERE, 'qwen.mjs'), 'run', 'code', pf, raw, '--wait', '30'], { encoding: 'utf8' }); }
   catch (e) { const why = (String(e.stdout || '').match(/"reason":"([^"]+)"/) || [])[1] || 'exit ' + (e.code ?? e.status); console.log(`QWEN ${j.id}: ${why}, sending to helper lane`); return null; }
-  const reply = fs.readFileSync(raw, 'utf8'); checkReply(r, reply);
+  const reply = fs.readFileSync(raw, 'utf8'); checkReply(r, reply, j);
   if (!r.nonceOK || r.foreign || r.markers < r.want) { console.log(`QWEN ${j.id}: reply failed checks (markers ${r.markers}/${r.want}), sending to helper lane`); return null; }
   fs.writeFileSync(path.join(outDir, j.id + '.reply.txt'), cut(reply)); r.gen = Math.round((Date.now() - ts) / 1000);
   return r;
@@ -151,7 +151,7 @@ async function run(j) {
     let w = await waitIdle(p, ts, isReview(j) ? STALL_REVIEW_MS : STALL_MS); if (w.throttled || w.stalled) { Object.assign(r, w.throttled ? { throttled: true } : { stalled: true }); return r; }
     const body_ = t => (isReview(j) ? t : cut(t));
     let reply = await lastReply(p), body = body_(reply);
-    const check = () => checkReply(r, reply);
+    const check = () => checkReply(r, reply, j);
     check();
     if (!w.failed && short(j, r)) { // tiny error reply or cut-off answer: one continue. No reply at all: resend the prompt.
       await ask(p, reply ? CONT : text); r.msgs++; if (!reply) { reply = ''; body = ''; r.resent = true; } w = await waitIdle(p, Date.now(), isReview(j) ? STALL_REVIEW_MS : STALL_MS); if (w.throttled || w.stalled) { Object.assign(r, w.throttled ? { throttled: true } : { stalled: true }); return r; }
