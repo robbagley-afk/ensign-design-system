@@ -23,6 +23,10 @@ Family = apps sharing a layout, so the first app in a family sets the pattern an
 | career-services-tools | pages | Claude cloud (2026-09-29) | ecc/career-services-tools | in review |  | https://github.com/robbagley-afk/career-services-tools/pull/9 | Four link pages. Static + runtime 0 FAIL on all four. Private vars alias ECC tokens. No public/static copy in this repo. Helper review 2026-09-29 verified (bf7dc8e): 2 fixed (F4 pressed state, F6 projects.html note), rest rejected with evidence (F1 plain labels allowed, F5 valid CSS, F7 1.08rem above floor; F2/F3 vendored, upstream only). Audits re-run 0 FAIL, 375/1440 viewed. Next: Rob merges. 2026-09-29 sweep: projects.html h1 fits 320; 0/0 at 5 widths. |
 | transcription-meeting-summary | G (Tailwind dark) | Claude cloud (2026-09-29) | ecc/transcription-meeting-summary | in review |  | https://github.com/robbagley-afk/transcription-meeting-summary/pull/1 | Tailwind CDN replaced by compiled tailwind.css (rebuild command in tailwind.config.js). Static 0 FAIL, runtime 0 FAIL in Studio, Results, Voiceprints, History, Enroll modal, progress card. Pre-existing bug on main: escapeHtml() is never defined (results, voiceprints and history throw). Not fixed, asked Rob. Next: review, Rob decides on escapeHtml follow-up. Helper review 2026-09-29 verified (ffcb988): F1,F2(aria-current),F4,F5 fixed, F3 rejected (global focus-visible rule wins), plus 375px pill-wrap fix. Audits 0 FAIL, shots viewed. Next: Rob merges. |
 
+## Spec gaps found across apps
+
+- 2026-09-29: none of the 12 migrated chat apps collapse the suggested-question rail after the first message (exemplar-patterns.md, Suggested questions: show until first send, then a "Show suggested questions" text button). This is a JS behavior change per app, not in any migration PR's scope. Needs Rob's go-ahead; a shared helper in the design system would keep the 12 copies identical.
+
 ## Superseded work
 
 Branch `ui-ux-alignment-2026-09-25` exists locally (never pushed) in 10 clones under `~/Local-Infra/ui-audit`. It used the retired v1.2 numbers (16px text, 1180px cap). Do not push it. Delete it after each app's `ecc/` branch merges.
