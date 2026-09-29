@@ -6,24 +6,27 @@
  "lanes": [
   {
    "name": "edge2",
-   "role": "primary",
+   "role": "failover",
    "port": 9231,
    "browser": "edge",
    "account": "ecenter24@ensign.net",
    "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge2-profile",
    "launchd": "com.robbagley.persistent-edge-helper2",
-   "maxChats": 8
+   "maxChats": 8,
+   "profileDirectory": "Default",
+   "note": "Copilot Studio maker lane, ecenter24@ensign.net (Default profile, pinned). Failover for dispatch."
   },
   {
    "name": "edge1",
-   "role": "failover",
+   "role": "primary",
    "port": 9230,
    "browser": "edge",
-   "account": "ecenter24@ensign.net",
+   "account": "robbagley@ensign.edu",
    "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge1-profile",
    "launchd": "com.robbagley.persistent-edge-helper1",
    "maxChats": 8,
-   "note": "Failover for a down lane or a login wall. Same account as edge2 since 2026-09-26, so it shares edge2 Copilot quota and does not help with throttling. Signed-in profile dir is Profile 1."
+   "note": "General CIS work lane (Rob 2026-09-28). Launcher pins --profile-directory \"Profile 2\" (robbagley@ensign.edu). Profile 3 in this user-data-dir is personal gmail: never use it.",
+   "profileDirectory": "Profile 2"
   },
   {
    "name": "chrome9226",
