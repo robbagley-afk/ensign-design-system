@@ -2,17 +2,19 @@
 // Runtime audit of a running app page against the Ensign Career Coach design system.
 // Checks what static CSS cannot: computed sizes after the cascade, overflow, focus visibility.
 //
-//   node scripts/ecc_audit_runtime.mjs <url> [--field "#chat-input"] [--json out.json]
+//   node scripts/ecc_audit_runtime.mjs <url> [--field "#chat-input"] [--setup state.js] [--json out.json]
+//   --setup: a JS file evaluated in the page after load (open a tab, modal or sample data) so hidden states get audited too
 //
 // Needs the `playwright` npm package (npm i -D playwright). Uses installed Google Chrome
 // (channel "chrome") so no browser download is needed. Exit 1 on any FAIL.
 import { chromium } from 'playwright';
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync } from 'node:fs';
 
 const args = process.argv.slice(2);
 const url = args[0];
 const opt = (k) => { const i = args.indexOf(k); return i > -1 ? args[i + 1] : null; };
 if (!url) { console.error('usage: ecc_audit_runtime.mjs <url> [--field <selector>] [--json out.json]'); process.exit(2); }
+const setupJs = opt('--setup') ? readFileSync(opt('--setup'), 'utf8') : '';
 const fieldSel = opt('--field') || 'textarea, input[type="text"], input[type="email"], input[type="search"]';
 const WIDTHS = [320, 375, 768, 1440, 1920];
 
@@ -26,6 +28,7 @@ for (const w of WIDTHS) {
   await page.setViewportSize({ width: w, height: 900 });
   await page.goto(url, { waitUntil: 'load' });
   await page.waitForTimeout(400);
+  if (setupJs) { await page.evaluate(setupJs); await page.waitForTimeout(300); }
   const r = await page.evaluate(({ fieldSel }) => {
     const out = { findings: [] };
     const add = (severity, code, msg) => out.findings.push({ severity, code, msg });
@@ -63,7 +66,9 @@ for (const w of WIDTHS) {
   }, { fieldSel });
 
   // keyboard focus on the first field
-  const firstField = await page.$(fieldSel);
+  // first VISIBLE field (a hidden field cannot take focus, which would report a false focus-ring FAIL)
+  let firstField = null;
+  for (const h of await page.$$(fieldSel)) { if (await h.isVisible()) { firstField = h; break; } }
   if (firstField) {
     await page.keyboard.press('Tab');
     await firstField.focus();
