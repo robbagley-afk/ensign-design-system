@@ -59,6 +59,10 @@ def audit(repo):
         rel = str(p.relative_to(repo))
         css, html = css_of(p)
         clean = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+        # U+00A0 is not CSS whitespace: outside strings it silently kills the next selector or declaration
+        code = re.sub(r"\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'", "", clean)
+        if "\u00a0" in code:
+            add("FAIL", "nbsp-in-css", rel, f"{code.count(chr(0xA0))} non-breaking space(s) outside strings; replace with a normal space or blank line")
         for m in RULE.finditer(clean):
             sel, body = " ".join(m.group(1).split()), m.group(2)
             if "forced-colors" in sel:

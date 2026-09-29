@@ -1,0 +1,5 @@
+/* good: U+00A0 only inside a comment   and a string */
+:root {
+  --primary: #006645;
+}
+.x::after { content: "a b"; }
