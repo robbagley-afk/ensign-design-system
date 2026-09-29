@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-29: static audit catches U+00A0
+
+- New FAIL `nbsp-in-css`: a non-breaking space outside comments and strings is not CSS whitespace, so it silently invalidates the next selector or declaration. It had disabled the `:root` aliases in major-career-explorer-coach-ai and five theme variables in resume-coach-ai. Fixtures: `scripts/fixtures/static-nbsp-bad` (1 FAIL) and `static-nbsp-good` (clean).
+
 ## 2026-09-29: border-strong darkened
 
 - Override: `border-strong` #94a3b8 to #64748b (pending upstream). Secondary buttons and chips were 2.6:1 on white, below the 3:1 control-boundary floor. Now 4.75:1, matching `input-border`. Rob approved.

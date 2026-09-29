@@ -1,0 +1,5 @@
+/* bad: a line holding only U+00A0 turns the next selector into a descendant selector that never matches */
+ 
+:root {
+  --primary: #006645;
+}
