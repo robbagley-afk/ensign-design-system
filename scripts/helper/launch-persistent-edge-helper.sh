@@ -3,18 +3,22 @@
 # Usage: launch-persistent-edge-helper.sh <n>   (n = 1..9)  -> lane edge<n>
 # Port: 9229+n (edge1=9230, edge2=9231, ...).
 # Profile: ~/CCowork-Local-Apps/claude-ensign-helper-edge<n>-profile (one profile per lane, never shared).
-# Plist: com.robbagley.persistent-edge-helper<n> (RunAtLoad false, KeepAlive false).
+# Plist: com.robbagley.persistent-edge-helper<n> (RunAtLoad false, KeepAlive false, AbandonProcessGroup true).
+#   AbandonProcessGroup is required: this script starts Edge in the background and exits, and launchd kills the
+#   job's process group when the script exits, so without the key Edge dies seconds after launch (MacBook Pro, 2026-09-30).
 # Owner: Claude only, through drive.mjs / dispatch.mjs with CDP_PORT set to the lane port.
 #   Codex, Antigravity, Cowork and Rob's everyday browsers never attach to these profiles.
-# Account expected: ecenter24@ensign.net (Copilot Studio maker). Rob signs in once per lane, in its window.
+# Account expected: robbagley@ensign.edu on every lane, including helper chat lanes (Rob 2026-09-30).
+#   ecenter24@ensign.net only on a lane kept for Copilot Studio maker work. Rob signs in once per lane, in its window.
 # Never ward, Guesty, personal Gmail, FERPA data or credentials in these lanes.
 # Shutdown: graceful only. `node ~/Local-Infra/ensign-design-system/scripts/helper/lane_stop.mjs <port>` (DevTools
 #   Browser.close, records exit_type Normal). SIGTERM with windows open records SessionEnded and Edge then shows
 #   "Restore pages" on the next launch. Never kill -9, never delete Singleton* files while a process holds the profile.
 # Launch flags: no AutomationControlled flag. Background-throttling flags keep occluded lanes generating.
-# Sign-in: Edge profile icon > Sign in > Work or school account > ecenter24@ensign.net (every lane).
+# Sign-in: Edge profile icon > Sign in > Work or school account > robbagley@ensign.edu (ecenter24 on the maker lane).
 #   Choose "No, sign in to this app only". Then Sync is on > turn off Open tabs and History.
 # Tabs: tidy.mjs trims the lane to one tab after launch. Dispatcher runs it on claim and after each job.
+#   Sessions also run tidy.mjs <port> at start and before close (required, rob-coding-helper section 1).
 # Verify after first run: lane_stop.mjs, then Default/Preferences exit_type Normal (Edge writes no exited_cleanly key),
 #   and a relaunch shows no restore prompt or unsupported-flag banner. Signing out and back in moves the profile from
 #   Default to Profile 1 (edge1 on 2026-09-26): read Local State profile.last_used before checking Preferences.
@@ -23,6 +27,9 @@ N="$1"
 case "$N" in [1-9]) ;; *) echo "usage: $0 <1-9>" >&2; exit 2;; esac
 PORT=$((9229 + N))
 PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile"
+# Pinned sign-in per lane (Rob 2026-09-28): robbagley@ensign.edu for general CIS work, ecenter24@ensign.net for Copilot Studio.
+# Never a personal account. Without a pin Edge reopens last_used, which on edge1 was robbagley@gmail.com (Profile 3).
+case "$N" in 1) PROFILE_NAME="Profile 2";; 2) PROFILE_NAME="Default";; *) PROFILE_NAME="Default";; esac
 EDGE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
 
 mkdir -p "$PROFILE_DIR"
@@ -52,6 +59,7 @@ echo "$(date '+%F %T') Starting edge$N on $PORT"
 "$EDGE" \
   --remote-debugging-port=$PORT \
   --user-data-dir="$PROFILE_DIR" \
+  --profile-directory="$PROFILE_NAME" \
   --no-first-run \
   --no-default-browser-check \
   --hide-crash-restore-bubble \
