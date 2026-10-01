@@ -15,7 +15,7 @@ Every Ensign student- and mentor-facing app should read and behave like one prod
 | What | Where | Who can read it |
 |---|---|---|
 | Design system (canonical) | Claude Design artifact `https://claude.ai/artifact/2Nz7EPn8vjHGM5cwrXpy4v` (tokens.json, README, 5 components) | Claude only |
-| Mirror all agents use | GitHub `robbagley-afk/ensign-design-system` (private). Local clone `~/Local-Infra/ensign-design-system` on the Mac Studio | Claude, Codex, Antigravity, Rob's Coding Helper |
+| Mirror all agents use | GitHub `robbagley-dev/ensign-design-system` (private). Local clone `~/Local-Infra/ensign-design-system` on the Mac Studio | Claude, Codex, Antigravity, Rob's Coding Helper |
 | This skill (canonical copy) | `skill/ui-ux-principles/` in that repo | all |
 
 `tokens/tokens.json` in the repo is a byte-exact copy of the artifact's `project/tokens.json`. Never hand-edit it. Local deviations live in `tokens/overrides.json`, each with a reason and a status.

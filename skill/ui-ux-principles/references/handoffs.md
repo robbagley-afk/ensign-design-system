@@ -4,7 +4,7 @@ Fill the `<...>` slots and paste. Each prompt stands alone: the receiving agent 
 
 Shared facts every prompt relies on:
 
-- Design-system repo: `robbagley-afk/ensign-design-system`, local clone `~/Local-Infra/ensign-design-system` (Mac Studio). Pull before starting.
+- Design-system repo: `robbagley-dev/ensign-design-system`, local clone `~/Local-Infra/ensign-design-system` (Mac Studio). Pull before starting.
 - Skill: `ui-ux-principles` v2 (installed for Claude, Codex and Antigravity). Canonical copy in `skill/ui-ux-principles/` of that repo.
 - Shared board: `ROLLOUT.md` in that repo. Claim a row before work, update it after each step.
 - Never push to main. Never use student records. Screenshots use example data.
@@ -19,8 +19,8 @@ Before sending, Claude has pushed branch `ecc/<app-repo>` containing only the ve
 
 ```
 Coding task, not a review. Read with your GitHub connector:
-- App: robbagley-afk/<app-repo>, branch ecc/<app-repo>. Files: <list the index.html files and the app's own CSS files>.
-- Standard: robbagley-afk/ensign-design-system, branch main. Read README.md, tokens/tokens.json, tokens/overrides.json, css/ecc-app.css, css/ecc-ces-compat.css, and skill/ui-ux-principles/SKILL.md.
+- App: robbagley-dev/<app-repo>, branch ecc/<app-repo>. Files: <list the index.html files and the app's own CSS files>.
+- Standard: robbagley-dev/ensign-design-system, branch main. Read README.md, tokens/tokens.json, tokens/overrides.json, css/ecc-app.css, css/ecc-ces-compat.css, and skill/ui-ux-principles/SKILL.md.
 
 Write the migration of this app to the Ensign Career Coach design system as a unified diff (git format, paths relative to the repo root, 3 lines of context) that applies cleanly to ecc/<app-repo>. Scope:
 1. In every index.html <head>, add the Montserrat link and ecc-tokens.css, ecc-ces-compat.css, ecc-components.base.css, ecc-app.css after ces-tokens.css and before the app's own CSS.
@@ -52,7 +52,7 @@ Model: least costly Codex model likely to succeed. Effort: medium.
 ```
 Invoke the ui-ux-principles skill and follow it.
 
-Task: migrate <app-repo> (github robbagley-afk/<app-repo>) to the Ensign Career Coach design system.
+Task: migrate <app-repo> (github robbagley-dev/<app-repo>) to the Ensign Career Coach design system.
 
 1. cd ~/Local-Infra/ensign-design-system && git pull. Claim the row for <app-repo> in ROLLOUT.md (agent: Codex, branch: ecc/<app-repo>, status: in progress), commit and push that one line.
 2. In the app clone: git checkout main && git pull && git checkout -b ecc/<app-repo>.
@@ -94,8 +94,8 @@ Send through Claude's Playwright profile per the rob-coding-helper skill. Paste 
 ```
 Review this pull request against the Ensign Career Coach design system. Use your GitHub connector to read the PR diff and the files it touches.
 
-PR: https://github.com/robbagley-afk/<app-repo>/pull/<n>
-Standard: https://github.com/robbagley-afk/ensign-design-system (read README.md, tokens/tokens.json, tokens/overrides.json, css/ecc-app.css, and skill/ui-ux-principles/references/acceptance-checklist.md)
+PR: https://github.com/robbagley-dev/<app-repo>/pull/<n>
+Standard: https://github.com/robbagley-dev/ensign-design-system (read README.md, tokens/tokens.json, tokens/overrides.json, css/ecc-app.css, and skill/ui-ux-principles/references/acceptance-checklist.md)
 
 Answer every line of the acceptance checklist with pass, fail or n/a and cite file:line. Then list anything the automated audits would miss: selectors that no longer match the HTML, cascade order problems, !important rules that defeat the ECC styles, inline styles, text that can still render under 17px, and fields that escape the .ecc-field look. Finish with the three highest-risk items. Do not summarize the repo or the session.
 ```
