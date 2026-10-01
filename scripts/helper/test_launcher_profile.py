@@ -59,7 +59,11 @@ class ProfileSelectionTests(unittest.TestCase):
                 # No network or actual process inventory. The second case proves
                 # even a dangling Chromium lock is preserved and blocks startup.
                 prelude = 'curl() { return 1; }; pgrep() { '
-                prelude += 'echo 999999; };\n' if held else 'return 1; };\n'
+                if held:
+                    prelude += ('echo 999999; }; '
+                                'ps() { echo "/nonexistent-browser-must-never-launch"; };\n')
+                else:
+                    prelude += 'return 1; };\n'
                 result = subprocess.run(
                     ["bash", "-c", prelude + source, "test", "1", "Default", str(root)],
                     text=True, capture_output=True,
@@ -67,6 +71,60 @@ class ProfileSelectionTests(unittest.TestCase):
                 self.assertEqual(result.returncode, 1, result.stderr)
                 self.assertNotIn("Starting edge", result.stdout)
             self.assertTrue((root / "SingletonLock").is_symlink())
+
+    def test_non_browser_match_is_not_a_holder(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "Default").mkdir()
+            source = SCRIPT.read_text().replace(
+                'PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile"',
+                'PROFILE_DIR="$3"',
+            ).replace(
+                'EDGE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"',
+                'EDGE="/nonexistent-browser-must-never-launch"',
+            )
+            # pgrep fires but ps reports a shell, not Edge; sleep is a no-op so the
+            # DevTools wait loop exits quickly; launcher must attempt launch and fail.
+            prelude = (
+                'curl() { return 1; }; '
+                'pgrep() { echo 999999; }; '
+                'ps() { echo "/bin/zsh"; }; '
+                'sleep() { :; };\n'
+            )
+            result = subprocess.run(
+                ["bash", "-c", prelude + source, "test", "1", "Default", str(root)],
+                text=True, capture_output=True,
+            )
+            self.assertEqual(result.returncode, 1, result.stderr)
+            self.assertIn("Starting edge", result.stdout)
+            self.assertNotIn("held by PID", result.stderr)
+
+    def test_real_holder_found_after_non_browser_match(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "Default").mkdir()
+            source = SCRIPT.read_text().replace(
+                'PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile"',
+                'PROFILE_DIR="$3"',
+            ).replace(
+                'EDGE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"',
+                'EDGE="/nonexistent-browser-must-never-launch"',
+            )
+            # pgrep yields a non-browser PID first; holder_pid must keep scanning and
+            # find the real Edge PID (222) before the launcher is allowed to proceed.
+            prelude = (
+                'curl() { return 1; }; '
+                'pgrep() { printf "111\n222\n"; }; '
+                'ps() { case "$*" in *111*) echo "/bin/zsh" ;; '
+                '*222*) echo "/nonexistent-browser-must-never-launch" ;; esac; };\n'
+            )
+            result = subprocess.run(
+                ["bash", "-c", prelude + source, "test", "1", "Default", str(root)],
+                text=True, capture_output=True,
+            )
+            self.assertEqual(result.returncode, 1, result.stderr)
+            self.assertIn("held by PID 222", result.stderr)
+            self.assertNotIn("Starting edge", result.stdout)
 
 
 if __name__ == "__main__":

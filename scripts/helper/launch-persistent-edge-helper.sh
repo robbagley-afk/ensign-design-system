@@ -50,7 +50,13 @@ PROFILE_NAME="$(select_helper_profile "$N" "${2:-}" "$PROFILE_DIR")" || exit 2
 EDGE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
 
 devtools_ok() { curl -fsS --max-time 3 "http://127.0.0.1:$PORT/json/version" >/dev/null 2>&1; }
-holder_pid() { pgrep -f -- "--user-data-dir=$PROFILE_DIR" | head -1; }
+holder_pid() {
+  # comm check ignores grep/agent-shell processes that merely contain the profile path in their argv
+  local pid
+  while IFS= read -r pid; do
+    [ "$(ps -o comm= -p "$pid" 2>/dev/null)" = "$EDGE" ] && { echo "$pid"; return; }
+  done < <(pgrep -f -- "--user-data-dir=$PROFILE_DIR")
+}
 
 if devtools_ok; then echo "$(date '+%F %T') edge$N already healthy on $PORT"; exit 0; fi
 
