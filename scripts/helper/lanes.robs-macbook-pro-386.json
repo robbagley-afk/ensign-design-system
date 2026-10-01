@@ -11,7 +11,7 @@
    "browser": "edge",
    "account": "robbagley@ensign.edu",
    "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge1-profile",
-   "launcher": "~/Library/LaunchAgents/launch-persistent-edge-helper.sh 1",
+   "launcher": "~/Library/LaunchAgents/launch-persistent-edge-helper.sh 1 Default",
    "launchd": "com.robbagley.persistent-edge-helper1",
    "shutdown": "node ~/Local-Infra/ensign-design-system/scripts/helper/lane_stop.mjs 9230",
    "maxChats": 8,

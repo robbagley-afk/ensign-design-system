@@ -1,6 +1,9 @@
 #!/bin/bash
-# Persistent Microsoft Edge lanes for Claude's Rob's Coding Helper dispatcher on the iMac.
-# Usage: launch-persistent-edge-helper.sh <n>   (n = 1..9)  -> lane edge<n>
+# Persistent Microsoft Edge lanes for Claude's Rob's Coding Helper dispatcher.
+# Usage: launch-persistent-edge-helper.sh <n> <profile-directory> (n = 1..9).
+# Installation must pin the verified machine-local profile: iMac edge1 "Profile 2",
+# MacBook edge1 "Default". No hostname or last_used fallback. Existing plists
+# need the explicit second argument before deploying this template.
 # Port: 9229+n (edge1=9230, edge2=9231, ...).
 # Profile: ~/CCowork-Local-Apps/claude-ensign-helper-edge<n>-profile (one profile per lane, never shared).
 # Plist: com.robbagley.persistent-edge-helper<n> (RunAtLoad false, KeepAlive false, AbandonProcessGroup true).
@@ -23,16 +26,28 @@
 #   and a relaunch shows no restore prompt or unsupported-flag banner. Signing out and back in moves the profile from
 #   Default to Profile 1 (edge1 on 2026-09-26): read Local State profile.last_used before checking Preferences.
 
+select_helper_profile() {
+  local lane="${1:-}" explicit_profile="${2:-}" profile_root="${3:-}"
+  case "$lane" in [1-9]) ;; *) echo "ERROR: lane must be 1..9" >&2; return 2;; esac
+  case "$explicit_profile" in
+    "Default"|"Profile 2") ;;
+    *) echo 'ERROR: pass an explicit verified profile: Default or Profile 2' >&2; return 2;;
+  esac
+  if [ -z "$profile_root" ] || [ ! -d "$profile_root/$explicit_profile" ]; then
+    echo "ERROR: selected profile directory does not exist; refusing to start" >&2
+    return 2
+  fi
+  printf '%s\n' "$explicit_profile"
+}
+
 N="$1"
-case "$N" in [1-9]) ;; *) echo "usage: $0 <1-9>" >&2; exit 2;; esac
+case "$N" in [1-9]) ;; *) echo "usage: $0 <1-9> <profile-directory>" >&2; exit 2;; esac
 PORT=$((9229 + N))
 PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile"
 # Pinned sign-in per lane (Rob 2026-09-28): robbagley@ensign.edu for general CIS work, ecenter24@ensign.net for Copilot Studio.
 # Never a personal account. Without a pin Edge reopens last_used, which on edge1 was robbagley@gmail.com (Profile 3).
-case "$N" in 1) PROFILE_NAME="Profile 2";; 2) PROFILE_NAME="Default";; *) PROFILE_NAME="Default";; esac
+PROFILE_NAME="$(select_helper_profile "$N" "${2:-}" "$PROFILE_DIR")" || exit 2
 EDGE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
-
-mkdir -p "$PROFILE_DIR"
 
 devtools_ok() { curl -fsS --max-time 3 "http://127.0.0.1:$PORT/json/version" >/dev/null 2>&1; }
 holder_pid() { pgrep -f -- "--user-data-dir=$PROFILE_DIR" | head -1; }
@@ -41,19 +56,18 @@ if devtools_ok; then echo "$(date '+%F %T') edge$N already healthy on $PORT"; ex
 
 PID="$(holder_pid)"
 if [ -n "$PID" ]; then
-  echo "$(date '+%F %T') edge$N profile held by PID $PID but DevTools silent; SIGTERM"
-  kill -TERM "$PID" 2>/dev/null
-  for i in $(seq 1 20); do sleep 1; [ -z "$(holder_pid)" ] && break; done
-  if [ -n "$(holder_pid)" ]; then
-    echo "$(date '+%F %T') ERROR: PID $(holder_pid) still holds $PROFILE_DIR after 20s. Not forcing. Report to Rob." >&2
-    exit 1
-  fi
+  echo "ERROR: edge$N profile held by PID $PID but DevTools silent; refusing to start. Close through its owning tool." >&2
+  exit 1
 fi
 
-# Locks are removed only when no process holds the profile.
-if [ -z "$(holder_pid)" ]; then
-  rm -f "$PROFILE_DIR/SingletonLock" "$PROFILE_DIR/SingletonCookie" "$PROFILE_DIR/SingletonSocket" "$PROFILE_DIR/DevToolsActivePort"
-fi
+# Chromium locks belong to its owning browser. Even dangling symlinks require
+# investigation, not automatic deletion or a second browser against the profile.
+for lock in SingletonLock SingletonCookie SingletonSocket DevToolsActivePort; do
+  if [ -e "$PROFILE_DIR/$lock" ] || [ -L "$PROFILE_DIR/$lock" ]; then
+    echo "ERROR: profile ownership artifact $lock exists; refusing to start. Report to Rob." >&2
+    exit 1
+  fi
+done
 
 echo "$(date '+%F %T') Starting edge$N on $PORT"
 "$EDGE" \
