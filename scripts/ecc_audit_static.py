@@ -17,6 +17,9 @@ RULE = re.compile(r"([^{}@][^{}]*)\{([^{}]*)\}")
 FONT = re.compile(r"font-size\s*:\s*([0-9.]+)(px|rem)\b")
 EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿]")
 GOLD = re.compile(r"#fdb515|#d49e24|--ces-gold|--accent-gold", re.I)
+# Containers where trapping the wheel is intended (they are fixed-height overlays)
+OVERLAY = re.compile(r"modal|dialog|drawer|overlay|scrim|dropdown|popover|menu|ecc-sidebar", re.I)
+LAYOUT_SEL = re.compile(r"container|app|shell|main|page|layout|wrapper|card|grid|view|workspace|feed|content", re.I)
 OFF_FAMILY = re.compile(r"font-family\s*:[^;]*\b(Inter|Georgia|Libre Baskerville|Space Grotesk|Times)\b", re.I)
 
 
@@ -85,6 +88,18 @@ def audit(repo):
                 add("WARN", "gold-as-ui", f"{rel} :: {sel[:80]}", "gold is an identity mark only; UI actions use brand")
             if OFF_FAMILY.search(body):
                 add("WARN", "off-family", f"{rel} :: {sel[:80]}", "Montserrat is the only family")
+            # Scroll model: overscroll-behavior contain/none stops the wheel at that element. On a view or feed
+            # this makes the page unscrollable over it, so the wheel only works over the margins.
+            if re.search(r"overscroll-behavior(?:-y|-block)?\s*:\s*(contain|none)", body) and not OVERLAY.search(sel):
+                add("FAIL", "scroll-trap", f"{rel} :: {sel[:80]}", "overscroll-behavior contain/none outside an overlay; use auto so the wheel reaches the page")
+            # overflow-y:auto with no height bound never overflows but still latches the wheel in Chromium/Edge
+            if re.search(r"overflow(?:-y)?\s*:\s*(auto|scroll)", body) and not re.search(r"(?<![-\w])(max-)?(height|block-size)\s*:", body) \
+                    and not OVERLAY.search(sel) and LAYOUT_SEL.search(sel):
+                add("WARN", "unbounded-scroller", f"{rel} :: {sel[:80]}", "inner scroller with no height in this rule; bound it (feed) or let the page scroll (views)")
+            # Fill the width: a fixed px cap on the page shell or a view leaves side space
+            wm = re.search(r"(?<![-\w])max-width\s*:\s*(\d+)px", body)
+            if wm and int(wm.group(1)) >= 760 and LAYOUT_SEL.search(sel) and not OVERLAY.search(sel) and not re.search(r"@media|print", sel):
+                add("FAIL", "width-cap", f"{rel} :: {sel[:80]}", f"max-width {wm.group(1)}px on a layout container; fill to the --gutter (max-width: 100vw or none)")
             if re.search(r"max-width\s*:\s*min\(\s*(1180|1320|1360)px", body) and re.search(r"message|feed|composer|input|container|shell|chat", sel, re.I):
                 add("INFO", "width-cap", f"{rel} :: {sel[:80]}", "design system fills the width to the gutter; review this cap")
         if html:
@@ -101,6 +116,26 @@ def audit(repo):
                 idm = re.search(r'id="([^"]+)"', tag)
                 if idm and not re.search(rf'<label[^>]*for="{re.escape(idm.group(1))}"', html) and "aria-label" not in tag:
                     add("WARN", "field-unlabeled", f"{rel} #{idm.group(1)}", "text field has no <label for> or aria-label")
+
+    # behavior checks in scripts: wheel hijacks, upload placement, response-format parity
+    js_files = [p for p in tracked(repo) if p.suffix == ".js" and not SKIP.search(str(p)) and "_vercel" not in str(p)]
+    streams = any("text/event-stream" in p.read_text(errors="ignore") for p in tracked(repo) if p.suffix == ".py")
+    for p in js_files:
+        rel = str(p.relative_to(repo))
+        js = re.sub(r"//[^\n]*|/\*.*?\*/", "", p.read_text(errors="ignore"), flags=re.S)
+        if re.search(r"addEventListener\(\s*['\"]wheel['\"]", js) or re.search(r"\bonwheel\s*=", js):
+            add("FAIL", "wheel-hijack", rel, "custom wheel listener; native scroll chaining must own the wheel")
+        if streams and re.search(r"fetch\(\s*['\"`][^'\"`]*/api/chat", js) and ".json()" in js and "event-stream" not in js:
+            add("FAIL", "response-format-mismatch", rel, "a server path streams text/event-stream but this page only parses JSON; read both")
+    for p in [p for p in tracked(repo) if p.suffix == ".html" and not SKIP.search(str(p))]:
+        html = p.read_text(errors="ignore")
+        feed = re.search(r'id="(chat-messages|chat-feed|messages|feed)"|class="[^"]*\becc-feed\b', html)
+        files_after = feed and re.search(r'type="file"', html[feed.end():])
+        if files_after:
+            # a file input after the feed is fine only inside an intake form, not the chat composer
+            tail = html[feed.end():feed.end() + files_after.end()]
+            if not re.search(r"intake|modal|dialog", tail, re.I):
+                add("WARN", "upload-below-feed", str(p.relative_to(repo)), "chat upload sits below the conversation; put it at the top of the chat workspace")
 
     # vendored design-system files: present, current, and public/static in sync
     ds_hash = {n: hashlib.sha256((DS / "css" / n).read_bytes()).hexdigest() for n in VENDORED if (DS / "css" / n).exists()}

@@ -1,0 +1,4 @@
+.app-container { max-width: 100vw; padding-inline: var(--gutter); }
+.mode-selection-container { overflow: visible; }
+#chat-messages { overflow-y: auto; overscroll-behavior: auto; max-height: calc(100dvh - 330px); }
+.modal-content { overflow-y: auto; overscroll-behavior: contain; }
