@@ -1,7 +1,7 @@
 ---
 name: ui-ux-principles
 description: Use when designing, building, reviewing, or migrating the interface of any Ensign College / Career Services app in Rob's GitHub, or when coordinating that UI work across Claude, Codex, Antigravity and Rob's Coding Helper. Applies the org's default Claude design system (Ensign Career Coach) through the ensign-design-system repo.
-version: 2.0.4
+version: 2.1.0
 category: general
 status: published
 ---
@@ -65,6 +65,24 @@ Use the `.ecc-field` class or the `.ecc-composer textarea` pattern from `css/ecc
   - Never set `overscroll-behavior: contain` on such a container, or on the feed. With `contain`, Chromium and Edge (Mac trackpad and mouse latching) stop the wheel at that element and the page will not scroll, so the wheel only works over the page margins. Use `overscroll-behavior: auto` so the feed hands the wheel back to the page at its top and bottom.
   - No custom `wheel` listeners that push `deltaY` into another element. They fight native scrolling.
   - Runtime check: with a long sample conversation loaded, wheel over the feed scrolls the feed to its end and then the page; wheel over the landing and intake cards scrolls the page; the composer is reachable at 375 and 1440.
+- **Upload sits at the top and does what it says:** in a chat screen the file upload goes in the chat header or a document bar above the feed, never in the composer under the conversation. A successful upload starts the work it promises (an AI review of the selected scope), with a status message, so the mentor never has to type a second request.
+- **Same behavior local and serverless:** when an app runs both locally (`app.py`) and on Vercel (`api/index.py`), the page must handle every response format either server sends. If any server path streams `text/event-stream`, the client reads SSE (stop at `data: [DONE]`, the connection can stay open) as well as JSON. Test the AI reply on both hosts, not only one.
+
+### Check and correct (every UI change, every app)
+
+The audits enforce the gates above. Run both before any PR and fix every FAIL in the same PR:
+
+| Code | Audit | Fix |
+|---|---|---|
+| `width-cap` | static | Replace a `max-width` of 760px or more on a layout container (container, app, shell, main, page, layout, wrapper, card, grid, view, workspace, feed, content) with `max-width: 100vw` or none plus `padding-inline: var(--gutter)`. Overlays and print rules are exempt. |
+| `width-underfilled` | runtime, 1440px and up | The widest in-flow block spans under 85% of the viewport. Find the capped ancestor and apply the `width-cap` fix. |
+| `scroll-trap` | static and runtime | Remove `overscroll-behavior: contain/none` outside overlays. Views get `overflow: visible`. The feed gets `overscroll-behavior: auto` and a `max-height`. |
+| `unbounded-scroller` (WARN) | static | `overflow-y: auto` with no height in the rule. Bound it (feed) or make it `visible` (views). Answer in the PR if the height is set elsewhere. |
+| `wheel-hijack` | static | Delete custom `wheel` listeners. |
+| `response-format-mismatch` | static | Client parses only JSON while a server path streams SSE. Read both. |
+| `upload-below-feed` (WARN) | static | Move the chat upload into the chat header. |
+
+Then do the manual checks the audits cannot: upload a fictional sample resume on each host (local and Vercel) and confirm an AI reply renders, and wheel-test the feed and landing at 375 and 1440 with Playwright `mouse.wheel`.
 - **Flex overflow:** `min-width: 0` on every flex or grid child in the chat layout (shell, main, feed, message, bubble, composer row). This, not `overflow: hidden`, is the fix for clipped text.
 - **Breakpoints:** 1280px (status pill appears), 1200px (organization suffix), under 900px (drawer plus 4-column step bar), under 640px (icon-only header buttons with aria-label, gutter 16px, composer wraps), 375px and below (gutter 12px, user bubble up to 90%). No horizontal page scroll at 320, 375, 768, 1440 or 1920px.
 - **Motion:** honor `prefers-reduced-motion` in CSS and in JS scrolling (`behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'`).
@@ -81,14 +99,14 @@ Use the `.ecc-field` class or the `.ecc-composer textarea` pattern from `css/ecc
 3. `scripts/vendor_into_app.sh <app>` copies the four ECC CSS files into every web dir (public/ and static/ stay identical). Add the `<head>` links the script prints.
 4. `ecc-ces-compat.css` moves every `--ces-*` variable to ECC values with no selector edits. Then fix the app's own CSS: replace the app's private color vars (`--green`, `--primary`, `--accent-blue` and similar) with ECC tokens, raise every font size below 17px, remove dark theme blocks, swap emoji for SVG, restyle fields as above.
    In the default split, step 4 is the helper's patch (see "Who does what"). Push the vendor commit first so the helper reads the same files the patch will apply to.
-5. `python3 scripts/ecc_audit_static.py <app>` until 0 FAIL.
+5. `python3 scripts/ecc_audit_static.py <app>` until 0 FAIL. Use the Check and correct table for the scroll, width, upload and response-format codes.
 6. Run the app locally, then `node scripts/ecc_audit_runtime.mjs <url>` until 0 FAIL at all five widths. Take screenshots at 375 and 1440 with a sample conversation loaded (example data only, never student records).
 7. Push the branch, open a PR with the audit output and screenshots, and log it in `ROLLOUT.md`.
 8. Review, design sign-off, and Rob merges. Never push to main.
 
 Apps not yet migrated to ECC keep their CES tokens, and status UI there uses `--ces-status-{success,warning,neutral}-{bg,text,border}` (never navy or gold).
 
-**Definition of done:** static audit 0 FAIL, runtime audit 0 FAIL at 320/375/768/1440/1920, every WARN answered in the PR, public/ and static/ byte-identical, screenshots attached, Rob's Coding Helper review addressed, Claude design sign-off.
+**Definition of done:** static audit 0 FAIL, upload-to-AI-reply verified on every host the app runs on, runtime audit 0 FAIL at 320/375/768/1440/1920, every WARN answered in the PR, public/ and static/ byte-identical, screenshots attached, Rob's Coding Helper review addressed, Claude design sign-off.
 
 ## Who does what
 
@@ -114,6 +132,8 @@ Handoff prompts for each lane are in `references/handoffs.md`. Every handoff nam
 3. Re-vendor into apps through the normal rollout. Apps fail `ds-stale` in the static audit until they do.
 
 ## Version history
+
+v2.1.0 (2026-10-02) makes the v2.0.4 rules enforceable. `ecc_audit_static.py` adds `width-cap` (now FAIL), `scroll-trap`, `unbounded-scroller`, `wheel-hijack`, `response-format-mismatch` and `upload-below-feed`. `ecc_audit_runtime.mjs` adds `scroll-trap` and `width-underfilled`. New gates: upload at the top and starts the AI review, and the same behavior local and on Vercel. Adds the Check and correct table. Fixtures: `scripts/fixtures/static-scroll-{bad,good}`.
 
 v2.0.4 (2026-10-02) widens rule 2 (fill the width) from the chat canvas to the whole page shell and every view, and adds the scroll-model gate. Found on Resume Coach Mentor: a 1440px app cap plus 880px and 960px card caps left side space, and unbounded `overflow-y: auto` + `overscroll-behavior: contain` views made the wheel work only over the page margins.
 

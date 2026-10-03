@@ -102,6 +102,19 @@ for (const w of WIDTHS) {
     const offFont = [...document.querySelectorAll('button, input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), select, textarea')]
       .filter(visible).filter((el) => { const f = first(getComputedStyle(el).fontFamily); return f !== pageFont && !/mono|courier|menlo|consolas/.test(f); });
     if (offFont.length) add('WARN', 'control-font', `${offFont.length} controls not in ${pageFont}, e.g. ${offFont.slice(0, 3).map((e) => (e.id ? '#' + e.id : e.tagName.toLowerCase()) + ' ' + first(getComputedStyle(e).fontFamily)).join(' | ')}`);
+    // scroll model: a scroll container that cannot scroll but traps the wheel (overscroll contain/none) is a dead
+    // wheel zone, so the page only scrolls over the margins. Overlays (modal, drawer) are exempt.
+    const dead = [...document.querySelectorAll('body *')].filter(visible).filter((el) => {
+      const s = getComputedStyle(el); const b = el.getBoundingClientRect();
+      if (!/auto|scroll/.test(s.overflowY) || s.position === 'fixed' || el.closest('[role="dialog"], .modal-overlay, .ecc-sidebar')) return false;
+      return /contain|none/.test(s.overscrollBehaviorY) && b.width * b.height > innerWidth * innerHeight * 0.1;
+    });
+    if (dead.length) add('FAIL', 'scroll-trap', `${dead.length} large scrollers trap the wheel (overscroll contain/none), e.g. ${dead.slice(0, 3).map((e) => e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + '.' + String(e.className).split(' ')[0]).join(' | ')}`);
+    // fill the width: at desktop widths the widest visible content block should span most of the viewport
+    if (innerWidth >= 1440) {
+      const widest = Math.max(...[...document.querySelectorAll('body > *, body > * > *, main, [class*="container"], [class*="layout"]')].filter(visible).filter((e) => !['fixed', 'absolute'].includes(getComputedStyle(e).position)).map((e) => e.getBoundingClientRect().width));
+      if (widest < innerWidth * 0.85) add('FAIL', 'width-underfilled', `widest content block is ${Math.round(widest)}px of ${innerWidth}px; fill to the --gutter`);
+    }
     // text fields
     const fields = [...document.querySelectorAll(fieldSel)].filter(visible);
     out.fields = fields.map((f) => { const s = getComputedStyle(f); const b = f.getBoundingClientRect();

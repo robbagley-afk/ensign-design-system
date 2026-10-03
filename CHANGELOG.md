@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: scroll, width, upload and response-format checks (skill v2.1.0)
+
+- Static audit: `width-cap` is now FAIL (760px+ cap on a layout container), new FAIL `scroll-trap` (overscroll-behavior contain/none outside overlays), `wheel-hijack` (custom wheel listeners), `response-format-mismatch` (client parses only JSON while a server path streams SSE), new WARN `unbounded-scroller` and `upload-below-feed`. Fixtures: `scripts/fixtures/static-scroll-bad` (6 codes) and `static-scroll-good` (clean).
+- Runtime audit: new FAIL `scroll-trap` (large scroller that cannot scroll but traps the wheel) and `width-underfilled` (widest in-flow block under 85% of the viewport at 1440px and up).
+- Found on Resume Coach Mentor (resume-coach-ai #43, #44). A sweep of the local app folders found the same codes in 10 more apps; they fail until fixed.
+
 ## 2026-09-29: static audit catches U+00A0
 
 - New FAIL `nbsp-in-css`: a non-breaking space outside comments and strings is not CSS whitespace, so it silently invalidates the next selector or declaration. It had disabled the `:root` aliases in major-career-explorer-coach-ai and five theme variables in resume-coach-ai. Fixtures: `scripts/fixtures/static-nbsp-bad` (1 FAIL) and `static-nbsp-good` (clean).
