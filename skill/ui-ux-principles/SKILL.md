@@ -1,7 +1,7 @@
 ---
 name: ui-ux-principles
 description: Use when designing, building, reviewing, or migrating the interface of any Ensign College / Career Services app in Rob's GitHub, or when coordinating that UI work across Claude, Codex, Antigravity and Rob's Coding Helper. Applies the org's default Claude design system (Ensign Career Coach) through the ensign-design-system repo.
-version: 2.0.3
+version: 2.0.4
 category: general
 status: published
 ---
@@ -29,7 +29,7 @@ Every Ensign student- and mentor-facing app should read and behave like one prod
 Read `README.md` and `docs/components.md` in the repo before a first migration. The rules that most often get broken:
 
 1. **Audience first.** Mentors and students, often over 60, often on shared 1080p desktops, reading paragraphs of advice. Body text is **19px**, line-height 1.6. **Nothing renders below 17px**, including captions, chips, timestamps, disclaimers and feedback controls.
-2. **Fill the width.** The chat feed and composer fill the available width up to the `--gutter`: `clamp(24px, 3vw, 56px)` from 640px up, 16px under 640px, 12px at 375px and below. The header, step header, feed and composer share it so their edges line up. No 65ch or 1180px cap on the chat canvas.
+2. **Fill the width.** The chat feed and composer fill the available width up to the `--gutter`: `clamp(24px, 3vw, 56px)` from 640px up, 16px under 640px, 12px at 375px and below. The header, step header, feed and composer share it so their edges line up. No 65ch or 1180px cap on the chat canvas. The same holds for the page shell and every view inside it (app container, mode-selection screen, intake forms, cards): no fixed `max-width` in px. The page container uses `max-width: 100vw` (or none) plus `padding-inline: var(--gutter)`. Center narrow content inside a full-width card with grid columns, never by capping the card.
 3. **One theme, light.** Page `surface-sunken` #f8fafc, cards and panels `surface` #ffffff. No dark mode.
 4. **Ensign green `--brand` #006645 means "do this".** Primary buttons, links, the active step, focus rings. Nothing decorative.
 5. **Gold `--accent-gold` #FDB515 is an identity mark only.** It never marks a button, link, badge, border or highlight.
@@ -60,6 +60,11 @@ Use the `.ecc-field` class or the `.ecc-composer textarea` pattern from `css/ecc
 - **Focus:** never `outline: none` without a replacement. The shared CES components set the ring with `!important` from `--ces-focus-ring`. `ecc-ces-compat.css` points that variable at brand green.
 - **Touch targets** 44x44 minimum, including icon buttons and chip scroll buttons.
 - **Contrast:** 4.5:1 for text, 3:1 for control boundaries and focus rings. Check any new tint pair before shipping.
+- **Scroll model (wheel must work everywhere):** one owner per scroll axis. The page scrolls by default. The chat feed is the only inner scroller, and it has a bounded height (`max-height: max(320px, calc(100dvh - <top chrome>px))`) so the composer stays on screen. Rules that prevent dead wheel zones:
+  - Never put `overflow-y: auto` on a container whose height is not bounded. It never overflows, but it still becomes a scroll container.
+  - Never set `overscroll-behavior: contain` on such a container, or on the feed. With `contain`, Chromium and Edge (Mac trackpad and mouse latching) stop the wheel at that element and the page will not scroll, so the wheel only works over the page margins. Use `overscroll-behavior: auto` so the feed hands the wheel back to the page at its top and bottom.
+  - No custom `wheel` listeners that push `deltaY` into another element. They fight native scrolling.
+  - Runtime check: with a long sample conversation loaded, wheel over the feed scrolls the feed to its end and then the page; wheel over the landing and intake cards scrolls the page; the composer is reachable at 375 and 1440.
 - **Flex overflow:** `min-width: 0` on every flex or grid child in the chat layout (shell, main, feed, message, bubble, composer row). This, not `overflow: hidden`, is the fix for clipped text.
 - **Breakpoints:** 1280px (status pill appears), 1200px (organization suffix), under 900px (drawer plus 4-column step bar), under 640px (icon-only header buttons with aria-label, gutter 16px, composer wraps), 375px and below (gutter 12px, user bubble up to 90%). No horizontal page scroll at 320, 375, 768, 1440 or 1920px.
 - **Motion:** honor `prefers-reduced-motion` in CSS and in JS scrolling (`behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'`).
@@ -109,6 +114,8 @@ Handoff prompts for each lane are in `references/handoffs.md`. Every handoff nam
 3. Re-vendor into apps through the normal rollout. Apps fail `ds-stale` in the static audit until they do.
 
 ## Version history
+
+v2.0.4 (2026-10-02) widens rule 2 (fill the width) from the chat canvas to the whole page shell and every view, and adds the scroll-model gate. Found on Resume Coach Mentor: a 1440px app cap plus 880px and 960px card caps left side space, and unbounded `overflow-y: auto` + `overscroll-behavior: contain` views made the wheel work only over the page margins.
 
 v2.0.3 (2026-09-29) adds the rule that unmigrated apps keep their CES tokens and use `--ces-status-*` for status UI. Nothing else changed.
 
