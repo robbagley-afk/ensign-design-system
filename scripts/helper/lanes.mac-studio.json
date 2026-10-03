@@ -1,0 +1,27 @@
+{
+ "_doc": "Helper lane registry (Mac Studio, MACHINE mac-studio). Created 2026-09-30 by Claude (Sonnet 5.5) at Rob request, copied from the MacBook Pro lane file. dispatch.mjs currently reads only lanes.json, not this file. dispatch.mjs claims only role primary or failover. Account rule (Rob 2026-09-30): chatting with Rob's Coding Helper works from either account, so helper lanes sign in as robbagley@ensign.edu. ecenter24@ensign.net is only for changing agents in the Copilot Studio website (maker work).",
+ "agentUrl": "https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15",
+ "locks": "~/Local-Infra/ui-audit/_helper/locks",
+ "outRoot": "~/Local-Infra/ui-audit/_helper/dispatch",
+ "lanes": [
+  {
+   "name": "edge1",
+   "role": "primary",
+   "port": 9230,
+   "browser": "edge",
+   "account": "robbagley@ensign.edu",
+   "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge1-profile",
+   "launcher": "~/Library/LaunchAgents/launch-persistent-edge-helper.sh 1 Default",
+   "launchd": "com.robbagley.persistent-edge-helper1",
+   "shutdown": "node ~/Local-Infra/ensign-design-system/scripts/helper/lane_stop.mjs 9230",
+   "maxChats": 8,
+   "profileDirectory": "Default",
+   "note": "Helper chat lane, signed in as robbagley@ensign.edu (Rob 2026-09-30: chat works from either account; ecenter24 only for Copilot Studio maker edits). Sign in once: Edge profile icon > Sign in > Work or school account > robbagley@ensign.edu. Fixed 2026-09-30: plist needs AbandonProcessGroup true or launchd kills Edge when the launcher exits."
+  }
+ ],
+ "qwen": {
+  "url": "$LM_STUDIO_URL",
+  "client": "qwen.mjs",
+  "note": "Not a lane."
+ }
+}
