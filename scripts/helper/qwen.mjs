@@ -8,8 +8,8 @@
 //   for "engine":"qwen" jobs), a skipped screen means the supervisor views every screenshot itself.
 // Safety rules (Mac Studio M1 Ultra 64 GB, see Mem 4ea782de / 00a58d7e):
 //   - Only calls a model that is ALREADY LOADED. Never names an unloaded model: LM Studio would JIT-load it, and a
-//     third heavy model on the host freezes the machine. Never qwen38-27b or bu-30b (on-demand, owned by the keepalive
-//     and lms-heavy-guard). Text jobs: qwen3-vl-30b-a3b-instruct-mlx, else a loaded qwen3-14b. Images: the 30B VL only.
+//     third heavy model on the host freezes the machine. Prefer the specified loaded model, then an exposed loaded
+//     default, then any suitable loaded LLM. Images require verified vision capability. Embeddings are excluded.
 //   - Slots: career apps share the 30B's 4 parallel slots. Weekdays 08-17 America/Denver this script takes at most 2,
 //     otherwise 4. Slot = atomic mkdir under locks/qwen, dead-pid locks are reclaimed.
 //   - Every call sends reasoning_effort none (verified on LM Studio 0.4.25: "off" returns 400) plus /no_think.
@@ -28,7 +28,7 @@ const PROFILES = {
 const role = (() => { try { return (fs.readFileSync(path.join(os.homedir(), '.cowork-machine-id'), 'utf8').match(/ROLE="?(\w+)/) || [])[1]; } catch { return ''; } })();
 const URL_ = (process.env.LM_STUDIO_URL || (role === 'client' ? 'https://mac-studio-2.tail299fc7.ts.net:1234/v1' : 'http://127.0.0.1:1234/v1')).replace(/\/$/, ''), ROOT = URL_.replace(/\/v1$/, '');
 const LOCKS = path.join(os.homedir(), 'Local-Infra/ui-audit/_helper/locks/qwen');
-const VL = 'qwen3-vl-30b-a3b-instruct-mlx', TEXT_OK = [VL, /qwen3-14b/], NEVER = /27b|qwen38|bu-30b/i;
+const PREFERRED = process.env.LM_STUDIO_MODEL || 'qwen3-vl-30b-a3b-instruct-mlx';
 const [cmd, ...rest] = process.argv.slice(2);
 const opt = (k, d) => { const i = rest.indexOf(k); return i >= 0 ? rest[i + 1] : d; };
 const multi = k => rest.flatMap((x, i) => (rest[i - 1] === k ? [x] : []));
@@ -36,22 +36,23 @@ const die = (code, o) => { console.log(JSON.stringify(o)); process.exit(code); }
 const get = async (u, ms = 4000) => { const r = await fetch(u, { signal: AbortSignal.timeout(ms) }); if (!r.ok) throw Object.assign(new Error('HTTP ' + r.status), { status: r.status }); return r.json(); };
 
 // ---- which models are loaded right now (never trust /v1/models alone: with JIT on it lists every downloaded model)
-async function loaded() {
-  try { const d = await get(ROOT + '/api/v0/models'); return d.data.filter(m => m.state === 'loaded').map(m => m.id); }
-  catch (e) { if (e.status !== 404) throw e; }
-  const d = await get(ROOT + '/api/v1/models');
-  return (d.models || d.data || []).flatMap(m => (m.loaded_instances || []).map(x => x.id || m.key));
-}
-function pick(ids, needVision) {
-  const ok = ids.filter(id => !NEVER.test(id));
-  if (ok.includes(VL)) return VL;
-  if (needVision) return null;
-  return ok.find(id => TEXT_OK.some(t => (t instanceof RegExp ? t.test(id) : t === id))) || null;
+export function selectLoaded(inventory, preferred = PREFERRED, needVision = false) {
+  const candidates = (inventory.models || []).filter(m => m.type === 'llm' && (!needVision || m.capabilities?.vision === true))
+    .flatMap(m => (m.loaded_instances || []).filter(i => i.id && Number.isInteger(i.config?.context_length) && i.config.context_length > 0)
+      .map(i => ({ model: i.id, key: m.key, context_length: i.config.context_length, capabilities: m.capabilities,
+        isDefault: i.is_default === true || m.is_default === true })));
+  const match = name => candidates.find(c => name && [c.model, c.key].includes(name));
+  const exposed = inventory.default_model || inventory.default_model_id;
+  const defaultName = typeof exposed === 'object' && exposed ? exposed.id || exposed.key : exposed;
+  let chosen = match(preferred), reason = 'preferred model is already loaded and suitable';
+  if (!chosen) { chosen = match(defaultName) || candidates.find(c => c.isDefault); reason = 'preferred unavailable or unsuitable; exposed default is loaded and suitable'; }
+  if (!chosen) { chosen = candidates[0]; reason = 'preferred unavailable or unsuitable; no suitable loaded default exposed; using suitable loaded instance'; }
+  return chosen ? { ok: true, ...chosen, preferred, fallback: ![chosen.model, chosen.key].includes(preferred), reason, models: candidates.map(c => c.model) }
+    : { ok: false, models: [], reason: needVision ? 'no suitable loaded vision LLM instance' : 'no suitable loaded LLM instance' };
 }
 async function health(needVision = false) {
-  let ids; try { ids = await loaded(); } catch (e) { return { ok: false, url: URL_, reason: 'unreachable: ' + (e.cause?.code || e.message) }; }
-  const model = pick(ids, needVision);
-  return model ? { ok: true, model, models: ids } : { ok: false, models: ids, reason: needVision ? 'no vision model loaded' : 'no eligible model loaded' };
+  try { return selectLoaded(await get(ROOT + '/api/v1/models'), PREFERRED, needVision); }
+  catch (e) { return { ok: false, url: URL_, reason: 'native inventory unavailable: ' + (e.cause?.code || e.message) }; }
 }
 
 // ---- slots
@@ -89,6 +90,7 @@ function imagePart(file) {
 async function chat(profile, text, { images = [], schema = null, timeout = 180 } = {}) {
   const h = await health(images.length > 0);
   if (!h.ok) return { code: 10, reason: h.reason };
+  console.error('LM Studio selection: ' + JSON.stringify(h));
   if (!(await takeSlot(+opt('--wait', 60)))) return { code: 11, reason: `no free slot (cap ${cap()})` };
   const P = PROFILES[profile]; if (!P) return { code: 2, reason: 'unknown profile ' + profile };
   const content = images.length ? [{ type: 'text', text: '/no_think\n' + text }, ...images.map(imagePart)] : '/no_think\n' + text;
@@ -100,7 +102,7 @@ async function chat(profile, text, { images = [], schema = null, timeout = 180 }
     if ([429, 503].includes(r.status)) return { code: 11, reason: 'HTTP ' + r.status };
     if (!r.ok) return { code: 10, reason: 'HTTP ' + r.status + ' ' + (await r.text()).slice(0, 120) };
     const j = await r.json(), c = j.choices?.[0], out = (c?.message?.content || '').replace(/<think>[\s\S]*?<\/think>/g, '').trim();
-    const meta = { model: h.model, secs: Math.round((Date.now() - t0) / 1000), tokens: j.usage?.completion_tokens };
+    const meta = { model: h.model, fallback: h.fallback, selection_reason: h.reason, secs: Math.round((Date.now() - t0) / 1000), tokens: j.usage?.completion_tokens };
     if (!out) return { code: 12, reason: 'empty reply', ...meta };
     if (c.finish_reason === 'length') return { code: 12, reason: 'cut at max_tokens', ...meta };
     if (schema) { try { JSON.parse(out); } catch { return { code: 12, reason: 'invalid JSON', ...meta }; } }
