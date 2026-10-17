@@ -49,7 +49,12 @@ PORT=$((9229 + N))
 PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile-beta"
 # Pinned sign-in per lane (Rob 2026-09-28): robbagley@ensign.edu for general CIS work, ecenter24@ensign.net for Copilot Studio.
 # Never a personal account. Without a pin Edge reopens last_used, which on edge1 was robbagley@gmail.com (Profile 3).
-PROFILE_NAME="$(select_helper_profile "$N" "${2:-}" "$PROFILE_DIR")" || exit 2
+if [ ! -e "$PROFILE_DIR" ] && [ "${2:-}" = Default ]; then
+  # First run of a new lane: no profile root yet, so no account can be wrong. Edge creates Default; Rob signs in once.
+  PROFILE_NAME=Default
+else
+  PROFILE_NAME="$(select_helper_profile "$N" "${2:-}" "$PROFILE_DIR")" || exit 2
+fi
 EDGE="/Applications/Microsoft Edge Beta.app/Contents/MacOS/Microsoft Edge Beta"
 
 devtools_ok() { curl -fsS --max-time 3 "http://127.0.0.1:$PORT/json/version" >/dev/null 2>&1; }

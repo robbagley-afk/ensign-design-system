@@ -8,13 +8,27 @@
    "name": "edge1",
    "role": "primary",
    "port": 9230,
-   "browser": "edge",
+   "browser": "edge-beta",
    "account": "robbagley@ensign.edu",
-   "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge1-profile",
+   "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge1-profile-beta",
    "launchd": "com.robbagley.persistent-edge-helper1",
    "maxChats": 8,
-   "note": "General CIS work and helper chat dispatch lane, robbagley@ensign.edu (Rob 2026-09-30). Launcher pins --profile-directory \"Profile 2\" (robbagley@ensign.edu). Profile 3 in this user-data-dir is personal gmail: never use it.",
-   "profileDirectory": "Profile 2"
+   "note": "General CIS work and helper chat dispatch lane, robbagley@ensign.edu, on Microsoft Edge Beta since 2026-10-16 (profile name \"EDGE 1\"). The old stable-Edge profile claude-ensign-helper-edge1-profile (\"Profile 2\") stays as a backup until Rob approves retiring it. Its Profile 3 is personal gmail: never use it.",
+   "profileDirectory": "Default",
+   "launcher": "~/Library/LaunchAgents/launch-persistent-edge-helper-beta.sh"
+  },
+  {
+   "name": "edge3",
+   "role": "failover",
+   "port": 9232,
+   "browser": "edge-beta",
+   "account": "robbagley@ensign.edu",
+   "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge3-profile-beta",
+   "profileDirectory": "Default",
+   "launchd": "com.robbagley.persistent-edge-helper3",
+   "launcher": "~/Library/LaunchAgents/launch-persistent-edge-helper-beta.sh",
+   "maxChats": 8,
+   "note": "Failover helper chat dispatch lane on Microsoft Edge Beta, robbagley@ensign.edu (Rob 2026-10-16). Shares the account quota with edge1, so it adds failover, not throughput."
   },
   {
    "name": "edge2",
