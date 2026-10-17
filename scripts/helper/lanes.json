@@ -34,13 +34,14 @@
    "name": "edge2",
    "role": "manual",
    "port": 9231,
-   "browser": "edge",
+   "browser": "edge-beta",
    "account": "ecenter24@ensign.net",
-   "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge2-profile",
+   "profile": "~/CCowork-Local-Apps/claude-ensign-helper-edge2-profile-beta",
    "launchd": "com.robbagley.persistent-edge-helper2",
    "maxChats": 8,
    "profileDirectory": "Default",
-   "note": "Copilot Studio maker lane, ecenter24@ensign.net (Default profile, pinned). Maker work only: changing or fixing the helper or another agent. Never dispatch helper chats here (Rob 2026-09-30)."
+   "note": "Maker lane, ecenter24@ensign.net, profile \"CoPilot Studio\": Copilot Studio, Power Automate and Power Apps maker work only (changing or fixing the helper or another agent). Never dispatch helper chats here (Rob 2026-09-30). Edge Beta since 2026-10-16, all sync types off, --disable-extensions. The old stable profile claude-ensign-helper-edge2-profile stays as a backup (sync off) until Rob approves retiring it.",
+   "launcher": "~/Library/LaunchAgents/launch-persistent-edge-helper-beta.sh"
   },
   {
    "name": "chrome9226",
