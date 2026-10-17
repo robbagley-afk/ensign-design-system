@@ -21,8 +21,12 @@
 #   Browser.close, records exit_type Normal). SIGTERM with windows open records SessionEnded and Edge then shows
 #   "Restore pages" on the next launch. Never kill -9, never delete Singleton* files while a process holds the profile.
 # Launch flags: no AutomationControlled flag. Background-throttling flags keep occluded lanes generating.
+# --disable-extensions: a lane loads no extensions (Rob 2026-10-16). Signing in pulls the account's synced set into the
+#   profile, and lanes are driven over DevTools, not extensions. A per-lane flag, because a macOS policy cannot target
+#   only Beta: every Edge channel reads com.microsoft.Edge, so a policy would also strip Rob's own Edge.
 # Sign-in: Edge profile icon > Sign in > Work or school account > robbagley@ensign.edu (ecenter24 on the maker lane).
-#   Choose "No, sign in to this app only". Then Sync is on > turn off Open tabs and History.
+#   Choose "No, sign in to this app only". Then Sync is on > turn off Extensions, Open tabs and History. Extensions sync
+#   must be off before removing any extension in a lane, or the removal syncs to Rob's account and his own Edge.
 # Tabs: tidy.mjs trims the lane to one tab after launch. Dispatcher runs it on claim and after each job.
 #   Sessions also run tidy.mjs <port> at start and before close (required, rob-coding-helper section 1).
 # Verify after first run: lane_stop.mjs, then Default/Preferences exit_type Normal (Edge writes no exited_cleanly key),
@@ -96,6 +100,7 @@ echo "$(date '+%F %T') Starting edge$N on $PORT"
   --disable-renderer-backgrounding \
   --disable-backgrounding-occluded-windows \
   --test-type \
+  --disable-extensions \
   --disable-infobars > /dev/null 2>&1 &
 
 for i in $(seq 1 25); do
