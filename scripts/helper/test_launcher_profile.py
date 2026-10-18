@@ -127,5 +127,24 @@ class ProfileSelectionTests(unittest.TestCase):
             self.assertNotIn("Starting edge", result.stdout)
 
 
+    def test_fresh_lane_first_run_only_with_default(self):
+        with tempfile.TemporaryDirectory() as directory:
+            missing = Path(directory) / "edge3-profile-beta"
+            source = SCRIPT.read_text().replace(
+                'PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile-beta"',
+                'PROFILE_DIR="$3"',
+            ).split("\ndevtools_ok()", 1)[0] + '\necho "PROFILE=$PROFILE_NAME"'
+            ok = subprocess.run(["bash", "-c", source, "test", "3", "Default", str(missing)],
+                                text=True, capture_output=True)
+            self.assertEqual(ok.returncode, 0, ok.stderr)
+            self.assertIn("PROFILE=Default", ok.stdout)
+            self.assertFalse(missing.exists())
+            for profile in ("Profile 1", "Profile 2", ""):
+                with self.subTest(profile=profile):
+                    bad = subprocess.run(["bash", "-c", source, "test", "3", profile, str(missing)],
+                                         text=True, capture_output=True)
+                    self.assertEqual(bad.returncode, 2)
+
+
 if __name__ == "__main__":
     unittest.main()
