@@ -20,7 +20,7 @@ class ProfileSelectionTests(unittest.TestCase):
     def test_explicit_profiles(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            for profile in ("Default", "Profile 2"):
+            for profile in ("Default", "Profile 1", "Profile 2"):
                 (root / profile).mkdir()
                 result = self.select("1", profile, root)
                 self.assertEqual(result.returncode, 0, result.stderr)
@@ -47,10 +47,10 @@ class ProfileSelectionTests(unittest.TestCase):
             root = Path(directory)
             (root / "Default").mkdir()
             source = SCRIPT.read_text().replace(
-                'PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile"',
+                'PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile-beta"',
                 'PROFILE_DIR="$3"',
             ).replace(
-                'EDGE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"',
+                'EDGE="/Applications/Microsoft Edge Beta.app/Contents/MacOS/Microsoft Edge Beta"',
                 'EDGE="/nonexistent-browser-must-never-launch"',
             )
             for held in (True, False):
@@ -77,10 +77,10 @@ class ProfileSelectionTests(unittest.TestCase):
             root = Path(directory)
             (root / "Default").mkdir()
             source = SCRIPT.read_text().replace(
-                'PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile"',
+                'PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile-beta"',
                 'PROFILE_DIR="$3"',
             ).replace(
-                'EDGE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"',
+                'EDGE="/Applications/Microsoft Edge Beta.app/Contents/MacOS/Microsoft Edge Beta"',
                 'EDGE="/nonexistent-browser-must-never-launch"',
             )
             # pgrep fires but ps reports a shell, not Edge; sleep is a no-op so the
@@ -104,10 +104,10 @@ class ProfileSelectionTests(unittest.TestCase):
             root = Path(directory)
             (root / "Default").mkdir()
             source = SCRIPT.read_text().replace(
-                'PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile"',
+                'PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile-beta"',
                 'PROFILE_DIR="$3"',
             ).replace(
-                'EDGE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"',
+                'EDGE="/Applications/Microsoft Edge Beta.app/Contents/MacOS/Microsoft Edge Beta"',
                 'EDGE="/nonexistent-browser-must-never-launch"',
             )
             # pgrep yields a non-browser PID first; holder_pid must keep scanning and

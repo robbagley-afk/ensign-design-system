@@ -1,5 +1,8 @@
 #!/bin/bash
 # Persistent Microsoft Edge lanes for Claude's Rob's Coding Helper dispatcher.
+# Browser: Microsoft Edge Beta (Rob 2026-10-12). Stable Edge is Rob's everyday browser and macOS default;
+#   macOS sends clicked links to the first running Edge, so automation lanes must never run on stable Edge.
+#   Edge Beta has its own bundle id (com.microsoft.edgemac.Beta) and never receives Rob's links.
 # Usage: launch-persistent-edge-helper.sh <n> <profile-directory> (n = 1..9).
 # Installation must pin the verified machine-local profile: iMac edge1 "Profile 2",
 # MacBook edge1 "Default". No hostname or last_used fallback. Existing plists
@@ -30,8 +33,8 @@ select_helper_profile() {
   local lane="${1:-}" explicit_profile="${2:-}" profile_root="${3:-}"
   case "$lane" in [1-9]) ;; *) echo "ERROR: lane must be 1..9" >&2; return 2;; esac
   case "$explicit_profile" in
-    "Default"|"Profile 2") ;;
-    *) echo 'ERROR: pass an explicit verified profile: Default or Profile 2' >&2; return 2;;
+    "Default"|"Profile 1"|"Profile 2") ;;
+    *) echo 'ERROR: pass an explicit verified profile: Default, Profile 1 or Profile 2' >&2; return 2;;
   esac
   if [ -z "$profile_root" ] || [ ! -d "$profile_root/$explicit_profile" ]; then
     echo "ERROR: selected profile directory does not exist; refusing to start" >&2
@@ -43,11 +46,11 @@ select_helper_profile() {
 N="$1"
 case "$N" in [1-9]) ;; *) echo "usage: $0 <1-9> <profile-directory>" >&2; exit 2;; esac
 PORT=$((9229 + N))
-PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile"
+PROFILE_DIR="$HOME/CCowork-Local-Apps/claude-ensign-helper-edge$N-profile-beta"
 # Pinned sign-in per lane (Rob 2026-09-28): robbagley@ensign.edu for general CIS work, ecenter24@ensign.net for Copilot Studio.
 # Never a personal account. Without a pin Edge reopens last_used, which on edge1 was robbagley@gmail.com (Profile 3).
 PROFILE_NAME="$(select_helper_profile "$N" "${2:-}" "$PROFILE_DIR")" || exit 2
-EDGE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
+EDGE="/Applications/Microsoft Edge Beta.app/Contents/MacOS/Microsoft Edge Beta"
 
 devtools_ok() { curl -fsS --max-time 3 "http://127.0.0.1:$PORT/json/version" >/dev/null 2>&1; }
 holder_pid() {
