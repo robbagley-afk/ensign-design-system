@@ -1,0 +1,22 @@
+name: ECC audit self-test
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - run: python3 scripts/build_tokens.py --check
+      - run: python3 scripts/test_ecc_audit.py
+  reusable-smoke:
+    needs: contracts
+    uses: ./.github/workflows/ecc-audit-reusable.yml
+    with:
+      audit-path: scripts/fixtures/static-nbsp-good
+      design-system-ref: ${{ github.sha }}
