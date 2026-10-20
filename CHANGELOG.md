@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-20: enforcement and dashboard pattern (skill v2.2.0)
+
+- Added a pinned, secret-free reusable static audit and candidate-commit self-tests with positive and negative CLI contracts.
+- Added a responsive ECC dashboard pattern, fictional preview and briefcase favicon.
+- Expanded the skill correction table to all static codes and corrected border-strong/app-name references. Packaged matching CSS and static auditor with SHA-256 manifest for offline use.
+- Skill distribution and app rollout remain gated on the reviewed release.
+
 ## 2026-10-02: scroll, width, upload and response-format checks (skill v2.1.0)
 
 - Static audit: `width-cap` is now FAIL (760px+ cap on a layout container), new FAIL `scroll-trap` (overscroll-behavior contain/none outside overlays), `wheel-hijack` (custom wheel listeners), `response-format-mismatch` (client parses only JSON while a server path streams SSE), new WARN `unbounded-scroller` and `upload-below-feed`. Fixtures: `scripts/fixtures/static-scroll-bad` (6 codes) and `static-scroll-good` (clean).

@@ -1,0 +1,219 @@
+<!-- /*#2*/ ECC-DASH-1020-B — scripts/fixtures/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Services tools — Fictional Preview</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/ecc-tokens.css">
+  <link rel="stylesheet" href="/css/ecc-ces-compat.css">
+  <link rel="stylesheet" href="/css/ecc-components.base.css">
+  <link rel="stylesheet" href="/css/ecc-app.css">
+</head>
+<body class="ecc">
+
+  <main class="ecc-dash">
+
+    <!-- Dashboard header -->
+    <header class="ecc-dash__header">
+      <div class="ecc-dash__titles">
+        <h1 class="ecc-dash__title">Career Services tools</h1>
+        <p class="ecc-dash__subtitle">Fictional preview with sample tools and counts. No student data.</p>
+      </div>
+      <div class="ecc-dash__metrics" role="list" aria-label="Dashboard summary counts">
+        <div class="ecc-dash__metric" role="listitem">
+          <span class="ecc-dash__metric-value">4</span>
+          <span class="ecc-dash__metric-label">Total tools</span>
+        </div>
+        <div class="ecc-dash__metric" role="listitem">
+          <span class="ecc-dash__metric-value">2</span>
+          <span class="ecc-dash__metric-label">Active</span>
+        </div>
+        <div class="ecc-dash__metric" role="listitem">
+          <span class="ecc-dash__metric-value">2</span>
+          <span class="ecc-dash__metric-label">Preview</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Section 1: Active tools ─────────────────────────────── -->
+    <section class="ecc-dash-section" aria-labelledby="section-active">
+      <div class="ecc-dash-section__heading-row">
+        <h2 class="ecc-dash-section__heading" id="section-active">Active tools</h2>
+        <span class="ecc-dash-section__count" aria-label="2 tools in this section">2 tools</span>
+      </div>
+      <hr class="ecc-dash-section__rule" aria-hidden="true">
+      <div class="ecc-dash-grid">
+
+        <!-- Card 1 -->
+        <article class="ecc-tool-card" aria-labelledby="card-appt-title">
+          <div class="ecc-tool-card__icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <span class="ecc-tool-card__status ecc-tool-card__status--success">
+            Active
+          </span>
+          <div class="ecc-tool-card__body">
+            <h3 class="ecc-tool-card__title" id="card-appt-title">Appointment scheduler</h3>
+            <p class="ecc-tool-card__description">
+              View and manage advising appointment slots. Assign counselors,
+              block unavailable times, and send confirmation notices from one place.
+            </p>
+          </div>
+          <a href="#sample-details" class="ecc-tool-card__action">
+            View appointments
+          </a>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="ecc-tool-card" aria-labelledby="card-resume-title">
+          <div class="ecc-tool-card__icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <span class="ecc-tool-card__status ecc-tool-card__status--success">
+            Active
+          </span>
+          <div class="ecc-tool-card__body">
+            <h3 class="ecc-tool-card__title" id="card-resume-title">Resume review board</h3>
+            <p class="ecc-tool-card__description">
+              Collect draft resumes, route them to assigned reviewers, and track
+              feedback status from submission through to final sign-off.
+            </p>
+          </div>
+          <a href="#sample-details" class="ecc-tool-card__action">
+            Open review board
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── Section 2: Preview tools ───────────────────────────── -->
+    <section class="ecc-dash-section" aria-labelledby="section-preview">
+      <div class="ecc-dash-section__heading-row">
+        <h2 class="ecc-dash-section__heading" id="section-preview">Preview tools</h2>
+        <span class="ecc-dash-section__count" aria-label="2 tools in this section">2 tools</span>
+      </div>
+      <hr class="ecc-dash-section__rule" aria-hidden="true">
+      <div class="ecc-dash-grid">
+
+        <!-- Card 3 -->
+        <article class="ecc-tool-card" aria-labelledby="card-employer-title">
+          <div class="ecc-tool-card__icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <span class="ecc-tool-card__status ecc-tool-card__status--preview">
+            Preview
+          </span>
+          <div class="ecc-tool-card__body">
+            <h3 class="ecc-tool-card__title" id="card-employer-title">Employer contact log</h3>
+            <p class="ecc-tool-card__description">
+              Record and search outreach history with employer partners.
+              Log call notes, follow-up dates, and hiring interest by role type.
+            </p>
+          </div>
+          <a href="#sample-details" class="ecc-tool-card__action">
+            See preview details
+          </a>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="ecc-tool-card" aria-labelledby="card-placement-title">
+          <div class="ecc-tool-card__icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <span class="ecc-tool-card__status ecc-tool-card__status--preview">
+            Preview
+          </span>
+          <div class="ecc-tool-card__body">
+            <h3 class="ecc-tool-card__title" id="card-placement-title">Placement outcome tracker</h3>
+            <p class="ecc-tool-card__description">
+              Capture graduate placement data by term, program, and role type.
+              Generate summary reports for department review cycles.
+            </p>
+          </div>
+          <a href="#sample-details" class="ecc-tool-card__action">
+            See preview details
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── Sample details explanation ─────────────────────────── -->
+    <section class="ecc-dash-section" id="sample-details" aria-labelledby="section-about">
+      <div class="ecc-dash-section__heading-row">
+        <h2 class="ecc-dash-section__heading" id="section-about">About this preview</h2>
+      </div>
+      <hr class="ecc-dash-section__rule" aria-hidden="true">
+      <div class="ecc-dash__detail-body">
+        <p>This fictional preview demonstrates the Career Services dashboard layout. Tool names, status labels and counts are sample content. Links lead to this explanation.</p>
+        <p>No student records or AI services are connected. Montserrat is loaded from Google Fonts.</p>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

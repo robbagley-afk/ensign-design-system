@@ -1,0 +1,94 @@
+name: ECC Audit (Reusable)
+
+on:
+  workflow_call:
+    inputs:
+      audit-path:
+        type: string
+        default: '.'
+      design-system-ref:
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  ecc-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate design-system-ref SHA format
+        env:
+          DS_REF: ${{ inputs.design-system-ref }}
+        run: |
+          if ! printf '%s' "$DS_REF" | grep -qE '^[0-9a-f]{40}$'; then
+            echo "::error::design-system-ref must be a full 40-character lowercase hex SHA. Received: ${DS_REF}"
+            exit 1
+          fi
+
+      - name: Checkout caller repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          path: app
+          persist-credentials: false
+
+      - name: Checkout ensign-design-system at pinned SHA
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: robbagley-afk/ensign-design-system
+          ref: ${{ inputs.design-system-ref }}
+          path: ds
+          persist-credentials: false
+
+      - name: Scope and validate audit path
+        env:
+          AUDIT_PATH: ${{ inputs.audit-path }}
+        run: |
+          if [[ "$AUDIT_PATH" == *$'\n'* || "$AUDIT_PATH" == *$'\r'* ]]; then
+            echo "::error::audit-path must not contain line breaks"
+            exit 1
+          fi
+          APP_ABS="$(realpath "$GITHUB_WORKSPACE/app")"
+          SCOPE_ABS="$(python3 -c 'import pathlib,sys; print(pathlib.Path(sys.argv[1]).resolve())' "$GITHUB_WORKSPACE/app/$AUDIT_PATH")"
+
+          case "$SCOPE_ABS" in
+            "$APP_ABS"|"$APP_ABS"/*)
+              ;;
+            *)
+              echo "::error::audit-path resolves outside the app checkout: ${AUDIT_PATH}"
+              exit 1
+              ;;
+          esac
+
+          if [ ! -d "$SCOPE_ABS" ]; then
+            echo "::error::Resolved audit-path is not an existing directory: ${SCOPE_ABS}"
+            exit 1
+          fi
+
+          FILE_COUNT="$(git -C "$SCOPE_ABS" ls-files -- '*.html' '*.css' | wc -l)"
+          if [ "$FILE_COUNT" -eq 0 ]; then
+            echo "::error::No tracked .html or .css files found under audit-path '${AUDIT_PATH}'"
+            exit 1
+          fi
+
+          # A symlink can introduce line breaks after the input itself was validated.
+          if [[ "$SCOPE_ABS" == *$'\n'* || "$SCOPE_ABS" == *$'\r'* ]]; then
+            echo "::error::resolved audit-path must not contain line breaks"
+            exit 1
+          fi
+          echo "SCOPE_ABS=$SCOPE_ABS" >> "$GITHUB_ENV"
+
+      - name: Run ECC static audit
+        env:
+          AUDIT_REPORT: ${{ runner.temp }}/ecc-audit.json
+        run: |
+          python3 ds/scripts/ecc_audit_static.py "$SCOPE_ABS" --json "$AUDIT_REPORT"
+
+      - name: Upload audit report artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ecc-audit
+          path: ${{ runner.temp }}/ecc-audit.json
+          if-no-files-found: ignore

@@ -1,7 +1,7 @@
 ---
 name: ui-ux-principles
 description: Use when designing, building, reviewing, or migrating the interface of any Ensign College / Career Services app in Rob's GitHub, or when coordinating that UI work across Claude, Codex, Antigravity and Rob's Coding Helper. Applies the org's default Claude design system (Ensign Career Coach) through the ensign-design-system repo.
-version: 2.1.0
+version: 2.2.0
 category: general
 status: published
 ---
@@ -15,7 +15,7 @@ Every Ensign student- and mentor-facing app should read and behave like one prod
 | What | Where | Who can read it |
 |---|---|---|
 | Design system (canonical) | Claude Design artifact `https://claude.ai/artifact/2Nz7EPn8vjHGM5cwrXpy4v` (tokens.json, README, 5 components) | Claude only |
-| Mirror all agents use | GitHub `robbagley-dev/ensign-design-system` (private). Local clone `~/Local-Infra/ensign-design-system` on the Mac Studio | Claude, Codex, Antigravity, Rob's Coding Helper |
+| Mirror all agents use | GitHub `robbagley-afk/ensign-design-system` (public code mirror). Local clone `~/Local-Infra/ensign-design-system` on the Mac Studio | Claude, Codex, Antigravity, Rob's Coding Helper |
 | This skill (canonical copy) | `skill/ui-ux-principles/` in that repo | all |
 
 `tokens/tokens.json` in the repo is a byte-exact copy of the artifact's `project/tokens.json`. Never hand-edit it. Local deviations live in `tokens/overrides.json`, each with a reason and a status.
@@ -46,7 +46,7 @@ Read `README.md` and `docs/components.md` in the repo before a first migration. 
 Every text entry control (chat composer, feedback form, intake, search, admin form) looks the same so people find it instantly:
 
 - fill `--input-fill` #f1f5f9, turning `--surface` #ffffff on focus
-- border 2px `--input-border` #64748b (4.75:1 on white; `border-strong` #94a3b8 fails the 3:1 control-boundary rule, so it is not used for fields)
+- border 2px `--input-border` #64748b (4.75:1 on white; `border-strong` is also #64748b through overrides.json, pending upstream; fields continue to use `--input-border`)
 - text `--ink` at `--text-body` 19px, placeholder `--ink-muted`
 - min-height 44px, padding 14px 18px, `radius-lg` for textareas and `radius-md` for single-line inputs
 - `shadow-card` at rest, replaced by `shadow-focus` on focus, plus a 2px brand `:focus-visible` outline offset 2px
@@ -82,6 +82,20 @@ The audits enforce the gates above. Run both before any PR and fix every FAIL in
 | `response-format-mismatch` | static | Client parses only JSON while a server path streams SSE. Read both. |
 | `upload-below-feed` (WARN) | static | Move the chat upload into the chat header. |
 
+| `dark-theme` (FAIL) | static | Use the light ECC surface tokens and remove dark-theme overrides. |
+| `ds-missing` (FAIL) | static | Vendor all four ECC CSS files into every web directory. |
+| `ds-stale` (FAIL) | static | Re-vendor from the approved design-system revision. Never hand-edit vendored files. |
+| `emoji-markers` (WARN) | static | Replace emoji markers with aria-hidden inline SVG and a visible label. |
+| `field-unlabeled` (WARN) | static | Associate a visible label or provide an accessible aria-label. |
+| `focus-removed` (FAIL) | static | Keep or restore the visible 2px brand focus outline. |
+| `font-not-loaded` (WARN) | static | Load Montserrat weights 400/500/600/700 and verify the rendered font. |
+| `gold-as-ui` (WARN) | static | Reserve gold for identity marks. Use approved brand or status tokens for UI. |
+| `nbsp-in-css` (FAIL) | static | Replace non-breaking spaces outside CSS strings with ordinary spaces. |
+| `off-family` (WARN) | static | Use Montserrat with the system sans fallback. |
+| `public-static-drift` (FAIL) | static | Regenerate matching public/ and static/ assets from one source. |
+| `text-below-floor` (FAIL) | static | Raise rendered text to at least 17px. Body text uses 19px. |
+| `tokens-not-linked` (FAIL) | static | Link ecc-tokens.css in the documented stylesheet order. |
+
 Then do the manual checks the audits cannot: upload a fictional sample resume on each host (local and Vercel) and confirm an AI reply renders, and wheel-test the feed and landing at 375 and 1440 with Playwright `mouse.wheel`.
 - **Flex overflow:** `min-width: 0` on every flex or grid child in the chat layout (shell, main, feed, message, bubble, composer row). This, not `overflow: hidden`, is the fix for clipped text.
 - **Breakpoints:** 1280px (status pill appears), 1200px (organization suffix), under 900px (drawer plus 4-column step bar), under 640px (icon-only header buttons with aria-label, gutter 16px, composer wraps), 375px and below (gutter 12px, user bubble up to 90%). No horizontal page scroll at 320, 375, 768, 1440 or 1920px.
@@ -114,7 +128,7 @@ Default split: **Rob's Coding Helper writes most of the code, Claude supervises.
 
 | Agent | Role | Typical work | Model and effort |
 |---|---|---|---|
-| **Claude** (Cowork on the Mac Studio) | Supervisor and design owner | Owns `ROLLOUT.md` and sequencing. Pushes the vendor branch so the helper can read it, sends the helper its patch prompt, applies the returned diff, runs both audits, sends failures back for a revision, gives design sign-off, opens the PR. Syncs `tokens.json` from the Claude Design artifact (only Claude can read it). Edits the artifact only with Rob's yes. | Opus 5.5 medium for the rollout loop. Switch to Opus 5.5 high only for design-system conflicts, sync changes, or an app whose layout needs restructuring. Sonnet 5.5 low or medium (pilot, Mem 46ad2482) is enough for the pure apply-the-approved-diff and run-the-audit steps. |
+| **Claude** (Claude app on the Mac Studio) | Supervisor and design owner | Owns `ROLLOUT.md` and sequencing. Pushes the vendor branch so the helper can read it, sends the helper its patch prompt, applies the returned diff, runs both audits, sends failures back for a revision, gives design sign-off, opens the PR. Syncs `tokens.json` from the Claude Design artifact (only Claude can read it). Edits the artifact only with Rob's yes. | Opus 5.5 medium for the rollout loop. Switch to Opus 5.5 high only for design-system conflicts, sync changes, or an app whose layout needs restructuring. Sonnet 5.5 low or medium (pilot, Mem 46ad2482) is enough for the pure apply-the-approved-diff and run-the-audit steps. |
 | **Rob's Coding Helper** (Copilot Studio) | Primary code author, then reviewer | Reads the app and `ensign-design-system` on GitHub and writes the migration as unified diffs (prompt 1 in `references/handoffs.md`). Revises from audit output. After the PR opens, a fresh conversation reviews the PR against the acceptance checklist. Never gets local-only files, credentials or student data. | Its Sonnet router, which holds the GitHub connector, writes every patch. The Opus specialist cannot read GitHub, so use it only for small pasted questions. |
 | **Codex** | Fallback implementer | Takes an app when the helper's patch fails the audit twice, or when the change needs running code to get right (JS behavior, build steps). | Least costly Codex model likely to succeed, medium effort. |
 | **Antigravity** | Bulk runner | Mechanical, fully specified sweeps: vendor CSS into many repos, run the static audit across all repos, batch screenshots. | Gemini 3.8 Flash, low effort (med for screenshots). |
@@ -132,6 +146,8 @@ Handoff prompts for each lane are in `references/handoffs.md`. Every handoff nam
 3. Re-vendor into apps through the normal rollout. Apps fail `ds-stale` in the static audit until they do.
 
 ## Version history
+
+v2.2.0 expands the correction table to every static-audit code, corrects border-strong guidance to the approved override, and updates the Claude app name. Release assets and dashboard/CI verification are tracked in the enforcement PR before distribution.
 
 v2.1.0 (2026-10-02) makes the v2.0.4 rules enforceable. `ecc_audit_static.py` adds `width-cap` (now FAIL), `scroll-trap`, `unbounded-scroller`, `wheel-hijack`, `response-format-mismatch` and `upload-below-feed`. `ecc_audit_runtime.mjs` adds `scroll-trap` and `width-underfilled`. New gates: upload at the top and starts the AI review, and the same behavior local and on Vercel. Adds the Check and correct table. Fixtures: `scripts/fixtures/static-scroll-{bad,good}`.
 
