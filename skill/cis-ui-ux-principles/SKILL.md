@@ -1,7 +1,7 @@
 ---
 name: cis-ui-ux-principles
-description: Apply the Ensign Career Coach design system (Ensign College / Career Services brand, type, color, spacing, text fields, accessibility gates) when designing, building, reviewing, or restyling any Career Services app or web page. Use when a coworker says "make this match the Ensign style", "apply the design system", "review this UI", "restyle this app", "is this accessible", "fix the fonts/colors/layout", or builds any student- or mentor-facing screen.
-version: 2.2.0
+description: Apply the Ensign Career Coach design system (Ensign College / Career Services brand, type, color, spacing, text fields, accessibility gates, audits) when designing, building, reviewing, restyling or migrating any Career Services app or web page, and when coordinating that UI work across Claude, Codex, Antigravity and the coding helper. Use for "make this match the Ensign style", "apply the design system", "review this UI", "restyle this app", "is this accessible", "fix the fonts/colors/layout", or any student- or mentor-facing screen. One skill for Rob and coworkers.
+version: 3.0.0
 ---
 
 # CIS UI/UX Principles (Ensign Career Coach)
@@ -13,7 +13,7 @@ Every Ensign student- and mentor-facing app should read and behave like one prod
 | What | Where |
 |---|---|
 | Design system (canonical) | Claude Design: the organization's default design system, "Ensign Career Coach" (tokens, README, 5 components). Claude users in the Ensign organization see it automatically. |
-| Code mirror all tools use | GitHub repo `ensign-design-system` (public code mirror). It holds `tokens/tokens.json`, the four ECC CSS files, the audit scripts and `ROLLOUT.md`. |
+| Code mirror all tools use | GitHub `robbagley-afk/ensign-design-system` (public). Anyone can read and clone it. Ask Rob Bagley for write access before you push a branch or open a PR. It holds `tokens/tokens.json`, the four ECC CSS files, the audit scripts and `ROLLOUT.md`. |
 
 Never hand-edit `tokens/tokens.json`. Local deviations go in `tokens/overrides.json`, each with a reason and a status. If the design system itself looks wrong, tell Rob instead of changing it.
 
@@ -65,7 +65,7 @@ Use `.ecc-field` or the `.ecc-composer textarea` pattern from `css/ecc-app.css`.
 - **Same behavior local and serverless:** when an app runs both locally (`app.py`) and on Vercel (`api/index.py`), the page must handle every response format either server sends. If any server path streams `text/event-stream`, the client reads SSE (stop at `data: [DONE]`, the connection can stay open) as well as JSON. Test the AI reply on both hosts, not only one.
 - **Flex overflow:** `min-width: 0` on every flex or grid child in the chat layout. This, not `overflow: hidden`, fixes clipped text.
 - **Breakpoints:** 1280px (status pill appears), 1200px (organization suffix), under 900px (drawer plus 4-column step bar), under 640px (icon-only header buttons with aria-label, gutter 16px, composer wraps), 375px and below (gutter 12px, user bubble up to 90%). No horizontal page scroll at 320, 375, 768, 1440 or 1920px.
-- **Motion:** honor `prefers-reduced-motion` in CSS and JS scrolling.
+- **Motion:** honor `prefers-reduced-motion` in CSS and in JS scrolling (`behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'`).
 - **Windows High Contrast:** `@media (forced-colors: active)` keeps borders as `ButtonText` and focus as `Highlight`. No blanket `border: ... !important` on every control.
 - **Semantics:** every field has `<label for>` or `aria-label`. Errors use `aria-invalid` plus `aria-describedby`. Async results announce through `role="status"`.
 - **No emoji as icons or section markers.** Inline SVG with `aria-hidden="true"` plus a visible text label.
@@ -108,7 +108,7 @@ Commands run the same on Mac (zsh) and Windows (PowerShell), from the design-sys
 
 1. Claim the app in `ROLLOUT.md` (one owner per app at a time): `app | your name | branch | status`.
 2. Branch `ecc/<app>` from the app's main.
-3. Mac: `scripts/vendor_into_app.sh <app>`. Windows: Git Bash, same command, or copy the four `css/ecc-*.css` files into every web dir (public/ and static/ stay identical). Add the `<head>` links in the order the acceptance checklist lists.
+3. Mac: `scripts/vendor_into_app.sh <app>`. Windows: Git Bash, same command, or copy the four `css/ecc-*.css` files into every web dir (public/ and static/ stay identical). Add the `<head>` links in the order the acceptance checklist lists. Push this vendor commit before asking any coding helper for a patch, so it reads the same files the patch applies to.
 4. Replace the app's private color vars (`--green`, `--primary`, `--accent-blue`) with ECC tokens, raise every font size below 17px, remove dark theme blocks, swap emoji for SVG, restyle fields as above.
 5. `python3 scripts/ecc_audit_static.py <app>` (Windows: `py scripts\ecc_audit_static.py <app>`) until 0 FAIL. Use the Check and correct table for the scroll, width, upload and response-format codes.
 6. Run the app locally, then `node scripts/ecc_audit_runtime.mjs <url>` until 0 FAIL at all five widths. Screenshot 375 and 1440 with example data only, never student records.
@@ -120,6 +120,10 @@ A second opinion helps: the cis-coding-helper skill can review the PR against `r
 
 **Definition of done:** static audit 0 FAIL, upload-to-AI-reply verified on every host the app runs on, runtime audit 0 FAIL at 320/375/768/1440/1920, every WARN answered in the PR, public/ and static/ byte-identical, screenshots attached, checklist reviewed.
 
+## Orchestration in Rob's setup
+
+If the `rob-coding-helper` skill is installed (Rob's own Claude, Codex and Antigravity), also read its `references/design-rollout.md` before a migration. It holds the agent roles, the supervisor loop, the design-system sync from Claude Design and the ready-to-paste handoff prompts. Coworkers skip this section and use `cis-coding-helper` for a second opinion.
+
 ## Boundary
 
 Governs interface quality and brand consistency only. It doesn't authorize product-scope changes, data-flow changes, pushing to main, or edits to the design system.
@@ -127,3 +131,7 @@ Governs interface quality and brand consistency only. It doesn't authorize produ
 ## Portable assets
 
 The bundled assets/ folder contains the four ECC stylesheets and the matching static auditor, with a SHA-256 manifest. Follow assets/README.md to vendor and audit without repository access. Runtime and visual verification remain required.
+
+## Version history
+
+v3.0.0 (2026-10-22) merges `ui-ux-principles` into this skill so Rob and coworkers share one copy. The design rules are unchanged from v2.2.0. Rob-only orchestration (agent roles, supervisor loop, design sync, handoff prompts) moved to `rob-coding-helper/references/design-rollout.md`. `ui-ux-principles` is retired. Its history lives in this repo's git log.
