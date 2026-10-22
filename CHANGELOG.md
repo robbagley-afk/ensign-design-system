@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-22: one shared design skill (skill v3.0.0)
+
+- Merged PR #27 at `0af2ff625595773a970c5aeba65a237a00afbf7f`: `skill/cis-ui-ux-principles` is the one shared design skill for Rob and coworkers.
+- Retired `ui-ux-principles`; its history remains in Git. Active invocations and installs use `cis-ui-ux-principles`.
+- Design rules remain unchanged from v2.2.0. The shared skill adds the write-access line, JavaScript reduced-motion snippet, push-vendor-commit-first step and orchestration pointer. Rob-specific orchestration guidance ships in `rob-coding-helper/references/design-rollout.md`.
+
 ## 2026-10-20: enforcement and dashboard pattern (skill v2.2.0)
 
 - Added a pinned, secret-free reusable static audit and candidate-commit self-tests with positive and negative CLI contracts.
