@@ -20,7 +20,7 @@ Use for every migration PR. Reviewers (a teammate, your AI tool, or cis-coding-h
 
 ## Type and layout
 
-- [ ] Body text 19px, line-height 1.6. No rendered text under 17px
+- [ ] Body text 20px (`--text-body`), line-height 1.6. No rendered text under 17px
 - [ ] Chat feed and composer fill the width to the gutter. No 65ch or 1180px cap on the canvas
 - [ ] Left sidebar fixed at `--sidebar-width`, stacks at 900px
 - [ ] `min-width: 0` on every flex or grid child in the chat layout
@@ -37,7 +37,7 @@ Use for every migration PR. Reviewers (a teammate, your AI tool, or cis-coding-h
 ## Interaction and accessibility
 
 - [ ] Six states styled on every control: default, hover, active, focus-visible, disabled, current
-- [ ] Every control at least 44x44
+- [ ] Every control at least 44x44. ECC v2 step screens: buttons and fields 56px tall, chips and nav links 48px
 - [ ] No `outline: none` without a visible replacement
 - [ ] Status and active state use a label or shape as well as color
 - [ ] `prefers-reduced-motion` honored in CSS and JS scrolling

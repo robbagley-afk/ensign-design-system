@@ -1,7 +1,7 @@
 ---
 name: cis-ui-ux-principles
 description: Apply the Ensign Career Coach design system (Ensign College / Career Services brand, type, color, spacing, text fields, accessibility gates, audits) when designing, building, reviewing, restyling or migrating any Career Services app or web page, and when coordinating that UI work across Claude, Codex, Antigravity and the coding helper. Use for "make this match the Ensign style", "apply the design system", "review this UI", "restyle this app", "is this accessible", "fix the fonts/colors/layout", or any student- or mentor-facing screen. One skill for Rob and coworkers.
-version: 3.0.0
+version: 3.1.0
 ---
 
 # CIS UI/UX Principles (Ensign Career Coach)
@@ -25,11 +25,12 @@ Never hand-edit `tokens/tokens.json`. Local deviations go in `tokens/overrides.j
 
 Read `README.md` and `docs/components.md` in the repo before a first migration. The rules most often broken:
 
-1. **Audience first.** Mentors and students, often over 60, often on shared 1080p desktops, reading paragraphs of advice. Body text **19px**, line-height 1.6. **Nothing renders below 17px**, including captions, chips, timestamps, disclaimers and feedback controls.
+1. **Audience first.** Mentors and students, often over 60, often on shared 1080p desktops, reading paragraphs of advice. Design for desktop monitors first (1920 and 1440 wide), then make sure nothing breaks at phone widths. Body text **20px** (`--text-body`), line-height 1.6. Checklist titles 22px, typed text in fields 21px, buttons 20px/700. **Nothing renders below 17px**, including captions, chips, timestamps, disclaimers and feedback controls.
 2. **Fill the width.** Chat feed and composer fill the width up to `--gutter`: `clamp(24px, 3vw, 56px)` from 640px up, 16px under 640px, 12px at 375px and below. Header, step header, feed and composer share it so edges line up. No 65ch or 1180px cap on the chat canvas. The same holds for the page shell and every view inside it (app container, mode-selection screen, intake forms, cards): no fixed `max-width` in px. The page container uses `max-width: 100vw` (or none) plus `padding-inline: var(--gutter)`. Center narrow content inside a full-width card with grid columns, never by capping the card.
-3. **One theme, light.** Page `surface-sunken` #f8fafc, cards and panels `surface` #ffffff. No dark mode.
-4. **Ensign green `--brand` #006645 means "do this".** Primary buttons, links, the active step, focus rings. Nothing decorative.
-5. **Gold `--accent-gold` #FDB515 is an identity mark only.** Never a button, link, badge, border or highlight.
+3. **One theme, light.** Page `surface-sunken` #F3F6F4 (green-gray, ECC v2), cards and panels `surface` #ffffff. No dark mode.
+4. **Ensign green `--brand` #006645 means "do this".** Primary buttons, links, done states, focus rings. Nothing decorative. One green primary button per screen.
+   **Every other color has one job too (ECC v2):** `--brand-deep` #00382A = where you are (header band, current step), `--info` #1E40AF = Civitas and outside records, `--ai` #5B21B6 = Mentor AI, `--caution-*` = be careful (privacy warnings), `--danger` #B42318 = cannot be undone (finish and clear). Tints: `--brand-tint`, `--info-tint`, `--ai-tint`, `--caution-bg`, `--danger-bg`. No other hues.
+5. **Gold `--accent-gold` #FDB515 is an identity mark only.** The logo mark, the 5px stripe under the deep-green header band, the ring around the current step badge and the focus ring on the dark header. Never a button, link, callout, fill or text highlight.
 6. **One typeface.** Montserrat 400/500/600/700 with the system sans fallback. No serif, no Inter, no mono for UI.
 7. **Radius carries meaning.** `radius-md` 10px = clickable control. `radius-lg` 14px = content container. `radius-pill` = chip or status. User chat bubble alone uses `14px 14px 4px 14px`.
 8. **Two text colors.** `ink` #0f172a and `ink-muted` #475569. Borders `border` #cbd5e1 for structure, `border-strong` for controls.
@@ -43,7 +44,7 @@ Read `README.md` and `docs/components.md` in the repo before a first migration. 
 Every text entry control (chat composer, feedback form, intake, search, admin form) looks the same so people find it instantly:
 - fill `--input-fill` #f1f5f9, turning `--surface` #ffffff on focus
 - border 2px `--input-border` #64748b (4.75:1 on white. `border-strong` is also #64748b through overrides.json, pending upstream; fields continue to use `--input-border`)
-- text `--ink` at 19px, placeholder `--ink-muted`
+- text `--ink` at 19px (21px with `.ecc-field--lg` on ECC v2 step screens), placeholder `--ink-muted`
 - min-height 44px, padding 14px 18px, `radius-lg` for textareas and `radius-md` for single-line inputs
 - `shadow-card` at rest, `shadow-focus` on focus, plus a 2px brand `:focus-visible` outline offset 2px
 - on phones the field takes its own full-width row. Buttons wrap below it.
@@ -54,7 +55,7 @@ Use `.ecc-field` or the `.ecc-composer textarea` pattern from `css/ecc-app.css`.
 
 - **Six interactive states** on every control: default, hover, active, `:focus-visible`, disabled (`:disabled` and `[aria-disabled="true"]`), and current (`aria-current="page"` or `aria-selected`).
 - **Focus:** never `outline: none` without a replacement. `ecc-ces-compat.css` points `--ces-focus-ring` at brand green.
-- **Touch targets** 44x44 minimum, including icon buttons.
+- **Touch targets** 44x44 minimum, including icon buttons and check boxes. ECC v2 screens use `--control-height` 56px for buttons and fields and `--target-min` 48px for chips and nav links. Replace drag sliders with the `.ecc-numpick` number keys.
 - **Contrast:** 4.5:1 for text, 3:1 for control boundaries and focus rings. Check any new tint pair before shipping.
 - **Scroll model (wheel must work everywhere):** one owner per scroll axis. The page scrolls by default. The chat feed is the only inner scroller, and it has a bounded height (`max-height: max(320px, calc(100dvh - <top chrome>px))`) so the composer stays on screen. Rules that prevent dead wheel zones:
   - Never put `overflow-y: auto` on a container whose height is not bounded. It never overflows, but it still becomes a scroll container.
@@ -97,7 +98,7 @@ The audits enforce the gates above. Run both before any PR and fix every FAIL in
 | `nbsp-in-css` (FAIL) | static | Replace non-breaking spaces outside CSS strings with ordinary spaces. |
 | `off-family` (WARN) | static | Use Montserrat with the system sans fallback. |
 | `public-static-drift` (FAIL) | static | Regenerate matching public/ and static/ assets from one source. |
-| `text-below-floor` (FAIL) | static | Raise rendered text to at least 17px. Body text uses 19px. |
+| `text-below-floor` (FAIL) | static | Raise rendered text to at least 17px. Body text uses 20px. |
 | `tokens-not-linked` (FAIL) | static | Link ecc-tokens.css in the documented stylesheet order. |
 
 Then do the manual checks the audits cannot: upload a fictional sample resume on each host (local and Vercel) and confirm an AI reply renders, and wheel-test the feed and landing at 375 and 1440 with Playwright `mouse.wheel`.
@@ -133,5 +134,7 @@ Governs interface quality and brand consistency only. It doesn't authorize produ
 The bundled assets/ folder contains the four ECC stylesheets and the matching static auditor, with a SHA-256 manifest. Follow assets/README.md to vendor and audit without repository access. Runtime and visual verification remain required.
 
 ## Version history
+
+v3.1.0 (2026-10-23) adds ECC v2 from the ENS 101 Guide redesign, which Rob approved: bolder color with one job per hue, 20px body text, 56px controls, a green-gray page, desktop-first step screens (`.ecc-hdr-band`, `.ecc-stepper`, `.ecc-step-layout`, `.ecc-task`, `.ecc-numpick`, `.ecc-choice`, `.ecc-callout`, `.ecc-feature-card`, `.ecc-ai-panel`, `.ecc-actionbar` in `css/ecc-app.css`). Reference page: `scripts/fixtures/step-screen.html`. New tokens live in `tokens/overrides.json` as `rob-decision` until Claude Design adopts them.
 
 v3.0.0 (2026-10-22) merges `ui-ux-principles` into this skill so Rob and coworkers share one copy. The design rules are unchanged from v2.2.0. Rob-only orchestration (agent roles, supervisor loop, design sync, handoff prompts) moved to `rob-coding-helper/references/design-rollout.md`. `ui-ux-principles` is retired. Its history lives in this repo's git log.

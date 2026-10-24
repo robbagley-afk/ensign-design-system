@@ -30,6 +30,138 @@
       "value": "232px",
       "reason": "Career Explorer Coach exemplar (v1.3.0): fixed column, never over 280px, drawer under 900px.",
       "status": "exemplar"
+    },
+    {
+      "name": "surface-sunken",
+      "value": "#F3F6F4",
+      "reason": "Page background. Green-gray so white cards stand out (was #f8fafc). Ink on it is 16.41:1. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "brand-deep",
+      "value": "#00382A",
+      "reason": "Header band and current-step badge. White text 13.13:1. Gold on it 7.38:1. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "brand-tint-strong",
+      "value": "#C7E4D3",
+      "reason": "Border of done checklist rows, avatar fill, step connector. Decorative, never a control boundary. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "info",
+      "value": "#1E40AF",
+      "reason": "Civitas record and outside-system links, info callout text and border. White 8.72:1, on info-tint 7.50:1. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "info-tint",
+      "value": "#E8EEFC",
+      "reason": "Civitas note panel and info callout fill. Ink 15.36:1. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "ai",
+      "value": "#5B21B6",
+      "reason": "Mentor AI buttons and headings. White 8.98:1, on ai-tint 7.67:1. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "ai-tint",
+      "value": "#F1EAFE",
+      "reason": "Mentor AI panel fill. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "ai-border",
+      "value": "#7C3AED",
+      "reason": "Outline of Mentor AI prompt buttons on white. 5.7:1 (the mockup's #C4B1EF was 1.93:1 and failed 3:1). ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "caution-text",
+      "value": "#6B3E00",
+      "reason": "Caution callout heading, for example Keep notes appropriate. On caution-bg 8.13:1. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "caution-bg",
+      "value": "#FFF1D6",
+      "reason": "Caution callout fill. Ink 15.99:1. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "caution-border",
+      "value": "#B26B00",
+      "reason": "Caution callout border. 4.20:1 on white, above the 3:1 non-text floor. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "danger",
+      "value": "#B42318",
+      "reason": "Finish-and-clear buttons and error callouts. White 6.57:1, on danger-bg 5.75:1. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "danger-bg",
+      "value": "#FDECEA",
+      "reason": "Error callout fill. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "text-body",
+      "value": "20px",
+      "reason": "Body text rises from 19px. Senior mentors on desktop monitors. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "text-item",
+      "value": "22px",
+      "reason": "Checklist item titles. Weight 700, line-height 1.35. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "text-field",
+      "value": "21px",
+      "reason": "Text typed into fields and textareas. Line-height 1.55. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "text-button",
+      "value": "20px",
+      "reason": "Button labels. Weight 700. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "text-section",
+      "value": "26px",
+      "reason": "Section and card titles. Weight 800. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "text-title",
+      "value": "30px",
+      "reason": "Large card titles (Student's next step). ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "text-display",
+      "value": "36px",
+      "reason": "Step title on desktop screens. Weight 800, line-height 1.15. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "control-height",
+      "value": "56px",
+      "reason": "Minimum height of buttons, inputs and number-picker keys. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
+    },
+    {
+      "name": "target-min",
+      "value": "48px",
+      "reason": "Minimum size of any click target (chips, nav links). Raises the 44px touch-min for ECC v2 screens. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
+      "status": "rob-decision"
     }
   ]
 }
