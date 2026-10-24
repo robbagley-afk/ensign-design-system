@@ -28,26 +28,28 @@ Host is Vercel where the repo has `vercel.json`. Suite routes come from `UPSTREA
 
 | App repo | Family | Web dirs with ECC | Host | ECC CI | On v2 |
 |---|---|---|---|---|---|
-| ENS-101-Guide | forms | 1 | local, suite route `/ens101/` (gated) | yes | yes |
-| ensign-connect-navigator | F forms | 2 | Vercel | yes | no |
-| ensign-student-readiness-hub | F forms | 1 | local, suite route `/readiness/` (gated) | yes | no |
-| ensign-career-fair-coach | A chat | 2 | Vercel | yes | no |
+| ENS-101-Guide | forms | 1 | gated suite `/ens101/`, restarted by `ens101_restart.py` (no LaunchAgent) | yes | yes |
+| ensign-connect-navigator | F forms | 2 | Vercel, suite `/ensign-connect/` (`com.rob.ensign-connect-navigator`) | yes | no |
+| ensign-student-readiness-hub | F forms | 1 | gated suite `/readiness/`, started by `start_all_agents.sh` (`com.rob.local-ai-agent-suite`) | yes | no |
+| ensign-career-fair-coach | A chat | 2 | Vercel. The suite route `/career-fair/` serves an embedded copy | yes | no |
 | gemini-coaching-agent-starter | A chat | 2 | Vercel | yes | no |
-| major-career-explorer-coach-ai | A chat | 2 | Vercel | yes | no |
-| ensign-academic-advisor | A-like chat plus admin | 1 | local | yes | no |
-| internship-expert-coach-ai | B sidebar chat | 1 | Vercel | yes | no |
-| brewcoach-for-linkedin | C chat | 1 | Vercel, suite route `/linkedin/` (open) | yes | no |
-| brewcoach-local | C-like chat plus admin | 1 | local (its Vercel project returns 500) | yes | no |
-| resume-coach-ai | D resume coach | 2 | Vercel, suite route `/mentor-resume/` (gated) | yes | no |
+| major-career-explorer-coach-ai | A chat | 2 | Vercel, suite `/major-explorer/` (main) and gated `/mentor-explorer/` (branch `mentor-career-explorer-coach`, separate checkout) | yes | no |
+| ensign-academic-advisor | A-like chat plus admin | 1 | The suite route `/advisor/` serves an embedded copy | yes | no |
+| internship-expert-coach-ai | B sidebar chat | 1 | Vercel. The suite route `/internship/` serves an embedded copy | yes | no |
+| brewcoach-for-linkedin | C chat | 1 | Vercel | yes | no |
+| brewcoach-local | C-like chat plus admin | 1 | Mac Studio, suite route `/linkedin/` (open), `com.rob.brewcoach`. Its Vercel project returns 500 | yes | no |
+| resume-coach-ai | D resume coach | 2 | Vercel, gated suite `/mentor-resume/` (served from branch `live/origin-main-20261002`) | yes | no |
 | resume-coach-llm | D | 1 | local | yes | no |
-| interview-coach-local-llm | mono-split | 1 | local | yes | no |
-| transcription-meeting-summary | G Tailwind | 2 | local | yes | no |
+| interview-coach-local-llm | mono-split | 1 | The suite route `/interview/` serves an embedded copy | yes | no |
+| transcription-meeting-summary | G Tailwind | 2 | Mac Studio :5070, `com.rob.transcriber-web` (branch `gemma-qat/single-model-20260930`), not a suite route | yes | no |
 | career-services-tools | pages | 1 | GitHub Pages | yes | no |
+
+Mac Studio findings (read over SSH, 2026-10-23): the suite routes `/career-fair/`, `/advisor/`, `/internship/` and `/interview/` serve folders embedded inside the ai-agents-local-llm checkout (`Corey - Ensign Career Fair Coach`, `Ensign Academic Advisor`, `Internship Expert LOCAL LLM`, `Interview Coach LOCAL LLM`), not the standalone repos. Those embedded copies belong to the suite-restructure plan, which rejected hand-editing them. For these four apps, Phase 1 and 2 update the standalone repo and its Vercel deploy. The Mac Studio copies follow when the suite plan syncs them. Three served checkouts are not on main: resume-coach-ai (`live/origin-main-20261002`), the mentor explorer checkout (`mentor-career-explorer-coach`) and transcription (`gemma-qat/single-model-20260930`). Each runbook must say which branch gets the change.
 
 Out of scope:
 - ai-agents-local-llm suite dashboards. The suite-restructure row in `ROLLOUT.md` holds them (581 FAIL on main, 7-PR plan). PR 17 covers only the mentor login page.
 - your-portable-ai-team keeps its own branding (Rob, 2026-10-22).
-- linkedin-networking-tutor-coach-ensign, resume-ai-tutor-coach and career-mentor-powerapps have no vendored ECC web UI on GitHub. Confirm before deciding. Power Apps screens need their own plan.
+- linkedin-networking-tutor-coach-ensign (ChatGPT plugin) and resume-ai-tutor-coach (placeholder for resume-coach-ai). career-mentor-powerapps (CAR 201 Power App) only by separate request.
 - Non-Ensign repos.
 
 ## Phase 0: design-system prep (this repo, one or two PRs)
@@ -64,7 +66,7 @@ Out of scope:
    - Hosts and the upload-to-reply check for each.
    - Deploy runbook: served checkout path, served directory, launch mechanism (LaunchAgent, restart helper or none), restart command, and the names (never values) of environment variables it needs. ENS 101 has no LaunchAgent and restarts through `ens101_restart`, so runbooks are per app.
    - Rollback: last deployed commit and the exact rollback command.
-9. Merge Phase 0. Its merge commit becomes the release SHA. Install skill v3.1.0 where workers run (this iMac still has v3.0.0, with 19px guidance). Every worker reads the skill and migration guide from that SHA and records it in its handoff.
+9. Merge Phase 0. Its merge commit becomes the release SHA. Install skill v3.1.1 where workers run (this iMac still has v3.0.0, with 19px guidance). Every worker reads the skill and migration guide from that SHA and records it in its handoff.
 
 ## Phase 1: bring each app to the v2 tokens (14 PRs)
 
@@ -132,5 +134,5 @@ For every deploy:
 
 1. Phase 0 is now substantial (wrapper, composer, sidebar nav, `--v2` audit mode, matrices). Run it before any app, or start Wave 1 Phase 1 on the current release while Phase 0 is built?
 2. Phase 2 for student-facing apps too, or mentor and staff screens first? The v2 brief came from senior mentors on desktop monitors.
-3. linkedin-networking-tutor-coach-ensign, resume-ai-tutor-coach, career-mentor-powerapps: in scope or not?
-4. Sidebar for family B: light nav variant, or a dark sidebar that matches the header band?
+3. Resolved 2026-10-23: linkedin-networking-tutor-coach-ensign is a ChatGPT plugin (ChatGPT draws its UI) and resume-ai-tutor-coach is a placeholder for resume-coach-ai, so both are out. career-mentor-powerapps (CAR 201 interview scoring) stays out unless Rob asks for a separate Power Apps restyle.
+4. Sidebar for family B: Phase 0 builds the light variant (`.ecc-side-link`) as the default. A dark sidebar remains open if Rob prefers it.

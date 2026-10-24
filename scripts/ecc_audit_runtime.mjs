@@ -4,6 +4,8 @@
 //
 //   node scripts/ecc_audit_runtime.mjs <url> [--field "#chat-input"] [--setup state.js] [--json out.json]
 //   --setup: a JS file evaluated in the page after load (open a tab, modal or sample data) so hidden states get audited too
+//   --v2: also enforce ECC v2 (skill v3.1.0): body 20px, primary buttons and fields 56px, nav and chip targets 48px,
+//         text AA 4.5:1 as FAIL, control boundary and focus ring 3:1. Hover and current-state checks are WARN.
 //
 // Needs the `playwright` npm package (npm i -D playwright). Uses installed Google Chrome
 // (channel "chrome") so no browser download is needed. Exit 1 on any FAIL.
@@ -13,10 +15,11 @@ import { writeFileSync, readFileSync } from 'node:fs';
 const args = process.argv.slice(2);
 const url = args[0];
 const opt = (k) => { const i = args.indexOf(k); return i > -1 ? args[i + 1] : null; };
-if (!url) { console.error('usage: ecc_audit_runtime.mjs <url> [--field <selector>] [--json out.json]'); process.exit(2); }
+if (!url) { console.error('usage: ecc_audit_runtime.mjs <url> [--field <selector>] [--setup state.js] [--v2] [--json out.json]'); process.exit(2); }
 const setupJs = opt('--setup') ? readFileSync(opt('--setup'), 'utf8') : '';
 const fieldSel = opt('--field') || 'textarea, input[type="text"], input[type="email"], input[type="search"]';
 const WIDTHS = [320, 375, 768, 1440, 1920];
+const V2 = args.includes('--v2');
 
 // ECC_BROWSER_PATH points at a Chromium binary (cloud sessions); otherwise use installed Chrome
 const browser = await chromium.launch(process.env.ECC_BROWSER_PATH ? { executablePath: process.env.ECC_BROWSER_PATH } : { channel: process.env.ECC_BROWSER_CHANNEL || 'chrome' });
@@ -138,6 +141,98 @@ for (const w of WIDTHS) {
     const ring = await firstField.evaluate((e) => { const s = getComputedStyle(e); return { style: s.outlineStyle, width: s.outlineWidth, color: s.outlineColor, fv: e.matches(':focus-visible') }; });
     if (ring.style === 'none' || parseFloat(ring.width) < 2) r.findings.push({ severity: 'FAIL', code: 'focus-ring', msg: `field focus outline ${ring.style} ${ring.width}` });
     else if (ring.color !== 'rgb(0, 102, 69)') r.findings.push({ severity: 'WARN', code: 'focus-color', msg: `field focus ring ${ring.color}, expected brand #006645` });
+  }
+  if (V2) {
+    // AA text contrast is a gate in v2, not a WARN to answer
+    for (const f of r.findings) if (f.code === 'contrast-aa') { f.severity = 'FAIL'; f.code = 'contrast-aa-v2'; }
+    r.findings.push(...await page.evaluate(({ fieldSel }) => {
+      const out = [];
+      const add = (severity, code, msg) => out.push({ severity, code, msg });
+      const visible = (el) => { const b = el.getBoundingClientRect(); const s = getComputedStyle(el); return b.width > 0 && b.height > 0 && s.visibility !== 'hidden' && s.display !== 'none'; };
+      const name = (e) => (e.id ? '#' + e.id : e.tagName.toLowerCase() + (e.className ? '.' + String(e.className).split(' ')[0] : ''));
+      const parseColor = (c) => { const m = c.match(/^rgba?\(([\d.]+),? ([\d.]+),? ([\d.]+)(?:[,/] ?([\d.]+))?\)/); return m ? [+m[1], +m[2], +m[3], m[4] === undefined ? 1 : +m[4]] : null; };
+      const over = (top, base) => [0, 1, 2].map((i) => top[i] * top[3] + base[i] * (1 - top[3]));
+      const bgOf = (el) => { const stack = []; for (let n = el; n; n = n.parentElement) { const c = parseColor(getComputedStyle(n).backgroundColor); if (c && c[3] > 0) stack.push(c); if (c && c[3] >= 1) break; } return stack.reverse().reduce((b, c) => over(c, b), [255, 255, 255]); };
+      const lum = (rgb) => { const [r, g, b] = rgb.map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+      const ratio = (a, b) => { const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05); };
+      const list = (els, f) => els.slice(0, 3).map(f).join(' | ');
+      // body text 20px; 18-19px paragraphs are v1 leftovers (17px stays the caption floor)
+      const bodyPx = parseFloat(getComputedStyle(document.body).fontSize);
+      if (bodyPx < 20) add('FAIL', 'v2-body-size', `body font-size ${bodyPx}px, v2 body is 20px (var(--text-body))`);
+      const mid = [...document.querySelectorAll('p, li, dd, .ecc-msg')].filter(visible).filter((e) => !/eyebrow|label|caption/.test(String(e.className))).filter((e) => { const px = parseFloat(getComputedStyle(e).fontSize); return px > 17.5 && px < 19.5; });
+      if (mid.length) add('WARN', 'v2-body-copy', `${mid.length} text blocks at 18-19px, v2 body copy is 20px, e.g. ${list(mid, (e) => name(e) + ' ' + getComputedStyle(e).fontSize)}`);
+      // primary actions and text fields 56px
+      // every text-entry control, independent of --field (which only narrows the v1 field-style checks)
+      const V2_FIELDS = 'input:not([type]), input[type="text"], input[type="email"], input[type="search"], input[type="password"], input[type="number"], input[type="url"], input[type="tel"], textarea, select';
+      const big = [...document.querySelectorAll(`.ecc-btn-primary, .ecc-btn--lg, button[type="submit"], ${V2_FIELDS}`)].filter(visible)
+        .filter((e) => !e.closest('.ecc-hdr-band, [role="dialog"] header')).filter((e) => e.getBoundingClientRect().height < 55.5);
+      if (big.length) add('FAIL', 'v2-control-height', `${big.length} primary buttons or fields under 56px, e.g. ${list(big, (e) => name(e) + ' ' + Math.round(e.getBoundingClientRect().height) + 'px')}`);
+      // nav links and chips 48px
+      const nav = [...document.querySelectorAll('nav a[href], .ecc-nav-link, .ecc-side-link, .ecc-chip, [role="tab"]')].filter(visible).filter((e) => e.getBoundingClientRect().height < 47.5);
+      if (nav.length) add('FAIL', 'v2-target-min', `${nav.length} nav links or chips under 48px, e.g. ${list(nav, (e) => name(e) + ' ' + Math.round(e.getBoundingClientRect().height) + 'px')}`);
+      // control boundaries 3:1 against what is behind them (fields and outlined buttons)
+      // Known limit: a translucent border is blended over the parent background, not over the control's own fill
+      // (background-clip). ECC borders are opaque, so this only matters for app-specific translucent borders.
+      const weak = [...document.querySelectorAll(`${V2_FIELDS}, .ecc-btn-secondary, .ecc-choice, .ecc-task__check`)].filter(visible).filter((e) => {
+        const s = getComputedStyle(e); if (parseFloat(s.borderTopWidth) < 1) return false;
+        const c = parseColor(s.borderTopColor); if (!c) return false;
+        const behind = bgOf(e.parentElement || document.body); return ratio(over(c, behind), behind) < 3;
+      });
+      if (weak.length) add('FAIL', 'v2-boundary-contrast', `${weak.length} control borders under 3:1, e.g. ${list(weak, name)}`);
+      // current state must differ from its siblings in more than color (tint, border or weight)
+      const cur = [...document.querySelectorAll('[aria-current]:not([aria-current="false"]), [aria-selected="true"]')].filter(visible);
+      for (const e of cur.slice(0, 5)) {
+        const box = e.closest('[role="tablist"], [role="menubar"], [role="list"], nav, ul, ol') || e.parentElement || document.body;
+        const sib = [...box.querySelectorAll(e.tagName)].find((x) => x !== e && visible(x) && !x.matches('[aria-current]:not([aria-current="false"]), [aria-selected="true"]'));
+        if (!sib) continue;
+        const a = getComputedStyle(e), b = getComputedStyle(sib);
+        const differs = ['backgroundColor', 'borderLeftColor', 'borderBottomColor', 'borderTopColor', 'fontWeight', 'boxShadow'].filter((k) => a[k] !== b[k]);
+        if (!differs.length) add('WARN', 'v2-current-state', `${name(e)} looks the same as ${name(sib)}; mark current with tint, border or weight`);
+      }
+      return out;
+    }, { fieldSel }));
+    // focus ring 3:1 on a sample of controls, reached by keyboard so :focus-visible applies
+    const sample = (await page.$$('a[href], button:not([disabled]), input:not([type="hidden"]):not([disabled]), select, textarea')).slice(0, 12);
+    const weakRing = [], shadowRing = [];
+    for (const h of sample) {
+      if (!(await h.isVisible())) continue;
+      const restShadow = await h.evaluate((e) => getComputedStyle(e).boxShadow);
+      await page.keyboard.press('Shift');
+      await h.focus();
+      const res = await h.evaluate((e, restShadow) => {
+        // inert or otherwise unfocusable (a closed drawer): nothing to measure
+        if (document.activeElement !== e) return { skip: true };
+        const s = getComputedStyle(e);
+        const p = (c) => { const m = c.match(/^rgba?\(([\d.]+),? ([\d.]+),? ([\d.]+)(?:[,/] ?([\d.]+))?\)/); return m ? [+m[1], +m[2], +m[3], m[4] === undefined ? 1 : +m[4]] : null; };
+        const lum = (rgb) => { const [r, g, b] = rgb.map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+        // composite every background layer behind the control, not just the first opaque one
+        const stack = []; for (let n = e.parentElement; n; n = n.parentElement) { const c = p(getComputedStyle(n).backgroundColor); if (c && c[3] > 0) stack.push(c); if (c && c[3] >= 1) break; }
+        const bg = stack.reverse().reduce((b, c) => [0, 1, 2].map((i) => c[i] * c[3] + b[i] * (1 - c[3])), [255, 255, 255]);
+        const ring = s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) >= 2 ? p(s.outlineColor) : null;
+        const id = e.id ? '#' + e.id : e.tagName.toLowerCase() + (e.className ? '.' + String(e.className).split(' ')[0] : '');
+        // a shadow counts only if focus added it (decorative card shadows are not rings); its contrast is not measured
+        if (!ring) return s.boxShadow !== 'none' && s.boxShadow !== restShadow ? { id, ok: true, shadow: true } : { id, ok: false, why: 'no 2px outline or focus shadow' };
+        // a translucent outline shows as its color blended over what is behind it
+        const shown = [0, 1, 2].map((i) => ring[i] * ring[3] + bg[i] * (1 - ring[3]));
+        const [hi, lo] = [lum(shown), lum(bg)].sort((a, b) => b - a); const r = (hi + 0.05) / (lo + 0.05);
+        return { id, ok: r >= 3, why: `${r.toFixed(2)}:1` };
+      }, restShadow);
+      if (res.skip) continue;
+      if (!res.ok) weakRing.push(`${res.id} ${res.why}`);
+      else if (res.shadow) shadowRing.push(res.id);
+    }
+    if (shadowRing.length) r.findings.push({ severity: 'WARN', code: 'v2-focus-shadow', msg: `${shadowRing.length} focus indicators are shadows only, contrast not measured, e.g. ${shadowRing.slice(0, 3).join(' | ')}` });
+    if (weakRing.length) r.findings.push({ severity: 'FAIL', code: 'v2-focus-ring', msg: `${weakRing.length} focus rings missing or under 3:1, e.g. ${weakRing.slice(0, 3).join(' | ')}` });
+    // hover must change something on the first primary action
+    const prim = await page.$('.ecc-btn-primary, .ecc-btn--lg, button[type="submit"]');
+    if (prim && await prim.isVisible()) {
+      const look = () => prim.evaluate((e) => { const s = getComputedStyle(e); return [s.backgroundColor, s.borderTopColor, s.color, s.boxShadow].join('|'); });
+      // park the mouse away from controls first; buttons animate background over 0.15s
+      await page.mouse.move(w - 2, 898); await page.waitForTimeout(250);
+      const before = await look(); await prim.hover(); await page.waitForTimeout(400); const after = await look();
+      if (before === after) r.findings.push({ severity: 'WARN', code: 'v2-hover-state', msg: 'first primary action has no hover change' });
+      await page.mouse.move(0, 0);
+    }
   }
   if (r.findings.some((f) => f.severity === 'FAIL')) fail = true;
   results.push({ width: w, ...r });

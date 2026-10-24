@@ -1,0 +1,128 @@
+<!-- ECC v2 chat screen reference: scripts/fixtures/chat-screen-v2.html. Fictional data only.
+     Must report 0 FAIL and 0 WARN in ecc_audit_runtime.mjs, with and without --v2, at 320/375/768/1440/1920. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Coach chat screen: Fictional Preview</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/ecc-tokens.css">
+  <link rel="stylesheet" href="/css/ecc-ces-compat.css">
+  <link rel="stylesheet" href="/css/ecc-components.base.css">
+  <link rel="stylesheet" href="/css/ecc-app.css">
+  <style>
+    /* App-level layout only. Everything visual comes from the ECC classes. */
+    .app-title { font-size: 23px; font-weight: 800; line-height: 1.2; }
+    .chat-shell { min-height: 0; }
+    .chat-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--gutter); background: var(--surface); border-bottom: 1.5px solid var(--border); min-width: 0; }
+    .chat-head h1 { margin: 0; font-size: var(--text-section); font-weight: 800; line-height: 1.2; flex: 1 1 260px; min-width: 0; }
+    /* the feed is the one inner scroller: bounded so the composer stays on screen, overscroll auto hands the wheel back */
+    .ecc-feed { max-height: max(320px, calc(100dvh - 330px)); overscroll-behavior: auto; }
+    .menu-button { min-height: var(--target-min); min-width: var(--target-min); padding: 0 var(--space-3); border-radius: var(--radius-md); border: 2px solid #fff; background: transparent; color: #fff; font: inherit; font-size: var(--text-button); font-weight: 700; cursor: pointer; align-items: center; gap: var(--space-2); }
+    .menu-button:hover { background: var(--brand-hover); }
+    .menu-button svg { width: 24px; height: 24px; }
+    .hdr-spacer { flex: 1; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    /* shown only under 900px, where the sidebar becomes a drawer (ecc-app.css hides .ecc-menu-button from 900px up) */
+    @media (max-width: 899.98px) { .hdr-spacer { display: none; } .menu-button { display: inline-flex; } }
+    @media (min-width: 900px) { .menu-button { display: none; } }
+  </style>
+</head>
+<body class="ecc">
+
+  <header class="ecc-hdr-band">
+    <div class="ecc-hdr-band__inner">
+      <button class="menu-button ecc-menu-button" type="button" aria-expanded="false" aria-controls="side" id="menu">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        Menu
+      </button>
+      <div>
+        <div class="app-title">Career Fair Coach</div>
+        <div class="ecc-hdr-band__sub">Ensign College Career Services</div>
+      </div>
+      <div class="hdr-spacer"></div>
+      <button class="ecc-btn ecc-btn--lg ecc-btn-ai" type="button">Ask Mentor AI</button>
+    </div>
+  </header>
+
+  <div class="ecc-shell chat-shell">
+    <aside class="ecc-sidebar" id="side" aria-label="Coach sections">
+      <nav class="ecc-side-nav" aria-label="Sections">
+        <a class="ecc-side-link" href="#" aria-current="page">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Practice chat
+        </a>
+        <a class="ecc-side-link" href="#">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          My resume
+        </a>
+        <a class="ecc-side-link" href="#">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Fair schedule
+        </a>
+      </nav>
+    </aside>
+    <div class="ecc-scrim" id="scrim" hidden></div>
+
+    <main class="ecc-main" aria-labelledby="chat-title">
+      <div class="chat-head">
+        <h1 id="chat-title">Practice your employer pitch</h1>
+        <button class="ecc-btn ecc-btn--lg ecc-btn-secondary" type="button">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+          Upload resume
+        </button>
+      </div>
+
+      <div class="ecc-feed" role="log" aria-live="polite" aria-label="Conversation">
+        <div class="ecc-msg ecc-msg-assistant">
+          <p class="ecc-msg-name">Career Fair Coach</p>
+          <p style="margin: 0">Hi Jordan. Let's practice a 30-second pitch for the Spring Career Fair. Tell me your major and the kind of role you want.</p>
+        </div>
+        <div class="ecc-msg ecc-msg-user">
+          <p class="ecc-msg-name">You</p>
+          <p style="margin: 0">I'm studying business analytics and I want an internship in data reporting.</p>
+        </div>
+        <div class="ecc-msg ecc-msg-assistant">
+          <p class="ecc-msg-name">Career Fair Coach</p>
+          <p style="margin: 0">Good start. Lead with one result you're proud of, like a dashboard you built for a class project, then name the role. Try it again in two or three sentences.</p>
+        </div>
+        <div class="ecc-callout ecc-callout--danger" role="alert">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v6"/><path d="M12 16.5v.5"/></svg>
+          <p style="margin: 0"><span class="ecc-callout__lead">The coach did not answer.</span> Your message is saved. Send it again.</p>
+        </div>
+      </div>
+
+      <form class="ecc-composer ecc-composer--v2" onsubmit="return false">
+        <label class="ecc-composer-label" for="chat-input">Your message</label>
+        <textarea class="ecc-field" id="chat-input" rows="1" placeholder="Type your pitch"></textarea>
+        <button class="ecc-btn ecc-btn-primary" type="submit">
+          Send
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
+        </button>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    // Drawer under 900px: hamburger with aria-expanded, scrim and Escape close it, focus returns to the menu button.
+    // A closed drawer is inert so its links leave the tab order; from 900px up the sidebar is always reachable.
+    const menu = document.getElementById('menu'), side = document.getElementById('side'), scrim = document.getElementById('scrim');
+    const narrow = matchMedia('(max-width: 899.98px)');
+    const isOpen = () => side.classList.contains('is-open');
+    const sync = () => { side.inert = narrow.matches && !isOpen(); };
+    const setOpen = (open, refocus) => {
+      side.classList.toggle('is-open', open); scrim.hidden = !open; menu.setAttribute('aria-expanded', String(open)); sync();
+      if (open) side.querySelector('a, button')?.focus(); else if (refocus) menu.focus();
+    };
+    menu.addEventListener('click', () => setOpen(!isOpen()));
+    scrim.addEventListener('click', () => setOpen(false, true));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen()) setOpen(false, true); });
+    narrow.addEventListener('change', () => { if (!narrow.matches && isOpen()) setOpen(false); sync(); });
+    sync();
+  </script>
+</body>
+</html>
