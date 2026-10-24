@@ -162,14 +162,18 @@ for (const w of WIDTHS) {
       const mid = [...document.querySelectorAll('p, li, dd, .ecc-msg')].filter(visible).filter((e) => !/eyebrow|label|caption/.test(String(e.className))).filter((e) => { const px = parseFloat(getComputedStyle(e).fontSize); return px > 17.5 && px < 19.5; });
       if (mid.length) add('WARN', 'v2-body-copy', `${mid.length} text blocks at 18-19px, v2 body copy is 20px, e.g. ${list(mid, (e) => name(e) + ' ' + getComputedStyle(e).fontSize)}`);
       // primary actions and text fields 56px
-      const big = [...document.querySelectorAll(`.ecc-btn-primary, .ecc-btn--lg, button[type="submit"], ${fieldSel}`)].filter(visible)
+      // every text-entry control, independent of --field (which only narrows the v1 field-style checks)
+      const V2_FIELDS = 'input:not([type]), input[type="text"], input[type="email"], input[type="search"], input[type="password"], input[type="number"], input[type="url"], input[type="tel"], textarea, select';
+      const big = [...document.querySelectorAll(`.ecc-btn-primary, .ecc-btn--lg, button[type="submit"], ${V2_FIELDS}`)].filter(visible)
         .filter((e) => !e.closest('.ecc-hdr-band, [role="dialog"] header')).filter((e) => e.getBoundingClientRect().height < 55.5);
       if (big.length) add('FAIL', 'v2-control-height', `${big.length} primary buttons or fields under 56px, e.g. ${list(big, (e) => name(e) + ' ' + Math.round(e.getBoundingClientRect().height) + 'px')}`);
       // nav links and chips 48px
       const nav = [...document.querySelectorAll('nav a[href], .ecc-nav-link, .ecc-side-link, .ecc-chip, [role="tab"]')].filter(visible).filter((e) => e.getBoundingClientRect().height < 47.5);
       if (nav.length) add('FAIL', 'v2-target-min', `${nav.length} nav links or chips under 48px, e.g. ${list(nav, (e) => name(e) + ' ' + Math.round(e.getBoundingClientRect().height) + 'px')}`);
       // control boundaries 3:1 against what is behind them (fields and outlined buttons)
-      const weak = [...document.querySelectorAll(`${fieldSel}, select, .ecc-btn-secondary, .ecc-choice, .ecc-task__check`)].filter(visible).filter((e) => {
+      // Known limit: a translucent border is blended over the parent background, not over the control's own fill
+      // (background-clip). ECC borders are opaque, so this only matters for app-specific translucent borders.
+      const weak = [...document.querySelectorAll(`${V2_FIELDS}, .ecc-btn-secondary, .ecc-choice, .ecc-task__check`)].filter(visible).filter((e) => {
         const s = getComputedStyle(e); if (parseFloat(s.borderTopWidth) < 1) return false;
         const c = parseColor(s.borderTopColor); if (!c) return false;
         const behind = bgOf(e.parentElement || document.body); return ratio(over(c, behind), behind) < 3;
@@ -196,6 +200,8 @@ for (const w of WIDTHS) {
       await page.keyboard.press('Shift');
       await h.focus();
       const res = await h.evaluate((e, restShadow) => {
+        // inert or otherwise unfocusable (a closed drawer): nothing to measure
+        if (document.activeElement !== e) return { skip: true };
         const s = getComputedStyle(e);
         const p = (c) => { const m = c.match(/^rgba?\(([\d.]+),? ([\d.]+),? ([\d.]+)(?:[,/] ?([\d.]+))?\)/); return m ? [+m[1], +m[2], +m[3], m[4] === undefined ? 1 : +m[4]] : null; };
         const lum = (rgb) => { const [r, g, b] = rgb.map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
@@ -206,9 +212,12 @@ for (const w of WIDTHS) {
         const id = e.id ? '#' + e.id : e.tagName.toLowerCase() + (e.className ? '.' + String(e.className).split(' ')[0] : '');
         // a shadow counts only if focus added it (decorative card shadows are not rings); its contrast is not measured
         if (!ring) return s.boxShadow !== 'none' && s.boxShadow !== restShadow ? { id, ok: true, shadow: true } : { id, ok: false, why: 'no 2px outline or focus shadow' };
-        const [hi, lo] = [lum(ring), lum(bg)].sort((a, b) => b - a); const r = (hi + 0.05) / (lo + 0.05);
+        // a translucent outline shows as its color blended over what is behind it
+        const shown = [0, 1, 2].map((i) => ring[i] * ring[3] + bg[i] * (1 - ring[3]));
+        const [hi, lo] = [lum(shown), lum(bg)].sort((a, b) => b - a); const r = (hi + 0.05) / (lo + 0.05);
         return { id, ok: r >= 3, why: `${r.toFixed(2)}:1` };
       }, restShadow);
+      if (res.skip) continue;
       if (!res.ok) weakRing.push(`${res.id} ${res.why}`);
       else if (res.shadow) shadowRing.push(res.id);
     }

@@ -66,7 +66,7 @@ Out of scope:
    - Hosts and the upload-to-reply check for each.
    - Deploy runbook: served checkout path, served directory, launch mechanism (LaunchAgent, restart helper or none), restart command, and the names (never values) of environment variables it needs. ENS 101 has no LaunchAgent and restarts through `ens101_restart`, so runbooks are per app.
    - Rollback: last deployed commit and the exact rollback command.
-9. Merge Phase 0. Its merge commit becomes the release SHA. Install skill v3.1.0 where workers run (this iMac still has v3.0.0, with 19px guidance). Every worker reads the skill and migration guide from that SHA and records it in its handoff.
+9. Merge Phase 0. Its merge commit becomes the release SHA. Install skill v3.1.1 where workers run (this iMac still has v3.0.0, with 19px guidance). Every worker reads the skill and migration guide from that SHA and records it in its handoff.
 
 ## Phase 1: bring each app to the v2 tokens (14 PRs)
 

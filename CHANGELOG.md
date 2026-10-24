@@ -11,6 +11,11 @@
 - `scripts/fixtures/chat-screen-v2.html`: fictional chat reference (header band, light sidebar, feed, danger callout, v2 composer, drawer under 900px). 0 FAIL 0 WARN with and without `--v2` at five widths. `step-screen.html` also passes `--v2`. `runtime-good.html` (v1) fails it, as it should.
 - `docs/ecc-v2-migration.md`: release invariant, Phase 1 hunt for hardcoded v1 values, Phase 2 pattern swaps, traps.
 - Skill assets: `ecc-app.css` re-copied, `SHA256.json` rebuilt.
+- Review fixes (Coding Helper, then Codex on the iMac):
+  - `v2_revendor.sh` validates the workflow (it must exist, with one `uses@sha` and one `design-system-ref`) and every web dir before the first write. It stages only the files it wrote and restores them if anything fails after writing. Tested: short, unmerged and missing-dir inputs exit 2. A missing workflow exits 2 with nothing changed. A failed copy restores a clean tree. A real run on career-services-tools gives 0 FAIL with both pins moved.
+  - The reusable workflow fails when a caller's `uses: ...@sha` and `design-system-ref` differ. The self-test is exempt because it calls the workflow by local path.
+  - `--v2`: the 56px and border checks cover every text-entry type and `select`, whatever `--field` says. The ring background composites every translucent layer. Outline alpha counts toward contrast. A shadow counts as a ring only if focus added it, and it is reported as a WARN with contrast unmeasured. Elements that cannot take focus (inert) are skipped. The current-state check compares siblings inside the nearest nav or list. The hover probe parks the mouse first. One known limit is documented in the code: a translucent border is blended over the parent background, not over the control's own fill.
+  - `chat-screen-v2.html`: the closed drawer is inert under 900px. Escape and the scrim close it and return focus to Menu.
 
 ## 2026-10-23: ECC v2, bolder color and desktop step screens (skill v3.1.0)
 

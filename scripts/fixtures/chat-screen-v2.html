@@ -108,11 +108,21 @@
   </div>
 
   <script>
-    // Drawer under 900px: hamburger with aria-expanded, scrim closes it
+    // Drawer under 900px: hamburger with aria-expanded, scrim and Escape close it, focus returns to the menu button.
+    // A closed drawer is inert so its links leave the tab order; from 900px up the sidebar is always reachable.
     const menu = document.getElementById('menu'), side = document.getElementById('side'), scrim = document.getElementById('scrim');
-    const setOpen = (open) => { side.classList.toggle('is-open', open); scrim.hidden = !open; menu.setAttribute('aria-expanded', String(open)); };
-    menu.addEventListener('click', () => setOpen(!side.classList.contains('is-open')));
-    scrim.addEventListener('click', () => setOpen(false));
+    const narrow = matchMedia('(max-width: 899.98px)');
+    const isOpen = () => side.classList.contains('is-open');
+    const sync = () => { side.inert = narrow.matches && !isOpen(); };
+    const setOpen = (open, refocus) => {
+      side.classList.toggle('is-open', open); scrim.hidden = !open; menu.setAttribute('aria-expanded', String(open)); sync();
+      if (open) side.querySelector('a, button')?.focus(); else if (refocus) menu.focus();
+    };
+    menu.addEventListener('click', () => setOpen(!isOpen()));
+    scrim.addEventListener('click', () => setOpen(false, true));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen()) setOpen(false, true); });
+    narrow.addEventListener('change', () => { if (!narrow.matches && isOpen()) setOpen(false); sync(); });
+    sync();
   </script>
 </body>
 </html>
