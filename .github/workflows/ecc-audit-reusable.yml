@@ -27,6 +27,23 @@ jobs:
             exit 1
           fi
 
+      - name: Require one release for the workflow pin and the CSS pin
+        # The caller's `uses: ...@<sha>` and `design-system-ref` must name the same release, or CSS from one release
+        # could pass under the workflow of another. The self-test calls this file by local path, so it is exempt.
+        if: github.repository != 'robbagley-afk/ensign-design-system'
+        env:
+          WF_SHA: ${{ github.job_workflow_sha }}
+          DS_REF: ${{ inputs.design-system-ref }}
+        run: |
+          if [ -z "$WF_SHA" ]; then
+            echo "::warning::job_workflow_sha is not available on this runner; workflow and CSS pins were not compared"
+            exit 0
+          fi
+          if [ "$WF_SHA" != "$DS_REF" ]; then
+            echo "::error::uses: ...ecc-audit-reusable.yml@${WF_SHA} and design-system-ref ${DS_REF} must name the same release. Run scripts/v2_revendor.sh."
+            exit 1
+          fi
+
       - name: Checkout caller repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
