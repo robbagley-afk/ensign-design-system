@@ -35,7 +35,9 @@ const args = process.argv.slice(2), opt = k => { const i = args.indexOf(k); retu
 const RECOVER = !args.includes('--no-recovery'); // Bounded manual path: send once and stop on any failure.
 const jobsFile = path.resolve(args[0]), JD = path.dirname(jobsFile), rp = p => path.isAbsolute(p) ? p : path.join(JD, p);
 const jobs = JSON.parse(fs.readFileSync(jobsFile, 'utf8')).map(j => ({ files: [], ...j }));
-try { for (const j of jobs) j._agent = agentForJob(j, opt('--agent'), REG); } // fail before claiming a lane
+const cliAgent = opt('--agent'); // a bare or empty --agent is an error, never the default helper
+if (args.includes('--agent') && (!cliAgent || cliAgent.startsWith('--'))) { console.log('DISPATCH bad agent: --agent needs an alias or URL'); process.exit(1); }
+try { for (const j of jobs) j._agent = agentForJob(j, cliAgent, REG); } // fail before claiming a lane
 catch (e) { console.log(`DISPATCH bad agent: ${e.message}`); process.exit(1); }
 const isReview = j => j.kind === 'review', wantOf = j => (isReview(j) ? 0 : j.to - j.from + 1);
 const lane = REG.lanes.find(l => l.name === (opt('--lane') || REG.lanes.find(x => x.role === 'primary').name));

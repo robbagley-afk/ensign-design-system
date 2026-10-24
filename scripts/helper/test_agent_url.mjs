@@ -29,7 +29,7 @@ test('unknown alias or non-M365 URL throws', () => {
   assert.throws(() => resolveAgent('https://evil.example.com/chat/agent/T_1.2', REG), /unknown agent/);
   assert.throws(() => resolveAgent('toString', REG), /unknown agent/);
 });
-test('dispatch exits 1 on a bad agent before claiming the lane or reaching CDP', async t => {
+async function driver(t, jobs) {
   const home = fs.mkdtempSync(path.join(os.tmpdir(), 'agent-url-')), dir = path.join(home, 'driver'); fs.mkdirSync(dir);
   t.after(() => fs.rmSync(home, { recursive: true, force: true }));
   for (const name of ['dispatch.mjs', 'lane-ownership.mjs', 'agent-url.mjs']) fs.copyFileSync(path.join(here, name), path.join(dir, name));
@@ -40,9 +40,23 @@ test('dispatch exits 1 on a bad agent before claiming the lane or reaching CDP',
   const root = path.join(home, 'Local-Infra/browser-lanes'); fs.mkdirSync(root, { recursive: true });
   fs.writeFileSync(path.join(root, 'lane_lock.sh'), `#!/bin/sh\ntouch '${marker}'\nexit 0\n`, { mode: 0o755 });
   fs.writeFileSync(path.join(dir, 'lanes.json'), JSON.stringify({ ...REG, locks: path.join(home, 'locks'), outRoot: path.join(home, 'out'), lanes: [{ name: 'test', role: 'primary', port: 1 }] }));
-  fs.writeFileSync(path.join(dir, 'jobs.json'), JSON.stringify([{ id: 'rv', kind: 'review', prompt: 'p.txt', agent: 'nope' }]));
-  const r = await exec(process.execPath, [path.join(dir, 'dispatch.mjs'), path.join(dir, 'jobs.json')], { env: { ...process.env, HOME: home } }).catch(e => e);
+  fs.writeFileSync(path.join(dir, 'jobs.json'), JSON.stringify(jobs));
+  const run = async (...extra) => exec(process.execPath, [path.join(dir, 'dispatch.mjs'), path.join(dir, 'jobs.json'), ...extra], { env: { ...process.env, HOME: home } }).catch(e => e);
+  return { run, marker };
+}
+test('dispatch exits 1 on a bad agent before claiming the lane or reaching CDP', async t => {
+  const { run, marker } = await driver(t, [{ id: 'rv', kind: 'review', prompt: 'p.txt', agent: 'nope' }]);
+  const r = await run();
   assert.equal(r.code, 1, r.stderr);
   assert.match(r.stdout, /DISPATCH bad agent: unknown agent "nope"/);
+  assert.equal(fs.existsSync(marker), false, 'lane lock helper must not run');
+});
+test('a bare, empty or option-valued --agent fails instead of falling back to the helper', async t => {
+  const { run, marker } = await driver(t, [{ id: 'rv', kind: 'review', prompt: 'p.txt' }]);
+  for (const extra of [['--agent'], ['--agent', ''], ['--agent', '--max', '2']]) {
+    const r = await run(...extra);
+    assert.equal(r.code, 1, `${extra.join(' ')}: ${r.stderr}`);
+    assert.match(r.stdout, /DISPATCH bad agent: --agent needs an alias or URL/);
+  }
   assert.equal(fs.existsSync(marker), false, 'lane lock helper must not run');
 });
