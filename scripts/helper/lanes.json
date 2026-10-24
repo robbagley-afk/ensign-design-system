@@ -1,6 +1,10 @@
 {
  "_doc": "Helper lane registry (iMac). dispatch.mjs claims only role primary or failover. One lane = port + profile + launcher + owner. Never point a second tool at a lane profile. Helper chat works from either account, so dispatch lanes sign in as robbagley@ensign.edu. ecenter24@ensign.net lanes are role manual, for Copilot Studio maker work only (Rob 2026-09-30, replaces the 2026-09-29 ecenter24-only rule). Plists must set AbandonProcessGroup true. Stop lanes only with lane_stop.mjs.",
  "agentUrl": "https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15",
+ "agents": {
+  "helper": "https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15",
+  "token-saver": "https://m365.cloud.microsoft/chat/agent/T_45c4f56f-36ee-1db8-5d94-81612ae405a6.80ad698a-d6b4-4676-8731-b997e6fa08c7"
+ },
  "locks": "~/Local-Infra/ui-audit/_helper/locks",
  "outRoot": "~/Local-Infra/ui-audit/_helper/dispatch",
  "lanes": [

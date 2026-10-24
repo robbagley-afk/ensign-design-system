@@ -1,7 +1,9 @@
-// dispatch.mjs <jobs.json> [--lane NAME] [--max N] [--no-recovery]
+// dispatch.mjs <jobs.json> [--lane NAME] [--max N] [--no-recovery] [--agent ALIAS|URL]
 // Runs Rob's Coding Helper block batches in parallel on ONE claimed lane, then applies replies in order.
 // jobs.json: [{"id":"mc-1","blocks":"mc.blocks.json","from":1,"to":13,"files":["app.css"],"rules":"rules_ecc.txt"}]
 //   "rules" optional (default blocks.py's rules_ecc.txt). Relative paths resolve against the jobs file's folder.
+//   "agent" optional: alias from lanes.json "agents" (helper, token-saver) or a full M365 agent URL. Job beats
+//     --agent, which beats lanes.json agentUrl. Token Saver is the fast choice for drafting and quick reviews.
 //   Keep each batch near 5,000 prompt characters (10 to 15 blocks).
 //   "engine":"qwen" (block jobs only): try local Qwen first (qwen.mjs run code). Qwen down, busy or bad reply falls back
 //     to the helper lane in the same run. Use it for mechanical rewrites (token swaps, emoji, scaling), never for fixes
@@ -22,6 +24,7 @@
 // Exit: 0 all OK, 1 some jobs failed, 2 lane busy/down, 3 login wall or connect card (Rob acts), 4 throttled.
 import { chromium } from 'playwright';
 import { claimSharedLane, waitForLauncherIdle } from './lane-ownership.mjs';
+import { agentForJob } from './agent-url.mjs';
 import fs from 'node:fs'; import path from 'node:path'; import os from 'node:os';
 import { execFileSync, execFile } from 'node:child_process'; import { randomBytes, createHash } from 'node:crypto';
 import { promisify } from 'node:util'; const execFileP = promisify(execFile);
@@ -32,6 +35,8 @@ const args = process.argv.slice(2), opt = k => { const i = args.indexOf(k); retu
 const RECOVER = !args.includes('--no-recovery'); // Bounded manual path: send once and stop on any failure.
 const jobsFile = path.resolve(args[0]), JD = path.dirname(jobsFile), rp = p => path.isAbsolute(p) ? p : path.join(JD, p);
 const jobs = JSON.parse(fs.readFileSync(jobsFile, 'utf8')).map(j => ({ files: [], ...j }));
+try { for (const j of jobs) j._agent = agentForJob(j, opt('--agent'), REG); } // fail before claiming a lane
+catch (e) { console.log(`DISPATCH bad agent: ${e.message}`); process.exit(1); }
 const isReview = j => j.kind === 'review', wantOf = j => (isReview(j) ? 0 : j.to - j.from + 1);
 const lane = REG.lanes.find(l => l.name === (opt('--lane') || REG.lanes.find(x => x.role === 'primary').name));
 if (!lane || !['primary', 'failover'].includes(lane.role)) { console.log('DISPATCH lane not dispatchable'); process.exit(2); }
@@ -74,8 +79,8 @@ const BUSY = /Lining things up|Gathering details|Thinking…|Working on it|Gener
 const STALL_MS = 240000, STALL_REVIEW_MS = 600000; // no new text for 4 min (reviews 10: the Opus specialist is slow): stop it, retry once in a fresh chat
 const THROTTLE = /too many requests|rate limit|reached (your|the) [^.]{0,40}limit|usage limit|try again later/i;
 class Stop extends Error { constructor(code, msg) { super(msg); this.code = code; } }
-async function jobPage() { // own minimized window, so the lane's main window keeps one tab
-  const { targetId } = await BS.send('Target.createTarget', { url: REG.agentUrl, newWindow: true, background: true });
+async function jobPage(url) { // own minimized window, so the lane's main window keeps one tab
+  const { targetId } = await BS.send('Target.createTarget', { url, newWindow: true, background: true });
   const { windowId } = await BS.send('Browser.getWindowForTarget', { targetId });
   await BS.send('Browser.setWindowBounds', { windowId, bounds: { windowState: 'minimized' } }).catch(() => {});
   for (let k = 0; k < 40; k++) {
@@ -143,9 +148,9 @@ async function runQwen(j) { // async so helper chats in other workers keep polli
   return r;
 }
 async function run(j) {
-  const nonce = 'NX-' + randomBytes(4).toString('hex'), want = wantOf(j), r = { id: j.id, nonce, want, msgs: 0, engine: j.engine === 'qwen' ? 'qwen->helper' : 'helper' };
+  const nonce = 'NX-' + randomBytes(4).toString('hex'), want = wantOf(j), r = { id: j.id, nonce, want, msgs: 0, engine: j.engine === 'qwen' ? `qwen->${j._agent.name}` : j._agent.name };
   const text = fs.readFileSync(buildPrompt(j, nonce), 'utf8');
-  const p = await jobPage();
+  const p = await jobPage(j._agent.url);
   try {
     await p.waitForLoadState('domcontentloaded'); await sleep(10000);
     const u = p.url();
