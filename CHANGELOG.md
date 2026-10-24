@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-23: ECC v2, bolder color and desktop step screens (skill v3.1.0)
+
+- Source: the ENS 101 Guide redesign (Claude Design canvas RzcqxdeUvTmWLbU5r17hiL), approved by Rob on 2026-10-23. Senior mentors on desktop monitors found v1 nearly monochrome and the type small.
+- 22 new tokens in `tokens/overrides.json`, status `rob-decision` until Claude Design adopts them. `tokens.json` is unchanged.
+  - Color roles: `brand-deep` #00382A (where you are), `brand-tint-strong`, `info` and `info-tint` (Civitas, outside records), `ai`, `ai-tint` and `ai-border` (Mentor AI), `caution-text`, `caution-bg` and `caution-border`, `danger` and `danger-bg` (cannot be undone). Each pair's contrast ratio is recorded in its reason. Body-text pairs reach AAA.
+  - `surface-sunken` #f8fafc to #F3F6F4 so white cards stand out.
+  - Type: `text-body` 19px to 20px, plus `text-item` 22px, `text-field` 21px, `text-button` 20px, `text-section` 26px, `text-title` 30px, `text-display` 36px.
+  - Size: `control-height` 56px, `target-min` 48px.
+  - `ai-border` is #7C3AED (5.7:1). The canvas mockup's #C4B1EF was 1.93:1 and failed the 3:1 control-boundary floor.
+- `css/ecc-app.css`: new ECC v2 section with `.ecc-hdr-band`, `.ecc-nav-link`, `.ecc-btn--lg` and the ai/info/danger button roles, `.ecc-stepper`, `.ecc-step-layout` (rail, work, record columns, desktop first), `.ecc-task` (whole-row target, 44px check box), `.ecc-numpick` (replaces drag sliders), `.ecc-choice`, `.ecc-callout` (caution, info, success, danger), `.ecc-feature-card`, `.ecc-field--lg`, `.ecc-ai-panel`, `.ecc-actionbar` (sticky Back, progress, Next).
+- New fictional reference page `scripts/fixtures/step-screen.html`. Runtime audit 0 FAIL at 320, 375, 768, 1440 and 1920. Static audit 0 FAIL, 0 WARN when vendored into a test app.
+- Skill `cis-ui-ux-principles` v3.1.0: 20px body, desktop first, one job per color, 56px controls, bundled CSS assets and `SHA256.json` rebuilt.
+- Rollout impact: once merged, every app with vendored ECC CSS reports `ds-stale` until re-vendored. Re-vendoring also brings the 20px body text and the new page color to that app.
+
 ## 2026-10-22: one shared design skill (skill v3.0.0)
 
 - Merged PR #27 at `0af2ff625595773a970c5aeba65a237a00afbf7f`: `skill/cis-ui-ux-principles` is the one shared design skill for Rob and coworkers.

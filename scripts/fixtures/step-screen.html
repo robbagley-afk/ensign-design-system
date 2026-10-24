@@ -1,0 +1,152 @@
+<!-- ECC v2 step screen reference: scripts/fixtures/step-screen.html. Fictional data only. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENS 101 Guide step screen: Fictional Preview</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/ecc-tokens.css">
+  <link rel="stylesheet" href="/css/ecc-ces-compat.css">
+  <link rel="stylesheet" href="/css/ecc-components.base.css">
+  <link rel="stylesheet" href="/css/ecc-app.css">
+  <style>
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 22px var(--space-6); }
+    .row-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); }
+    .stack { display: flex; flex-direction: column; gap: var(--space-3); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  </style>
+</head>
+<body class="ecc" style="font-size: var(--text-body)">
+
+  <header class="ecc-hdr-band">
+    <div class="ecc-hdr-band__inner">
+      <div>
+        <div style="font-size: 23px; font-weight: 800">ENS 101 Guide</div>
+        <div class="ecc-hdr-band__sub">Ensign College Career Services</div>
+      </div>
+      <nav aria-label="Main" style="display: flex; gap: 28px">
+        <a class="ecc-nav-link" href="#" aria-current="page">Appointment</a>
+        <a class="ecc-nav-link" href="#">Resources</a>
+      </nav>
+      <div style="flex: 1"></div>
+      <button class="ecc-btn ecc-btn--lg ecc-btn-ai" type="button">Ask Mentor AI</button>
+    </div>
+  </header>
+
+  <nav class="ecc-stepper" aria-label="Appointment progress">
+    <ol>
+      <li class="ecc-stepper__step is-done"><span class="ecc-stepper__badge" aria-hidden="true">1</span><span><span class="ecc-stepper__name">1. Look up the student</span> <span class="ecc-stepper__state">Done</span></span></li>
+      <li class="ecc-stepper__line" aria-hidden="true"></li>
+      <li class="ecc-stepper__step is-done"><span class="ecc-stepper__badge" aria-hidden="true">2</span><span><span class="ecc-stepper__name">2. Begin the appointment</span> <span class="ecc-stepper__state">Done</span></span></li>
+      <li class="ecc-stepper__line" aria-hidden="true"></li>
+      <li class="ecc-stepper__step" aria-current="step"><span class="ecc-stepper__badge">3</span><span><span class="ecc-stepper__name">3. Plan and wrap up</span> <span class="ecc-stepper__state">You are here</span></span></li>
+      <li class="ecc-stepper__line" aria-hidden="true"></li>
+      <li class="ecc-stepper__step is-next"><span class="ecc-stepper__badge">4</span><span><span class="ecc-stepper__name">4. Log in Civitas</span> <span class="ecc-stepper__state">Up next</span></span></li>
+    </ol>
+  </nav>
+
+  <main class="ecc-step-layout">
+    <aside class="ecc-step-rail stack" aria-label="About this appointment" style="gap: var(--space-5)">
+      <section class="card">
+        <h2 style="margin: 0 0 var(--space-3); font-size: 22px">Meeting with</h2>
+        <div style="font-size: 22px; font-weight: 800">Jordan Avery</div>
+        <div style="color: var(--ink-muted)">Example student</div>
+      </section>
+      <section class="ecc-ai-panel">
+        <h2>Need help with this step?</h2>
+        <div class="stack" style="margin-top: var(--space-3)">
+          <button type="button" class="ecc-ai-ask">Explain the internship timeline</button>
+          <button type="button" class="ecc-ai-ask">Recommend the next appointment</button>
+        </div>
+      </section>
+    </aside>
+
+    <section class="card" aria-labelledby="step-title" style="padding: 26px 30px">
+      <p class="ecc-step-eyebrow">Step 3 of 4 · About 12 to 15 minutes</p>
+      <h1 id="step-title" class="ecc-step-title">Plan and wrap up</h1>
+      <div class="stack" style="margin-top: 22px">
+        <h2 class="ecc-group-label">Internship plan</h2>
+        <label class="ecc-task is-done">
+          <input class="ecc-task__check" type="checkbox" checked>
+          <span style="flex: 1; min-width: 0">
+            <span class="row-head"><span class="ecc-task__title">Explain the internship requirement</span><span class="ecc-pill-done">Done</span></span>
+            <span class="ecc-task__detail">The internship should relate to the major. Encourage CAR 201 early.</span>
+          </span>
+        </label>
+        <label class="ecc-task">
+          <input class="ecc-task__check" type="checkbox">
+          <span style="flex: 1; min-width: 0">
+            <span class="row-head"><span class="ecc-task__title">Take the appointment selfie</span><span class="ecc-pill-todo">To do</span></span>
+            <span class="ecc-task__detail">Ask the student first.</span>
+          </span>
+        </label>
+        <div class="ecc-task is-done" style="cursor: default">
+          <input class="ecc-task__check" type="checkbox" checked aria-labelledby="conf-title">
+          <div style="flex: 1; min-width: 0">
+            <span id="conf-title" class="ecc-task__title">Ask again: how sure is the student about their career?</span>
+            <div class="ecc-numpick" role="group" aria-label="Career confidence, 1 to 10" style="margin-top: var(--space-3)">
+              <button type="button" class="ecc-numpick__key" aria-pressed="false">1</button>
+              <button type="button" class="ecc-numpick__key" aria-pressed="false">2</button>
+              <button type="button" class="ecc-numpick__key" aria-pressed="false">3</button>
+              <button type="button" class="ecc-numpick__key" aria-pressed="false">4</button>
+              <button type="button" class="ecc-numpick__key" aria-pressed="false">5<small>start</small></button>
+              <button type="button" class="ecc-numpick__key" aria-pressed="false">6</button>
+              <button type="button" class="ecc-numpick__key" aria-pressed="true">7</button>
+              <button type="button" class="ecc-numpick__key" aria-pressed="false">8</button>
+              <button type="button" class="ecc-numpick__key" aria-pressed="false">9</button>
+              <button type="button" class="ecc-numpick__key" aria-pressed="false">10</button>
+            </div>
+            <div class="ecc-callout ecc-callout--caution" style="margin-top: var(--space-3)"><span><span class="ecc-callout__lead">Suggested: talk about both.</span> Clarify the career direction, then choose together.</span></div>
+            <div role="radiogroup" aria-label="Next appointment" class="ecc-choice-row" style="margin-top: var(--space-3)">
+              <button type="button" role="radio" class="ecc-choice" aria-checked="false">Career Explorer appointment</button>
+              <button type="button" role="radio" class="ecc-choice" aria-checked="true">Create Resume appointment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stack" style="gap: var(--space-5)">
+      <section class="ecc-feature-card" aria-labelledby="ns-title">
+        <div class="ecc-feature-card__head"><h2 id="ns-title">Student’s next step</h2></div>
+        <div class="ecc-feature-card__body">
+          <label for="ns-what" style="font-size: 21px; font-weight: 700">What will the student do?</label>
+          <textarea id="ns-what" class="ecc-field ecc-field--lg">List three project coordinator internships in Handshake.</textarea>
+          <label for="ns-when" style="font-size: 21px; font-weight: 700">By when?</label>
+          <input id="ns-when" class="ecc-field ecc-field--lg" type="text" value="Friday, November 6">
+        </div>
+      </section>
+      <section class="card" aria-labelledby="cn-title">
+        <h2 id="cn-title" style="margin: 0 0 var(--space-3); font-size: 24px">Conversation notes</h2>
+        <div class="ecc-callout ecc-callout--caution" role="note"><span><span class="ecc-callout__lead">Keep notes appropriate.</span> No student IDs, passwords, money or health details.</span></div>
+        <label for="cn-notes" class="sr-only">Conversation notes</label>
+        <textarea id="cn-notes" class="ecc-field ecc-field--lg" style="margin-top: var(--space-3)"></textarea>
+      </section>
+    </div>
+  </main>
+
+  <nav class="ecc-actionbar" aria-label="Step navigation">
+    <a class="ecc-btn ecc-btn--lg ecc-btn-secondary" href="#">Back to step 2</a>
+    <div class="ecc-actionbar__progress"><span>4 of 6 done</span><div class="ecc-progress" aria-hidden="true"><span style="width: 67%"></span></div></div>
+    <a class="ecc-btn ecc-btn--lg ecc-btn-primary" href="#">Next: Write the Civitas note</a>
+  </nav>
+
+  <script>
+    document.querySelectorAll('.ecc-numpick__key').forEach((key) => key.addEventListener('click', () => {
+      key.parentElement.querySelectorAll('.ecc-numpick__key').forEach((k) => k.setAttribute('aria-pressed', String(k === key)));
+    }));
+    document.querySelectorAll('[role="radiogroup"]').forEach((group) => group.addEventListener('click', (e) => {
+      const pick = e.target.closest('[role="radio"]');
+      if (!pick) return;
+      group.querySelectorAll('[role="radio"]').forEach((r) => r.setAttribute('aria-checked', String(r === pick)));
+    }));
+    document.querySelectorAll('.ecc-task__check').forEach((box) => box.addEventListener('change', () => {
+      box.closest('.ecc-task').classList.toggle('is-done', box.checked);
+    }));
+  </script>
+</body>
+</html>

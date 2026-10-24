@@ -52,7 +52,7 @@ Gap: the exemplar's code is not yet committed to GitHub (checked 2026-09-25: `ma
 - **Words over icons.** Header buttons, feedback, and Send carry text labels at tablet and desktop widths. Icon-only buttons are allowed only under 640px and must keep an `aria-label`.
 - **Progressive disclosure.** Hide step descriptions, collapse starters after the first message, and show the status pill only on wide screens. Keep the chat above the fold.
 - **One primary action per region.** Green solid buttons go to the main CTA (header), Send, and Choose file. Everything else is a white button with a 1.5px border.
-- **Contrast & canvas.** A white or `#f8fafc` canvas with Ensign Green. No dark themes or dark gray containers.
+- **Contrast & canvas.** A white or `--surface-sunken` (#F3F6F4 in ECC v2) canvas with Ensign Green. No dark themes or dark gray containers.
 - **Typography & font fallbacks.** Montserrat with `display=swap` and the fallback stack `Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`. Headings have a solid color before any gradient-clip enhancement.
 - **Forced colors mode.** Support `@media (forced-colors: active)`: `Highlight` focus outlines, `CanvasText` text, and `ButtonFace`/`ButtonText` pills.
 - **Programmatic & live state.** Use `aria-invalid` + `aria-describedby` for errors, `aria-current` for the active step, `aria-pressed` for toggles, `aria-expanded` for the drawer, `role="log" aria-live="polite"` on the message feed, and `role="status"` for toasts and confirmations.
