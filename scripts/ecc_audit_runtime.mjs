@@ -178,7 +178,8 @@ for (const w of WIDTHS) {
       // current state must differ from its siblings in more than color (tint, border or weight)
       const cur = [...document.querySelectorAll('[aria-current]:not([aria-current="false"]), [aria-selected="true"]')].filter(visible);
       for (const e of cur.slice(0, 5)) {
-        const sib = [...(e.parentElement?.parentElement || document.body).querySelectorAll(e.tagName)].find((x) => x !== e && visible(x) && !x.matches('[aria-current]:not([aria-current="false"]), [aria-selected="true"]'));
+        const box = e.closest('[role="tablist"], [role="menubar"], [role="list"], nav, ul, ol') || e.parentElement || document.body;
+        const sib = [...box.querySelectorAll(e.tagName)].find((x) => x !== e && visible(x) && !x.matches('[aria-current]:not([aria-current="false"]), [aria-selected="true"]'));
         if (!sib) continue;
         const a = getComputedStyle(e), b = getComputedStyle(sib);
         const differs = ['backgroundColor', 'borderLeftColor', 'borderBottomColor', 'borderTopColor', 'fontWeight', 'boxShadow'].filter((k) => a[k] !== b[k]);
@@ -188,30 +189,38 @@ for (const w of WIDTHS) {
     }, { fieldSel }));
     // focus ring 3:1 on a sample of controls, reached by keyboard so :focus-visible applies
     const sample = (await page.$$('a[href], button:not([disabled]), input:not([type="hidden"]):not([disabled]), select, textarea')).slice(0, 12);
-    const weakRing = [];
+    const weakRing = [], shadowRing = [];
     for (const h of sample) {
       if (!(await h.isVisible())) continue;
+      const restShadow = await h.evaluate((e) => getComputedStyle(e).boxShadow);
       await page.keyboard.press('Shift');
       await h.focus();
-      const res = await h.evaluate((e) => {
+      const res = await h.evaluate((e, restShadow) => {
         const s = getComputedStyle(e);
         const p = (c) => { const m = c.match(/^rgba?\(([\d.]+),? ([\d.]+),? ([\d.]+)(?:[,/] ?([\d.]+))?\)/); return m ? [+m[1], +m[2], +m[3], m[4] === undefined ? 1 : +m[4]] : null; };
         const lum = (rgb) => { const [r, g, b] = rgb.map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
-        let bg = [255, 255, 255]; for (let n = e.parentElement; n; n = n.parentElement) { const c = p(getComputedStyle(n).backgroundColor); if (c && c[3] >= 1) { bg = c; break; } }
+        // composite every background layer behind the control, not just the first opaque one
+        const stack = []; for (let n = e.parentElement; n; n = n.parentElement) { const c = p(getComputedStyle(n).backgroundColor); if (c && c[3] > 0) stack.push(c); if (c && c[3] >= 1) break; }
+        const bg = stack.reverse().reduce((b, c) => [0, 1, 2].map((i) => c[i] * c[3] + b[i] * (1 - c[3])), [255, 255, 255]);
         const ring = s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) >= 2 ? p(s.outlineColor) : null;
         const id = e.id ? '#' + e.id : e.tagName.toLowerCase() + (e.className ? '.' + String(e.className).split(' ')[0] : '');
-        if (!ring) return { id, ok: s.boxShadow !== 'none', why: 'no 2px outline' };
+        // a shadow counts only if focus added it (decorative card shadows are not rings); its contrast is not measured
+        if (!ring) return s.boxShadow !== 'none' && s.boxShadow !== restShadow ? { id, ok: true, shadow: true } : { id, ok: false, why: 'no 2px outline or focus shadow' };
         const [hi, lo] = [lum(ring), lum(bg)].sort((a, b) => b - a); const r = (hi + 0.05) / (lo + 0.05);
         return { id, ok: r >= 3, why: `${r.toFixed(2)}:1` };
-      });
+      }, restShadow);
       if (!res.ok) weakRing.push(`${res.id} ${res.why}`);
+      else if (res.shadow) shadowRing.push(res.id);
     }
+    if (shadowRing.length) r.findings.push({ severity: 'WARN', code: 'v2-focus-shadow', msg: `${shadowRing.length} focus indicators are shadows only, contrast not measured, e.g. ${shadowRing.slice(0, 3).join(' | ')}` });
     if (weakRing.length) r.findings.push({ severity: 'FAIL', code: 'v2-focus-ring', msg: `${weakRing.length} focus rings missing or under 3:1, e.g. ${weakRing.slice(0, 3).join(' | ')}` });
     // hover must change something on the first primary action
     const prim = await page.$('.ecc-btn-primary, .ecc-btn--lg, button[type="submit"]');
     if (prim && await prim.isVisible()) {
       const look = () => prim.evaluate((e) => { const s = getComputedStyle(e); return [s.backgroundColor, s.borderTopColor, s.color, s.boxShadow].join('|'); });
-      const before = await look(); await prim.hover(); await page.waitForTimeout(250); const after = await look();
+      // park the mouse away from controls first; buttons animate background over 0.15s
+      await page.mouse.move(w - 2, 898); await page.waitForTimeout(250);
+      const before = await look(); await prim.hover(); await page.waitForTimeout(400); const after = await look();
       if (before === after) r.findings.push({ severity: 'WARN', code: 'v2-hover-state', msg: 'first primary action has no hover change' });
       await page.mouse.move(0, 0);
     }
