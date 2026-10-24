@@ -1,4 +1,4 @@
-// dispatch.mjs <jobs.json> [--lane NAME] [--max N]
+// dispatch.mjs <jobs.json> [--lane NAME] [--max N] [--no-recovery]
 // Runs Rob's Coding Helper block batches in parallel on ONE claimed lane, then applies replies in order.
 // jobs.json: [{"id":"mc-1","blocks":"mc.blocks.json","from":1,"to":13,"files":["app.css"],"rules":"rules_ecc.txt"}]
 //   "rules" optional (default blocks.py's rules_ecc.txt). Relative paths resolve against the jobs file's folder.
@@ -21,6 +21,7 @@
 // Output: one line per job, then one DISPATCH line. Files: <outRoot>/<jobs name>/<id>.{prompt,raw,reply}.txt
 // Exit: 0 all OK, 1 some jobs failed, 2 lane busy/down, 3 login wall or connect card (Rob acts), 4 throttled.
 import { chromium } from 'playwright';
+import { claimSharedLane, waitForLauncherIdle } from './lane-ownership.mjs';
 import fs from 'node:fs'; import path from 'node:path'; import os from 'node:os';
 import { execFileSync, execFile } from 'node:child_process'; import { randomBytes, createHash } from 'node:crypto';
 import { promisify } from 'node:util'; const execFileP = promisify(execFile);
@@ -28,6 +29,7 @@ const HERE = path.dirname(new URL(import.meta.url).pathname), BLOCKS = path.join
 const home = p => p.replace(/^~/, os.homedir()), sleep = ms => new Promise(r => setTimeout(r, ms));
 const REG = JSON.parse(fs.readFileSync(path.join(HERE, 'lanes.json'), 'utf8'));
 const args = process.argv.slice(2), opt = k => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : undefined; };
+const RECOVER = !args.includes('--no-recovery'); // Bounded manual path: send once and stop on any failure.
 const jobsFile = path.resolve(args[0]), JD = path.dirname(jobsFile), rp = p => path.isAbsolute(p) ? p : path.join(JD, p);
 const jobs = JSON.parse(fs.readFileSync(jobsFile, 'utf8')).map(j => ({ files: [], ...j }));
 const isReview = j => j.kind === 'review', wantOf = j => (isReview(j) ? 0 : j.to - j.from + 1);
@@ -38,6 +40,10 @@ const outDir = path.join(home(REG.outRoot), path.basename(jobsFile, '.json')); f
 const T0 = Date.now(), secs = () => Math.round((Date.now() - T0) / 1000);
 
 // ---- claim / release ----
+let releaseShared;
+try { releaseShared = claimSharedLane(lane.port, 'coding-helper-dispatch'); }
+catch (e) { console.log(`DISPATCH lane ${lane.name} busy: ${e.message}`); process.exit(2); }
+process.on('exit', () => { try { releaseShared(); } catch (e) { console.error(`DISPATCH lock release failed: ${e.message}`); } });
 const lockDir = path.join(home(REG.locks), lane.name), ownerF = path.join(lockDir, 'owner.json');
 fs.mkdirSync(path.dirname(lockDir), { recursive: true });
 const alive = pid => { try { process.kill(pid, 0); return true; } catch { return false; } };
@@ -57,10 +63,9 @@ if (!(await up())) {
   execFileSync('launchctl', ['kickstart', `gui/${process.getuid()}/${lane.launchd}`]);
   for (let i = 0; i < 30 && !(await up()); i++) await sleep(1000);
   if (!(await up())) { console.log(`DISPATCH lane ${lane.name} down after kickstart`); process.exit(2); }
-  await sleep(23000); // launcher trims tabs at 6 s and 21 s
 }
-const tidy = () => execFileSync(process.execPath, [path.join(HERE, 'tidy.mjs'), String(lane.port)], { encoding: 'utf8' }).trim();
-tidy();
+try { await waitForLauncherIdle(lane.launchd); }
+catch (e) { console.log(`DISPATCH lane ${lane.name} unavailable: ${e.message}`); process.exit(2); }
 const b = await chromium.connectOverCDP(base); const ctx = b.contexts()[0]; const BS = await b.newBrowserCDPSession();
 
 // ---- one job ----
@@ -89,12 +94,12 @@ async function ask(p, text) {
   const said = () => p.evaluate(() => (document.body.innerText.match(/You said:/g) || []).length).catch(() => 0);
   const busy = () => p.evaluate(() => !!document.querySelector('[aria-label*="Stop"]')).catch(() => false);
   const n0 = await said();
-  for (let k = 0; k < 2; k++) {
+  for (let k = 0; k < (RECOVER ? 2 : 1); k++) {
     await box.click(); await box.fill(text); await p.keyboard.press('Enter');
     for (let s = 0; s < 15; s++) { await sleep(1000); if ((await said()) > n0 || (await busy())) return; }
     await box.fill('');
   }
-  throw new Error('send not confirmed after 2 tries');
+  throw new Error(`send not confirmed after ${RECOVER ? 2 : 1} tries`);
 }
 async function waitIdle(p, ts, stallMs = STALL_MS) {
   let prev = '', errs = 0, changed = Date.now();
@@ -103,7 +108,7 @@ async function waitIdle(p, ts, stallMs = STALL_MS) {
     const s = await p.evaluate(() => { const t = document.body.innerText; return { stop: !!document.querySelector('[aria-label*="Stop"]'), tail: t.slice(-1500), len: t.length }; });
     if (THROTTLE.test(s.tail.slice(-800))) return { throttled: true };
     if (/something went wrong|Service unavailable|wasn.t able to respond/i.test(s.tail.slice(-800))) {
-      if (++errs > 3) return { failed: 'repeated service errors' };
+      if (!RECOVER || ++errs > 3) return { failed: 'repeated service errors' };
       const ok = p.getByRole('button', { name: /^ok$/i }); if (await ok.count()) await ok.first().click();
       await sleep(3000); await ask(p, CONT); prev = ''; continue;
     }
@@ -153,7 +158,7 @@ async function run(j) {
     let reply = await lastReply(p), body = body_(reply);
     const check = () => checkReply(r, reply, j);
     check();
-    if (!w.failed && short(j, r)) { // tiny error reply or cut-off answer: one continue. No reply at all: resend the prompt.
+    if (RECOVER && !w.failed && short(j, r)) { // tiny error reply or cut-off answer: one continue. No reply at all: resend the prompt.
       await ask(p, reply ? CONT : text); r.msgs++; if (!reply) { reply = ''; body = ''; r.resent = true; } w = await waitIdle(p, Date.now(), isReview(j) ? STALL_REVIEW_MS : STALL_MS); if (w.throttled || w.stalled) { Object.assign(r, w.throttled ? { throttled: true } : { stalled: true }); return r; }
       const more = await lastReply(p); reply = reply + '\n' + more; body = body + '\n' + body_(more); check(); r.continued = true;
     }
@@ -210,11 +215,11 @@ async function worker() {
       let r = null;
       if (jobs[i].engine === 'qwen' && !isReview(jobs[i]) && !jobs[i]._qwenTried) { jobs[i]._qwenTried = true; r = await runQwen(jobs[i]); }
       if (!r) r = await run(jobs[i]);
-      if (r.stalled && !jobs[i]._retried) { jobs[i]._retried = true; msgs += r.msgs; console.log(`STALLED ${jobs[i].id} (conv ${r.conv || '-'}): retrying once in a new chat`); queue.unshift(i); continue; }
-      if (r.stalled) r.error = 'stalled twice';
+      if (RECOVER && r.stalled && !jobs[i]._retried) { jobs[i]._retried = true; msgs += r.msgs; console.log(`STALLED ${jobs[i].id} (conv ${r.conv || '-'}): retrying once in a new chat`); queue.unshift(i); continue; }
+      if (r.stalled) r.error = RECOVER ? 'stalled twice' : 'stalled (recovery disabled)';
       if (r.throttled) {
         msgs += r.msgs;
-        if (++throttles > 3) { gates[i].forEach(g => g.done()); halt(new Stop(4, `THROTTLED ${throttles}x on ${lane.name}: wait 15 min, then rerun unfinished jobs (both lanes share the ecenter24 quota)`)); }
+        if (++throttles > 3 || !RECOVER) { gates[i].forEach(g => g.done()); halt(new Stop(4, `THROTTLED ${throttles}x on ${lane.name}: wait 15 min, then rerun unfinished jobs (both lanes share the ecenter24 quota)`)); }
         else { MAX = Math.max(1, Math.floor(MAX / 2)); console.log(`THROTTLED ${jobs[i].id}: concurrency now ${MAX}, retry in 60 s`); await sleep(60000); queue.unshift(i); }
       } else { await applyJob(i, r); report(r); }
     } catch (e) {
@@ -225,6 +230,6 @@ async function worker() {
 }
 await Promise.all([...Array(Math.min(MAX, jobs.length))].map(worker));
 for (const i of queue) console.log(`JOB ${jobs[i].id} NOT-RUN`);
-try { tidy(); } catch {}
+// Each job closes only its own target. Never tidy pre-existing shared tabs.
 console.log(`DISPATCH ${stop ? 'STOPPED ' + stop.message : 'done'} lane ${lane.name} ok ${nOK}/${jobs.length} helper-msgs ${msgs} wall ${secs()}s concurrency ${MAX} out ${outDir}`);
 process.exit(stop ? stop.code : nOK === jobs.length ? 0 : 1);
