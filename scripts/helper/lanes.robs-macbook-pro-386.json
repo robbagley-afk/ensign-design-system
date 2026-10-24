@@ -1,6 +1,10 @@
 {
  "_doc": "Helper lane registry (MacBook Pro, LABEL robs-macbook-pro-386). Created 2026-09-30 by Claude Code (Opus 5.5) at Rob's request, copied from the iMac launch-persistent-edge-helper.sh template. dispatch.mjs claims only role primary or failover. Account rule (Rob 2026-09-30): chatting with Rob's Coding Helper works from either account, so helper lanes sign in as robbagley@ensign.edu. ecenter24@ensign.net is only for changing agents in the Copilot Studio website (maker work).",
  "agentUrl": "https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15",
+ "agents": {
+  "helper": "https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15",
+  "token-saver": "https://m365.cloud.microsoft/chat/agent/T_45c4f56f-36ee-1db8-5d94-81612ae405a6.80ad698a-d6b4-4676-8731-b997e6fa08c7"
+ },
  "locks": "~/Local-Infra/ui-audit/_helper/locks",
  "outRoot": "~/Local-Infra/ui-audit/_helper/dispatch",
  "lanes": [

@@ -42,7 +42,7 @@ test('a missing shared lock helper fails closed before browser cleanup', async t
 });
 test('dispatcher rejects a shared lane owner before tidy or CDP even if the private dispatch lock is free', async t => {
   const f = await fixture(t), dir = path.join(f.home, 'driver'); fs.mkdirSync(dir);
-  for (const name of ['dispatch.mjs', 'tidy.mjs', 'lane-ownership.mjs']) if (fs.existsSync(path.join(here, name))) fs.copyFileSync(path.join(here, name), path.join(dir, name));
+  for (const name of ['dispatch.mjs', 'tidy.mjs', 'lane-ownership.mjs', 'agent-url.mjs']) if (fs.existsSync(path.join(here, name))) fs.copyFileSync(path.join(here, name), path.join(dir, name));
   const pkg = path.join(dir, 'node_modules/playwright'); fs.mkdirSync(pkg, { recursive: true });
   fs.writeFileSync(path.join(pkg, 'package.json'), JSON.stringify({ type: 'module', exports: './index.mjs' }));
   fs.writeFileSync(path.join(pkg, 'index.mjs'), "export const chromium={connectOverCDP(){throw new Error('CDP MUST NOT BE REACHED')}};");
@@ -68,7 +68,7 @@ test('a launcher that never completes is rejected without creating job targets',
 });
 async function dispatchFixture(f, connectSource) {
   const dir = path.join(f.home, 'dispatch-success'); fs.mkdirSync(dir);
-  for (const name of ['dispatch.mjs', 'tidy.mjs', 'lane-ownership.mjs']) fs.copyFileSync(path.join(here, name), path.join(dir, name));
+  for (const name of ['dispatch.mjs', 'tidy.mjs', 'lane-ownership.mjs', 'agent-url.mjs']) fs.copyFileSync(path.join(here, name), path.join(dir, name));
   const pkg = path.join(dir, 'node_modules/playwright'); fs.mkdirSync(pkg, { recursive: true });
   fs.writeFileSync(path.join(pkg, 'package.json'), JSON.stringify({ type: 'module', exports: './index.mjs' }));
   fs.writeFileSync(path.join(pkg, 'index.mjs'), `export const chromium={connectOverCDP:async()=>{${connectSource}}};`);
