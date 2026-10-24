@@ -47,7 +47,7 @@ Host is Vercel where the repo has `vercel.json`. Suite routes come from `UPSTREA
 Out of scope:
 - ai-agents-local-llm suite dashboards. The suite-restructure row in `ROLLOUT.md` holds them (581 FAIL on main, 7-PR plan). PR 17 covers only the mentor login page.
 - your-portable-ai-team keeps its own branding (Rob, 2026-10-22).
-- linkedin-networking-tutor-coach-ensign, resume-ai-tutor-coach and career-mentor-powerapps have no vendored ECC web UI on GitHub. Confirm before deciding. Power Apps screens need their own plan.
+- linkedin-networking-tutor-coach-ensign (ChatGPT plugin) and resume-ai-tutor-coach (placeholder for resume-coach-ai). career-mentor-powerapps (CAR 201 Power App) only by separate request.
 - Non-Ensign repos.
 
 ## Phase 0: design-system prep (this repo, one or two PRs)
@@ -132,5 +132,5 @@ For every deploy:
 
 1. Phase 0 is now substantial (wrapper, composer, sidebar nav, `--v2` audit mode, matrices). Run it before any app, or start Wave 1 Phase 1 on the current release while Phase 0 is built?
 2. Phase 2 for student-facing apps too, or mentor and staff screens first? The v2 brief came from senior mentors on desktop monitors.
-3. linkedin-networking-tutor-coach-ensign, resume-ai-tutor-coach, career-mentor-powerapps: in scope or not?
-4. Sidebar for family B: light nav variant, or a dark sidebar that matches the header band?
+3. Resolved 2026-10-23: linkedin-networking-tutor-coach-ensign is a ChatGPT plugin (ChatGPT draws its UI) and resume-ai-tutor-coach is a placeholder for resume-coach-ai, so both are out. career-mentor-powerapps (CAR 201 interview scoring) stays out unless Rob asks for a separate Power Apps restyle.
+4. Sidebar for family B: Phase 0 builds the light variant (`.ecc-side-link`) as the default. A dark sidebar remains open if Rob prefers it.

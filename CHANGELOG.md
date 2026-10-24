@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-23: ECC v2 rollout tooling, Phase 0 part A (skill v3.1.1)
+
+- `scripts/v2_revendor.sh <app> <full-sha>`: refuses a short SHA or one not on main, vendors from a clean extract of that release, checks the four hashes, moves both CI refs (`uses: ...@sha` and `design-system-ref`) and runs the static audit from the release copy. Tested on a scratch clone of career-services-tools: 0 FAIL.
+- `css/ecc-app.css`:
+  - `.ecc-composer--v2`: 56px chat composer with 21px text that grows with typing (Chromium `field-sizing`) up to 40vh. `textarea.ecc-field--lg` stays the 210px note field.
+  - `.ecc-side-nav` and `.ecc-side-link`: light sidebar nav, 48px rows, current item marked with tint, a brand-deep bar and bold text. `.ecc-nav-link` stays dark-band only.
+  - Fix: `.ecc-btn--lg` inside `.ecc-hdr-band` now gets the gold focus ring. Before, its green ring on the deep-green band was 1.87:1. Found by the new `--v2` audit on `step-screen.html`. ENS 101 picks this up when it re-vendors.
+- `scripts/ecc_audit_runtime.mjs --v2`: FAIL on body under 20px, primary buttons and fields under 56px, nav links and chips under 48px, AA text contrast, control borders under 3:1, focus rings missing or under 3:1. WARN on 18-19px paragraphs, no hover change, and a current item that looks like its siblings. Without `--v2` the audit is unchanged.
+- `scripts/fixtures/chat-screen-v2.html`: fictional chat reference (header band, light sidebar, feed, danger callout, v2 composer, drawer under 900px). 0 FAIL 0 WARN with and without `--v2` at five widths. `step-screen.html` also passes `--v2`. `runtime-good.html` (v1) fails it, as it should.
+- `docs/ecc-v2-migration.md`: release invariant, Phase 1 hunt for hardcoded v1 values, Phase 2 pattern swaps, traps.
+- Skill assets: `ecc-app.css` re-copied, `SHA256.json` rebuilt.
+
 ## 2026-10-23: ECC v2, bolder color and desktop step screens (skill v3.1.0)
 
 - Source: the ENS 101 Guide redesign (Claude Design canvas RzcqxdeUvTmWLbU5r17hiL), approved by Rob on 2026-10-23. Senior mentors on desktop monitors found v1 nearly monochrome and the type small.

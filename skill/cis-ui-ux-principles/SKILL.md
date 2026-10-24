@@ -1,7 +1,7 @@
 ---
 name: cis-ui-ux-principles
 description: Apply the Ensign Career Coach design system (Ensign College / Career Services brand, type, color, spacing, text fields, accessibility gates, audits) when designing, building, reviewing, restyling or migrating any Career Services app or web page, and when coordinating that UI work across Claude, Codex, Antigravity and the coding helper. Use for "make this match the Ensign style", "apply the design system", "review this UI", "restyle this app", "is this accessible", "fix the fonts/colors/layout", or any student- or mentor-facing screen. One skill for Rob and coworkers.
-version: 3.1.0
+version: 3.1.1
 ---
 
 # CIS UI/UX Principles (Ensign Career Coach)
@@ -112,7 +112,7 @@ Commands run the same on Mac (zsh) and Windows (PowerShell), from the design-sys
 3. Mac: `scripts/vendor_into_app.sh <app>`. Windows: Git Bash, same command, or copy the four `css/ecc-*.css` files into every web dir (public/ and static/ stay identical). Add the `<head>` links in the order the acceptance checklist lists. Push this vendor commit before asking any coding helper for a patch, so it reads the same files the patch applies to.
 4. Replace the app's private color vars (`--green`, `--primary`, `--accent-blue`) with ECC tokens, raise every font size below 17px, remove dark theme blocks, swap emoji for SVG, restyle fields as above.
 5. `python3 scripts/ecc_audit_static.py <app>` (Windows: `py scripts\ecc_audit_static.py <app>`) until 0 FAIL. Use the Check and correct table for the scroll, width, upload and response-format codes.
-6. Run the app locally, then `node scripts/ecc_audit_runtime.mjs <url>` until 0 FAIL at all five widths. Screenshot 375 and 1440 with example data only, never student records.
+6. Run the app locally, then `node scripts/ecc_audit_runtime.mjs <url>` until 0 FAIL at all five widths. Screens that use the v2 components also pass `--v2` (20px body, 56px controls, 48px nav targets, AA text, 3:1 borders and focus rings). Screenshot 375 and 1440 with example data only, never student records.
 7. Push the branch, open a PR with the audit output and screenshots, update the `ROLLOUT.md` row. Never push to main.
 
 Apps not yet migrated to ECC keep their CES tokens, and status UI there uses `--ces-status-{success,warning,neutral}-{bg,text,border}` (never navy or gold).
@@ -134,6 +134,8 @@ Governs interface quality and brand consistency only. It doesn't authorize produ
 The bundled assets/ folder contains the four ECC stylesheets and the matching static auditor, with a SHA-256 manifest. Follow assets/README.md to vendor and audit without repository access. Runtime and visual verification remain required.
 
 ## Version history
+
+v3.1.1 (2026-10-23) adds the v2 rollout tooling: `scripts/v2_revendor.sh` (vendor and pin one release together), `.ecc-composer--v2` (56px chat composer that grows), `.ecc-side-nav` and `.ecc-side-link` (light sidebar nav), gold focus rings for large buttons in the header band, the runtime audit's `--v2` mode, the chat reference `scripts/fixtures/chat-screen-v2.html` and `docs/ecc-v2-migration.md`.
 
 v3.1.0 (2026-10-23) adds ECC v2 from the ENS 101 Guide redesign, which Rob approved: bolder color with one job per hue, 20px body text, 56px controls, a green-gray page, desktop-first step screens (`.ecc-hdr-band`, `.ecc-stepper`, `.ecc-step-layout`, `.ecc-task`, `.ecc-numpick`, `.ecc-choice`, `.ecc-callout`, `.ecc-feature-card`, `.ecc-ai-panel`, `.ecc-actionbar` in `css/ecc-app.css`). Reference page: `scripts/fixtures/step-screen.html`. New tokens live in `tokens/overrides.json` as `rob-decision` until Claude Design adopts them.
 

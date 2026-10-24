@@ -567,6 +567,7 @@ input.ecc-field { border-radius: var(--radius-md); resize: none; } /* single-lin
 .ecc-btn-danger { background: var(--danger); border-color: var(--danger); color: #fff; }
 .ecc-btn-danger:hover { background: #912018; border-color: #912018; }
 .ecc-btn--lg:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+.ecc-hdr-band .ecc-btn--lg:focus-visible { outline-color: var(--accent-gold); } /* brand green on brand-deep is 1.87:1; gold is the band's ring */
 .ecc-btn--lg:disabled,
 .ecc-btn--lg[aria-disabled="true"] { background: #e2e8f0; border-color: #94a3b8; color: var(--ink-muted); cursor: not-allowed; }
 
@@ -666,6 +667,42 @@ textarea.ecc-field--lg { min-height: 210px; resize: vertical; }
 .ecc-progress { flex: 0 1 420px; height: 14px; border-radius: var(--radius-pill); background: #e2e8f0; overflow: hidden; }
 .ecc-progress > span { display: block; height: 100%; background: var(--brand); border-radius: inherit; }
 
+/* ---------- v2 chat composer: modifier on .ecc-composer, so it outranks `.ecc-composer textarea` ---------- */
+/* textarea.ecc-field--lg is a 210px note field. Chat uses this instead: one 56px line that grows with typing. */
+.ecc-composer--v2 { gap: var(--space-3); padding-block: var(--space-4) var(--space-5); }
+.ecc-composer--v2 textarea {
+  box-sizing: border-box;
+  min-height: var(--control-height);
+  max-height: 40vh; /* grows to here, then scrolls inside; overscroll stays auto so the page keeps the wheel */
+  padding: 11px 18px; /* 21px x 1.4 line + 22px padding + 4px border = 55.4px, so min-height sets 56px */
+  font-size: var(--text-field);
+  line-height: 1.4;
+  overflow-y: auto;
+  resize: none;
+  field-sizing: content; /* Chromium grows the field with its text; other browsers keep 56px and scroll */
+}
+.ecc-composer--v2 .ecc-btn { min-height: var(--control-height); padding: var(--space-3) 26px; font-size: var(--text-button); font-weight: 700; border-width: 2px; }
+
+/* ---------- Light sidebar nav: .ecc-nav-link is for the dark header band only ---------- */
+.ecc-side-nav { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; margin-inline: calc(-1 * var(--space-2)); } /* links use 8px of the sidebar padding so 20px labels fit the 232px rail */
+.ecc-side-link {
+  display: flex; align-items: center; gap: var(--space-3);
+  min-height: var(--target-min);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border-left: 4px solid transparent;
+  color: var(--ink); font-size: var(--text-body); font-weight: 600; line-height: 1.3; text-decoration: none;
+  overflow-wrap: anywhere; min-width: 0;
+}
+.ecc-side-link svg { flex: none; width: 22px; height: 22px; }
+.ecc-side-link:hover { background: var(--brand-tint-soft); color: var(--brand-hover); }
+.ecc-side-link:active { background: var(--brand-tint); }
+/* where you are: tint + brand-deep bar + bold, never color alone */
+.ecc-side-link[aria-current="page"],
+.ecc-side-link[aria-selected="true"] { background: var(--brand-tint); border-left-color: var(--brand-deep); color: var(--brand-deep); font-weight: 700; }
+.ecc-side-link:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+.ecc-side-link[aria-disabled="true"] { color: var(--ink-muted); pointer-events: none; }
+
 /* ---------- v2 breakpoints: desktop first, never a phone-width default ---------- */
 @media (max-width: 1600px) {
   /* ECC: keys stay at least 44px wide when the work column narrows */
@@ -693,4 +730,6 @@ textarea.ecc-field--lg { min-height: 210px; resize: vertical; }
   .ecc-task, .ecc-task__check, .ecc-numpick__key, .ecc-choice, .ecc-callout, .ecc-ai-ask { border-color: ButtonText; }
   .ecc-numpick__key[aria-pressed="true"], .ecc-choice[aria-checked="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; border-color: Highlight; }
   .ecc-task__check:focus-visible, .ecc-numpick__key:focus-visible, .ecc-choice:focus-visible, .ecc-ai-ask:focus-visible, .ecc-btn--lg:focus-visible { outline-color: Highlight; }
+  .ecc-side-link[aria-current="page"], .ecc-side-link[aria-selected="true"] { border-left-color: Highlight; }
+  .ecc-side-link:focus-visible { outline-color: Highlight; }
 }

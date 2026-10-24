@@ -1,4 +1,4 @@
-# Portable ECC assets, v3.1.0
+# Portable ECC assets, v3.1.1
 
 This layout lets the static auditor find its matching CSS without GitHub access.
 Copy all four css/ecc-*.css files into every app web directory, then link them in
