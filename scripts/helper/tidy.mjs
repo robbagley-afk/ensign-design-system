@@ -1,3 +1,4 @@
+import { claimSharedLane } from './lane-ownership.mjs';
 // tidy.mjs <port> [keepUrlPart]  -- leave exactly ONE tab on a helper lane.
 // Uses the DevTools HTTP endpoints (/json/list, /json/close, /json/new), so it works even when the
 // browser has no window left (macOS keeps Edge running after its last window closes).
@@ -6,6 +7,12 @@
 // Run at lane start (launcher), when a lane is claimed, and after every job. Only on lanes Claude owns.
 const AGENT = 'https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15';
 const [port, keep = '/chat/agent/T_f14842f5'] = process.argv.slice(2);
+// A delayed launcher cleanup must never overlap an active review batch or MCP.
+// Atomic acquisition closes the check-then-clean race with a newly starting driver.
+let release;
+try { release = claimSharedLane(port, 'coding-helper-tidy'); }
+catch (e) { console.log(JSON.stringify({ port, deferred: true, reason: e.message })); process.exit(0); }
+process.on('exit', () => { try { release(); } catch (e) { console.error(e.message); } });
 const base = 'http://127.0.0.1:' + port;
 const pages = (await (await fetch(base + '/json/list')).json()).filter(t => t.type === 'page');
 if (!pages.length) {
