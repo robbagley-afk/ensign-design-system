@@ -1,7 +1,7 @@
 ---
 name: cis-ui-ux-principles
 description: Apply the Ensign Career Coach design system (Ensign College / Career Services brand, type, color, spacing, text fields, accessibility gates, audits) when designing, building, reviewing, restyling or migrating any Career Services app or web page, and when coordinating that UI work across Claude, Codex, Antigravity and the coding helper. Use for "make this match the Ensign style", "apply the design system", "review this UI", "restyle this app", "is this accessible", "fix the fonts/colors/layout", or any student- or mentor-facing screen. One skill for Rob and coworkers.
-version: 3.1.1
+version: 3.1.2
 ---
 
 # CIS UI/UX Principles (Ensign Career Coach)
@@ -38,6 +38,7 @@ Read `README.md` and `docs/components.md` in the repo before a first migration. 
 10. **User bubble:** solid `--brand` with white text, max 78% (90% at 375px and below), a "You" label. Assistant message: full-width card with a 17px green speaker label.
 11. **State is never color alone.** Status pill = tinted fill plus label. Active step = tint plus border plus numbered badge.
 12. **Voice.** Buttons are verbs in sentence case ("Copy prompt", "Book a mentor appt"). Confirmations state the outcome ("Thank you. Your feedback was saved.").
+13. **Next lights up when the step is done.** Any Next or advance-page button starts in its normal color (`.ecc-btn-primary`, brand green) and turns Amazon orange only when every required item on the current step is complete and advancing is the right move. Add `.is-ready`: background and border `--next-ready` #FF9900, text `--next-ready-ink` #0F1111 (8.85:1, never white, which is 2.1:1), hover `--next-ready-hover` #FA8900 (7.8:1), plus a 3px `rgba(255,153,0,0.35)` ring. Use the button's existing color transition only. No pulse or other animation, so nothing moves for `prefers-reduced-motion` users. Under `forced-colors: active` add a 3px `Highlight` outline. It is a cue, never a gate: Next stays clickable either way, and a text progress label ("3 of 3 done") carries the same state so it is not color alone (rule 11). Recompute on every checkbox change, step change and upload. Reference: Career Explorer student PR 27 and mentor PR 28 (`static/steps.css` `#step-next.is-ready`, `static/app.js` `isPaneComplete` and `updateNextReady`) and ENS 101 Guide PR 29 (`renderProgress`).
 
 ## Text fields (Career Services standard)
 
@@ -134,6 +135,8 @@ Governs interface quality and brand consistency only. It doesn't authorize produ
 The bundled assets/ folder contains the four ECC stylesheets and the matching static auditor, with a SHA-256 manifest. Follow assets/README.md to vendor and audit without repository access. Runtime and visual verification remain required.
 
 ## Version history
+
+v3.1.2 (2026-10-27) adds rule 13: Next turns Amazon orange (`--next-ready` #FF9900 with #0F1111 ink) once every required item on the step is done. New tokens in `tokens/overrides.json` as `rob-decision`.
 
 v3.1.1 (2026-10-23) adds the v2 rollout tooling: `scripts/v2_revendor.sh` (vendor and pin one release together), `.ecc-composer--v2` (56px chat composer that grows), `.ecc-side-nav` and `.ecc-side-link` (light sidebar nav), gold focus rings for large buttons in the header band, the runtime audit's `--v2` mode, the chat reference `scripts/fixtures/chat-screen-v2.html` and `docs/ecc-v2-migration.md`.
 

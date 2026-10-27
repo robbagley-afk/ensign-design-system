@@ -51,6 +51,7 @@ Gap: the exemplar's code is not yet committed to GitHub (checked 2026-09-25: `ma
 - **Full width beats a fixed reading cap in chat.** Older guidance capped chat at 1180px. The mentor audience on 1080p screens needs the full canvas, so buffer padding (`clamp(24px, 3vw, 56px)`) now provides the breathing room. Prose pages that aren't chat may still use a readable measure.
 - **Words over icons.** Header buttons, feedback, and Send carry text labels at tablet and desktop widths. Icon-only buttons are allowed only under 640px and must keep an `aria-label`.
 - **Progressive disclosure.** Hide step descriptions, collapse starters after the first message, and show the status pill only on wide screens. Keep the chat above the fold.
+- **Next lights up when the step is done.** Next starts brand green and turns `--next-ready` #FF9900 with #0F1111 text once every required item on the step is complete. Color change only, no animation. See SKILL.md rule 13.
 - **One primary action per region.** Green solid buttons go to the main CTA (header), Send, and Choose file. Everything else is a white button with a 1.5px border.
 - **Contrast & canvas.** A white or `--surface-sunken` (#F3F6F4 in ECC v2) canvas with Ensign Green. No dark themes or dark gray containers.
 - **Typography & font fallbacks.** Montserrat with `display=swap` and the fallback stack `Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`. Headings have a solid color before any gradient-clip enhancement.
