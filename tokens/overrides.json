@@ -162,6 +162,24 @@
       "value": "48px",
       "reason": "Minimum size of any click target (chips, nav links). Raises the 44px touch-min for ECC v2 screens. ECC v2 (bolder color, larger desktop UI for mentors in their 60s and 70s). Rob approved 2026-10-23 after the ENS 101 redesign review.",
       "status": "rob-decision"
+    },
+    {
+      "name": "next-ready",
+      "value": "#FF9900",
+      "reason": "Rob's request (2026-10-27): Next lights Amazon orange once every required item on the step is done. Outside the ECC hue set on purpose, one job only. Ink #0F1111 is 8.85:1 on #FF9900 and 7.8:1 on #FA8900. White fails (2.1:1).",
+      "status": "rob-decision"
+    },
+    {
+      "name": "next-ready-hover",
+      "value": "#FA8900",
+      "reason": "Rob's request (2026-10-27): Next lights Amazon orange once every required item on the step is done. Outside the ECC hue set on purpose, one job only. Ink #0F1111 is 8.85:1 on #FF9900 and 7.8:1 on #FA8900. White fails (2.1:1).",
+      "status": "rob-decision"
+    },
+    {
+      "name": "next-ready-ink",
+      "value": "#0F1111",
+      "reason": "Rob's request (2026-10-27): Next lights Amazon orange once every required item on the step is done. Outside the ECC hue set on purpose, one job only. Ink #0F1111 is 8.85:1 on #FF9900 and 7.8:1 on #FA8900. White fails (2.1:1).",
+      "status": "rob-decision"
     }
   ]
 }

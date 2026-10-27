@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-27: Next button ready state (skill v3.1.2)
+
+- Best practice: any Next or advance-page button starts in its normal color and turns Amazon orange only when every required item on the current step is complete. SKILL.md rule 13 and `references/exemplar-patterns.md`.
+- Tokens in `tokens/overrides.json` (`rob-decision`): `next-ready` #FF9900, `next-ready-hover` #FA8900, `next-ready-ink` #0F1111. Contrast 8.85:1 and 7.8:1. White text on #FF9900 is 2.1:1 and fails.
+- No animation, so reduced-motion users see the same static color change. Forced-colors mode adds a `Highlight` outline.
+- Reference implementations: Career Explorer PRs 27 (student) and 28 (mentor), ENS 101 Guide PR 29.
+
 ## 2026-10-23: ECC v2 rollout tooling, Phase 0 part A (skill v3.1.1)
 
 - `scripts/v2_revendor.sh <app> <full-sha>`: refuses a short SHA or one not on main, vendors from a clean extract of that release, checks the four hashes, moves both CI refs (`uses: ...@sha` and `design-system-ref`) and runs the static audit from the release copy. Tested on a scratch clone of career-services-tools: 0 FAIL.
