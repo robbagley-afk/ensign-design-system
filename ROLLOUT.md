@@ -2,7 +2,7 @@
 
 ## One shared design skill (v3.1.0, ECC v2 since 2026-10-23 PR #30)
 
-As of PR #27 (merged 2026-10-22 at `0af2ff625595773a970c5aeba65a237a00afbf7f`), `cis-ui-ux-principles` is the one design skill for Rob and coworkers. Its canonical source is `skill/cis-ui-ux-principles`. Use that name in active app instructions and fleet installs. `ui-ux-principles` is retired; historical rollout entries below retain their original names and evidence. Fleet disk installation, Claude account uploads and Mem baseline updates require their own verification and are not implied by the source merge.
+As of PR #27 (merged 2026-10-22 at `0af2ff625595773a970c5aeba65a237a00afbf7f`), and updated to suffix naming in October 2026, `ui-ux-principles-cis` is the one design skill for Rob and coworkers. Its canonical source is `skill/ui-ux-principles-cis`. Use that name in active app instructions and fleet installs. `cis-ui-ux-principles` and `ui-ux-principles` are retired; historical rollout entries below retain their original names and evidence. Fleet disk installation, Claude account uploads and Mem baseline updates require their own verification and are not implied by the source merge.
 
 One row per app. Claim before work (owner + branch + status), update at every step, never take a row someone else holds. Status values: `todo`, `vendored`, `patch requested`, `patch applied`, `static pass`, `runtime pass`, `in review`, `ready for Rob`, `merged`, `blocked`.
 

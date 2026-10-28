@@ -2,7 +2,7 @@
 
 Read this before touching any Ensign app's UI.
 
-1. Invoke the `cis-ui-ux-principles` skill (installed for Claude, Codex and Antigravity; canonical copy in `skill/cis-ui-ux-principles/`). If it is not installed, read `skill/cis-ui-ux-principles/SKILL.md` directly.
+1. Invoke the `ui-ux-principles-cis` skill (installed for Claude, Codex and Antigravity; canonical copy in `skill/ui-ux-principles-cis/`). If it is not installed, read `skill/ui-ux-principles-cis/SKILL.md` directly.
 2. `tokens/tokens.json`, `css/ecc-components.base.css`, `docs/design-system-README.md` and `docs/components.md` mirror Claude Design. Never hand-edit them. Put deviations in `tokens/overrides.json` with a reason.
 3. `css/ecc-tokens.css` is generated. Run `python3 scripts/build_tokens.py` after any token change and commit both.
 4. Claim an app in `ROLLOUT.md` before working on it and update the row at every step. Never work an app someone else holds.

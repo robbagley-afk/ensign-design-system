@@ -16,7 +16,7 @@ The Ensign Career Coach design system, mirrored from Claude Design so every agen
 | `css/ecc-app.css` | App patterns: shell, sidebar, feed, messages, composer, text fields, chip rail, breakpoints | Yes |
 | `docs/design-system-README.md` | The artifact's README: audience, voice, color, type, radius, elevation | Sync only |
 | `docs/components.md` | The five component notes | Sync only |
-| `skill/cis-ui-ux-principles/` | Canonical copy of the one design skill every agent and coworker installs | Yes, then reinstall |
+| `skill/ui-ux-principles-cis/` | Canonical copy of the one design skill every agent and coworker installs | Yes, then reinstall |
 | `scripts/` | `build_tokens.py`, `vendor_into_app.sh`, `ecc_audit_static.py`, `ecc_audit_runtime.mjs` | Yes |
 | `ROLLOUT.md` | Shared board: which agent owns which app, branch, status, PR | Every agent, every step |
 
@@ -50,8 +50,8 @@ Claude only:
 
 ```sh
 for d in ~/.claude/skills ~/.codex/skills ~/.gemini/config/skills; do
-  rsync -a --delete skill/cis-ui-ux-principles/ "$d/cis-ui-ux-principles/"
+  rsync -a --delete skill/ui-ux-principles-cis/ "$d/ui-ux-principles-cis/"
 done
 ```
 
-For the claude.ai account (Cowork on other machines), install the packaged `cis-ui-ux-principles.skill` from the release or from Rob's outputs.
+For the claude.ai account (Cowork on other machines), install the packaged `ui-ux-principles-cis.skill` from the release or from Rob's outputs.
