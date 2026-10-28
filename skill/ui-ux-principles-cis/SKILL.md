@@ -1,5 +1,5 @@
 ---
-name: cis-ui-ux-principles
+name: ui-ux-principles-cis
 description: Apply the Ensign Career Coach design system (Ensign College / Career Services brand, type, color, spacing, text fields, accessibility gates, audits) when designing, building, reviewing, restyling or migrating any Career Services app or web page, and when coordinating that UI work across Claude, Codex, Antigravity and the coding helper. Use for "make this match the Ensign style", "apply the design system", "review this UI", "restyle this app", "is this accessible", "fix the fonts/colors/layout", or any student- or mentor-facing screen. One skill for Rob and coworkers.
 version: 3.1.2
 ---
