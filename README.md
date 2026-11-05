@@ -15,7 +15,8 @@ The Ensign Career Coach design system, mirrored from Claude Design so every agen
 | `css/ecc-components.base.css` | The five components from the artifact (Button, StatusPill, Card, Chip, NavItem) | Sync only |
 | `css/ecc-app.css` | App patterns: shell, sidebar, feed, messages, composer, text fields, chip rail, breakpoints | Yes |
 | `docs/design-system-README.md` | The artifact's README: audience, voice, color, type, radius, elevation | Sync only |
-| `docs/components.md` | The five component notes | Sync only |
+| `docs/components.md` | The five component notes, plus a marked local-patterns section | Sync only (keep the local section) |
+| `docs/patterns/` | Local app patterns built on ECC classes, with fictional fixtures and tests (for example the fixed-domain student email field) | Yes |
 | `skill/ui-ux-principles-cis/` | Canonical copy of the one design skill every agent and coworker installs | Yes, then reinstall |
 | `scripts/` | `build_tokens.py`, `vendor_into_app.sh`, `ecc_audit_static.py`, `ecc_audit_runtime.mjs` | Yes |
 | `ROLLOUT.md` | Shared board: which agent owns which app, branch, status, PR | Every agent, every step |
@@ -31,6 +32,10 @@ node scripts/ecc_audit_runtime.mjs http://127.0.0.1:<port>/     # 0 FAIL at 320/
 The runtime audit needs `npm i --include=dev` in this repo (installs `playwright`; the flag matters because this Mac has npm `omit=dev` set globally) and uses the installed Google Chrome, so no browser download is needed.
 
 Load order in each page's `<head>`: Montserrat from Google Fonts, `ces-tokens.css` (while the app still has it), `ecc-tokens.css`, `ecc-ces-compat.css`, `ecc-components.base.css`, `ecc-app.css`, then the app's own CSS.
+
+## App patterns
+
+- **Fixed-domain student email field** (`docs/patterns/student-email-field.md`): Ensign student lookups take the username only, with a visible fixed `@ensign.edu` suffix. Reference page `scripts/fixtures/student-email-lookup.html`. Check with `node scripts/test_student_email_field.mjs`. Not for contact, employer, guest or personal email.
 
 ## How the agents split the work
 

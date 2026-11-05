@@ -1,0 +1,43 @@
+/* Fixed-domain Ensign student email field. Pattern: docs/patterns/student-email-field.md
+   App-local composition built on .ecc-field. Copy into the app's own CSS. It is not part of the
+   vendored ECC files, so adopting it never makes an app ds-stale. */
+.ecc-email-fixed {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+}
+.ecc-email-fixed > .ecc-field {
+  flex: 1 1 0;           /* username section flexes and shrinks first */
+  min-width: 0;
+  font-size: var(--text-field);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  position: relative;    /* keeps the focus outline above the suffix */
+  z-index: 1;
+}
+.ecc-email-fixed__suffix {
+  flex: none;            /* never shrinks, never wraps, never truncates */
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-4);
+  white-space: nowrap;
+  background: var(--surface-sunken);
+  color: var(--ink);
+  border: 2px solid var(--input-border);
+  border-left: 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-field);
+  font-weight: 600;
+  user-select: none;
+}
+@media (max-width: 639.98px) {
+  .ecc-email-fixed > .ecc-field { padding-inline: var(--space-3); }
+  .ecc-email-fixed__suffix { padding: 0 var(--space-3); }
+}
+.ecc-email-fixed__hint { color: var(--ink-muted); font-size: var(--text-caption); margin: var(--space-2) 0 0; }
+.ecc-email-fixed__error { margin: var(--space-2) 0 0; }
+@media (forced-colors: active) {
+  .ecc-email-fixed__suffix { border-color: ButtonText; color: CanvasText; background: Canvas; }
+}

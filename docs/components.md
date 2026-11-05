@@ -31,3 +31,11 @@ Use for the four-step sequence and for anything else that behaves like "go to a 
 Reports a live system state, always as color *and* text together, never color alone — "Qwen Local AI" while idle, "Analyzing…" while busy, or the one-line "Thank you. Your feedback was saved." confirmation after a rating. Positive/neutral states use the success tokens; don't invent new tones without a matching pair of background/border/text tokens that clear 4.5:1.
 
 Reserved for state the *system* is reporting, not a label you'd put on a button or nav item — those use plain text, not a pill.
+
+---
+
+## Local patterns (not from Claude Design)
+
+This section is a local addition, not part of the mirror. Keep it when the five notes above are re-synced.
+
+- **Fixed-domain student email field.** For Ensign student email lookups only: an editable username `.ecc-field` with a fixed `@ensign.edu` suffix in the same group. See `docs/patterns/student-email-field.md`.
