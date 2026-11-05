@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-05: Fixed-domain student email field (skill v3.1.3)
+
+- Issues #49 and #50. Ensign student lookups take the username only, with a visible fixed `@ensign.edu` suffix. Rob authorized this with the Student Readiness Hub pilot. Scope is student email lookups, not contact, employer, guest or personal email.
+- Pattern `docs/patterns/student-email-field.md`. App-local CSS and controller in `scripts/fixtures/student-email-field.{css,js}`, fictional page `scripts/fixtures/student-email-lookup.html`.
+- `scripts/test_student_email_field.mjs`: normalization, full-email paste, invalid inputs, clearing and re-entry, identity changes, pending-response races, layout at five widths, semantics and no gold. Synthetic responses only.
+- No change to vendored ECC CSS, tokens or the static auditor, so no app goes `ds-stale` and skill assets and `SHA256.json` are unchanged.
+- Skill v3.1.3: Text fields rule and three acceptance checklist lines. README and a marked local section in `docs/components.md` point to the pattern.
+
 ## 2026-10-27: Next button ready state (skill v3.1.2)
 
 - Best practice: any Next or advance-page button starts in its normal color and turns Amazon orange only when every required item on the current step is complete. SKILL.md rule 13 and `references/exemplar-patterns.md`.

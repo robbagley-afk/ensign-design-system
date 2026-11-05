@@ -1,7 +1,7 @@
 ---
 name: ui-ux-principles-cis
 description: Apply the Ensign Career Coach design system (Ensign College / Career Services brand, type, color, spacing, text fields, accessibility gates, audits) when designing, building, reviewing, restyling or migrating any Career Services app or web page, and when coordinating that UI work across Claude, Codex, Antigravity and the coding helper. Use for "make this match the Ensign style", "apply the design system", "review this UI", "restyle this app", "is this accessible", "fix the fonts/colors/layout", or any student- or mentor-facing screen. One skill for Rob and coworkers.
-version: 3.1.2
+version: 3.1.3
 ---
 
 # CIS UI/UX Principles (Ensign Career Coach)
@@ -51,6 +51,14 @@ Every text entry control (chat composer, feedback form, intake, search, admin fo
 - on phones the field takes its own full-width row. Buttons wrap below it.
 
 Use `.ecc-field` or the `.ecc-composer textarea` pattern from `css/ecc-app.css`.
+
+**Ensign student email lookups take the username only.** Scope: fields that look up an Ensign student by email. Contact, employer, guest and personal email fields stay ordinary email fields.
+- An editable username `.ecc-field` followed by a visible, noneditable `@ensign.edu` suffix in the same `role="group"`. Username section `flex: 1 1 0; min-width: 0`, suffix `flex: none`. The suffix stays visible at 320, 375, 768, 1440 and 1920px. ECC tokens and Montserrat, no gold, no text under 17px.
+- Visible label plus helper text ("Type only the part before @ensign.edu"). Put the helper, the suffix and the error in `aria-describedby`. Keep keyboard focus, `aria-invalid` and the form's existing submit path.
+- Trim and lowercase, then send exactly one `username@ensign.edu` through the existing API and show that full email in results. Never change the username's spelling or infer another person.
+- A pasted `name@ensign.edu` keeps only `name` (never `@ensign.edu@ensign.edu`). Reject empty values, internal spaces, more than one `@` and any other domain. Never convert a foreign-domain address.
+- Any edit hides earlier results at once. Drop a pending response for an earlier username, so one student's input never sits above another student's results.
+- Shared pattern, fictional example and tests: `docs/patterns/student-email-field.md`, `scripts/fixtures/student-email-lookup.html`, `node scripts/test_student_email_field.mjs`. Test with fictional `demo.user` data and synthetic responses only. Follow the app's approved ECC release and phase. Never mix vendored assets and CI pins to adopt it.
 
 ## Gates the design system assumes
 
@@ -135,6 +143,8 @@ Governs interface quality and brand consistency only. It doesn't authorize produ
 The bundled assets/ folder contains the four ECC stylesheets and the matching static auditor, with a SHA-256 manifest. Follow assets/README.md to vendor and audit without repository access. Runtime and visual verification remain required.
 
 ## Version history
+
+v3.1.3 (2026-11-05) adds the fixed-domain student email field under Text fields: username plus a fixed `@ensign.edu` suffix, normalization, paste handling, rejection rules and identity freshness for Ensign student lookups. Pattern in `docs/patterns/student-email-field.md`. No CSS or auditor change, so bundled assets and `SHA256.json` are unchanged.
 
 v3.1.2 (2026-10-27) adds rule 13: Next turns Amazon orange (`--next-ready` #FF9900 with #0F1111 ink) once every required item on the step is done. New tokens in `tokens/overrides.json` as `rob-decision`.
 

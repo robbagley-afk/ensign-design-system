@@ -1,0 +1,73 @@
+<!-- Fixed-domain student email lookup reference: scripts/fixtures/student-email-lookup.html.
+     Pattern: docs/patterns/student-email-field.md. Fictional data and synthetic responses only. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student email lookup: Fictional Preview</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/ecc-tokens.css">
+  <link rel="stylesheet" href="/css/ecc-ces-compat.css">
+  <link rel="stylesheet" href="/css/ecc-components.base.css">
+  <link rel="stylesheet" href="/css/ecc-app.css">
+  <link rel="stylesheet" href="/scripts/fixtures/student-email-field.css">
+  <style>
+    main { padding: var(--space-6) var(--gutter); max-width: 100vw; box-sizing: border-box; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: var(--space-5); margin-top: var(--space-5); }
+    .lookup-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: flex-start; }
+    .lookup-row .ecc-email-fixed { flex: 1 1 320px; }
+    .lookup-row .ecc-btn { flex: none; }
+    @media (max-width: 639.98px) { .lookup-row .ecc-btn { flex: 1 1 100%; } }
+    label { display: block; font-weight: 600; margin-bottom: var(--space-2); }
+    h1 { font-size: var(--text-title, 30px); margin: 0; }
+  </style>
+</head>
+<body class="ecc" style="font-size: var(--text-body); background: var(--surface-sunken); margin: 0">
+  <main>
+    <h1>Student lookup</h1>
+    <form id="lookup" class="card" novalidate>
+      <label for="student-username" id="student-label">Student email</label>
+      <div class="lookup-row">
+        <div class="ecc-email-fixed" role="group" aria-labelledby="student-label">
+          <input id="student-username" class="ecc-field ecc-field--lg" type="text" name="student-username"
+                 autocomplete="off" autocapitalize="none" spellcheck="false" inputmode="email"
+                 placeholder="demo.user" aria-describedby="student-hint student-suffix student-error">
+          <span id="student-suffix" class="ecc-email-fixed__suffix">@ensign.edu</span>
+        </div>
+        <button class="ecc-btn ecc-btn-primary ecc-btn--lg" type="submit">Look up student</button>
+      </div>
+      <p id="student-hint" class="ecc-email-fixed__hint">Type only the part before @ensign.edu. You can also paste a full @ensign.edu address.</p>
+      <p id="student-error" class="ecc-field-error ecc-email-fixed__error" role="alert" hidden></p>
+    </form>
+    <p id="lookup-status" role="status" aria-live="polite"></p>
+    <section id="lookup-results" class="card" aria-label="Lookup results" hidden></section>
+  </main>
+  <script type="module">
+    import { bindStudentEmailField } from '/scripts/fixtures/student-email-field.js';
+    // Synthetic responses only. Delays are adjustable so tests can force a pending-response race.
+    const delays = (window.__lookupDelays = { 'demo.user@ensign.edu': 50, 'demo.other@ensign.edu': 50 });
+    const lookup = (email) => new Promise((resolve) =>
+      setTimeout(() => resolve({ email, name: email.startsWith('demo.user') ? 'Demo User' : 'Demo Other', readiness: '3 of 5 steps done' }), delays[email] ?? 50));
+    const render = (r, email) => {
+      const div = document.createElement('div');
+      const h = document.createElement('h2'); h.textContent = r.name; h.style.fontSize = 'var(--text-section, 26px)';
+      const p = document.createElement('p'); p.textContent = email; p.dataset.role = 'email';
+      const q = document.createElement('p'); q.textContent = r.readiness;
+      div.append(h, p, q); return div;
+    };
+    bindStudentEmailField({
+      form: document.getElementById('lookup'),
+      input: document.getElementById('student-username'),
+      error: document.getElementById('student-error'),
+      results: document.getElementById('lookup-results'),
+      status: document.getElementById('lookup-status'),
+      lookup, render,
+    });
+    window.__lookupReady = true;
+  </script>
+</body>
+</html>

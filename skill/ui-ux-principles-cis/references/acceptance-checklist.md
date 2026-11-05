@@ -33,6 +33,9 @@ Use for every migration PR. Reviewers (a teammate, your AI tool, or cis-coding-h
 - [ ] Focus: fill white, border brand, `shadow-focus`, 2px brand outline offset 2px
 - [ ] Field has `<label for>` or `aria-label`. Errors use `aria-invalid` and `aria-describedby`
 - [ ] On phones the field sits on its own full-width row
+- [ ] Ensign student email lookups (only those): editable username plus a visible fixed `@ensign.edu` suffix in one group, label and helper text, suffix in `aria-describedby`, suffix fully visible at all five widths
+- [ ] Student lookups send one trimmed, lowercased `username@ensign.edu`, show it in results, accept a pasted full Ensign address without doubling, and reject empty, internal spaces, extra `@` and other domains without converting them
+- [ ] Editing the student lookup hides earlier results at once, and a pending response for an earlier username is never shown (tested with synthetic responses)
 
 ## Interaction and accessibility
 
